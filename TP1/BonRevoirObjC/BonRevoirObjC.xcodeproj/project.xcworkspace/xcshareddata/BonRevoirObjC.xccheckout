@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>5A06CD64-7076-4EF7-B553-B1FA5D086485</string>
+	<key>IDESourceControlProjectName</key>
+	<string>project</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>FDE24AEE3E80C43AA7464E42A56B101A3E453516</key>
+		<string>https://github.com/ilyasToumlilt/M2_PPM</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>TP1/BonRevoirObjC/BonRevoirObjC.xcodeproj/project.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>FDE24AEE3E80C43AA7464E42A56B101A3E453516</key>
+		<string>../../../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/ilyasToumlilt/M2_PPM</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>FDE24AEE3E80C43AA7464E42A56B101A3E453516</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>FDE24AEE3E80C43AA7464E42A56B101A3E453516</string>
+			<key>IDESourceControlWCCName</key>
+			<string>M2_PPM</string>
+		</dict>
+	</array>
+</dict>
+</plist>
