@@ -7,14 +7,14 @@
 	<key>IDESourceControlProjectIdentifier</key>
 	<string>8031A130-3BCA-416B-87BD-33240617D360</string>
 	<key>IDESourceControlProjectName</key>
-	<string>project</string>
+	<string>NuancierRVB</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
 		<key>64DC7D400DC141324DF6FA903FF9D32D61040ABB</key>
 		<string>https://github.com/ilyasToumlilt/M2_PPM.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>TP2/NuancierRVB/NuancierRVB.xcodeproj/project.xcworkspace</string>
+	<string>TP2/NuancierRVB/NuancierRVB.xcodeproj</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>64DC7D400DC141324DF6FA903FF9D32D61040ABB</key>
