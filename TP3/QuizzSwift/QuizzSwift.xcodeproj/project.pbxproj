@@ -81,11 +81,11 @@
 			children = (
 				D6B331871BBDAD8A009EC127 /* AppDelegate.swift */,
 				D6B331891BBDAD8A009EC127 /* ViewController.swift */,
+				D6B331A71BBDB8B6009EC127 /* QuestionsReponses.swift */,
 				D6B3318B1BBDAD8A009EC127 /* Main.storyboard */,
 				D6B3318E1BBDAD8A009EC127 /* Images.xcassets */,
 				D6B331901BBDAD8A009EC127 /* LaunchScreen.xib */,
 				D6B331851BBDAD8A009EC127 /* Supporting Files */,
-				D6B331A71BBDB8B6009EC127 /* QuestionsReponses.swift */,
 			);
 			path = QuizzSwift;
 			sourceTree = "<group>";
@@ -415,6 +415,7 @@
 				D6B331A31BBDAD8A009EC127 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		D6B331A41BBDAD8A009EC127 /* Build configuration list for PBXNativeTarget "QuizzSwiftTests" */ = {
 			isa = XCConfigurationList;
@@ -423,6 +424,7 @@
 				D6B331A61BBDAD8A009EC127 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
