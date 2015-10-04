@@ -43,6 +43,11 @@ class ViewController: UIViewController {
         self.myAnswerTV.text = "";
     }
     
+    @IBAction func onClickPrevious(sender: UIButton) {
+        self.myQuestionTV.text = self.QR.getPreviousQuestion((self.myBalaiseSwitch.on ? HARD_LEVEL : EASY_LEVEL));
+        self.myAnswerTV.text = "";
+    }
+    
     @IBAction func onChangeBalaiseSwitch(sender: UISwitch) {
         self.myQuestionTV.textColor = self.myBalaiseSwitch.on ? UIColor.redColor() : UIColor.purpleColor();
         self.onClickNext(self.myNextButton);

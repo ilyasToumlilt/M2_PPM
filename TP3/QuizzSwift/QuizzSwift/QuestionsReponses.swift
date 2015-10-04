@@ -18,17 +18,28 @@ class QuestionsReponses {
          (EASY_LEVEL, "Q.1.2", "R.1.2"),
          (HARD_LEVEL, "Q.2.1", "R.2.1"),
          (EASY_LEVEL, "Q.1.3", "R.1.3"),
+            (EASY_LEVEL, "Q.1.4", "R.1.4"),
          (HARD_LEVEL, "Q.2.2", "R.2.2")];
     
     var RspCounter   = 0;
     var stackCounter = 0;
     
     func getNextQuestion(Difficulty: Int) -> String {
-        for (var i=self.stackCounter+1; i != self.stackCounter; i=(i+1)%self.QuizzStack.count) {
-            if( QuizzStack[i].difficulty == Difficulty ) {
-                self.stackCounter = i;
+        for (var i=1; i <= self.QuizzStack.count; i++) {
+            if( QuizzStack[(self.stackCounter+i)%self.QuizzStack.count].difficulty == Difficulty ) {
+                self.stackCounter = (self.stackCounter+i)%self.QuizzStack.count;
                 return self.QuizzStack[self.stackCounter].question;
             }
+        }
+        return "Erreur: pile de questions vide pour ce niveau !";
+    }
+    
+    func getPreviousQuestion(Difficulty: Int) -> String {
+        for(var i=1; i <= self.QuizzStack.count; i++) {
+                if( QuizzStack[(self.stackCounter-i+self.QuizzStack.count)%self.QuizzStack.count].difficulty == Difficulty) {
+                    self.stackCounter = (self.stackCounter-i+self.QuizzStack.count)%self.QuizzStack.count;
+                    return self.QuizzStack[self.stackCounter].question;
+                }
         }
         return "Erreur: pile de questions vide pour ce niveau !";
     }
