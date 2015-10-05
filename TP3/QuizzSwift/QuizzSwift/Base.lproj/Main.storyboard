@@ -24,6 +24,7 @@
                                 </state>
                                 <connections>
                                     <action selector="onClickPrevious:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Szs-RP-AXY"/>
+                                    <action selector="onTouchDownNextOrPrevious:" destination="BYZ-38-t0r" eventType="touchDown" id="NEM-7e-uwq"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LWg-nv-i1m">
@@ -33,6 +34,7 @@
                                 </state>
                                 <connections>
                                     <action selector="onClickNext:" destination="BYZ-38-t0r" eventType="touchUpInside" id="8MJ-Mr-QK9"/>
+                                    <action selector="onTouchDownNextOrPrevious:" destination="BYZ-38-t0r" eventType="touchDown" id="eVM-Uj-ZPv"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1w8-7g-mUV">

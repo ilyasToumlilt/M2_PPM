@@ -39,18 +39,29 @@ class ViewController: UIViewController {
     }
 
     @IBAction func onClickNext(sender: UIButton) {
-        self.myQuestionTV.text = self.QR.getNextQuestion((self.myBalaiseSwitch.on ? HARD_LEVEL : EASY_LEVEL));
-        self.myAnswerTV.text = "";
+        self.myNextButton.setImage(UIImage(named: "flecheDroite"), forState: .Normal);
+        var lvl: Int;
+        (lvl, self.myQuestionTV.text, self.myAnswerTV.text) = self.QR.getNextQuestion((self.myBalaiseSwitch.on ? HARD_LEVEL : EASY_LEVEL));
+        self.myQuestionTV.textColor = ( lvl == HARD_LEVEL ) ? UIColor.redColor() : UIColor.purpleColor();
+    }
+    
+    
+    @IBAction func onTouchDownNextOrPrevious(sender: UIButton) {
+        sender.setImage(UIImage(named: "fleche-en-action"), forState: .Normal);
     }
     
     @IBAction func onClickPrevious(sender: UIButton) {
-        self.myQuestionTV.text = self.QR.getPreviousQuestion((self.myBalaiseSwitch.on ? HARD_LEVEL : EASY_LEVEL));
-        self.myAnswerTV.text = "";
+        self.myPreviousButton.setImage(UIImage(named: "flecheGauche"), forState: .Normal);
+        var lvl: Int;
+        (lvl, self.myQuestionTV.text, self.myAnswerTV.text) = self.QR.getPreviousQuestion((self.myBalaiseSwitch.on ? HARD_LEVEL : EASY_LEVEL));
+        self.myQuestionTV.textColor = ( lvl == HARD_LEVEL ) ? UIColor.redColor() : UIColor.purpleColor();
     }
     
     @IBAction func onChangeBalaiseSwitch(sender: UISwitch) {
-        self.myQuestionTV.textColor = self.myBalaiseSwitch.on ? UIColor.redColor() : UIColor.purpleColor();
-        self.onClickNext(self.myNextButton);
+        if( self.myBalaiseSwitch.on ) {
+            self.onClickNext(self.myNextButton);
+        } else {
+            self.onClickPrevious(self.myPreviousButton);
+        }
     }
-    
 }

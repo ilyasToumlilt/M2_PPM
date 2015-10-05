@@ -13,39 +13,47 @@ let HARD_LEVEL = 1;
 
 class QuestionsReponses {
     
-    let QuizzStack:[(difficulty: Int, question: String, answer: String)] =
-        [(EASY_LEVEL, "Q.1.1", "R.1.1"),
-         (EASY_LEVEL, "Q.1.2", "R.1.2"),
-         (HARD_LEVEL, "Q.2.1", "R.2.1"),
-         (EASY_LEVEL, "Q.1.3", "R.1.3"),
-            (EASY_LEVEL, "Q.1.4", "R.1.4"),
-         (HARD_LEVEL, "Q.2.2", "R.2.2")];
+    var QuizzStack:[(difficulty: Int, question: String, answer: String, shownAnswer: Bool)] =
+    [(EASY_LEVEL, "Q.1.1", "R.1.1", false),
+        (EASY_LEVEL, "Q.1.2", "R.1.2", false),
+        (HARD_LEVEL, "Q.2.1", "R.2.1", false),
+        (EASY_LEVEL, "Q.1.3", "R.1.3", false),
+        (EASY_LEVEL, "Q.1.4", "R.1.4", false),
+        (HARD_LEVEL, "Q.2.2", "R.2.2", false)];
     
     var RspCounter   = 0;
     var stackCounter = 0;
     
-    func getNextQuestion(Difficulty: Int) -> String {
+    func getNextQuestion(Difficulty: Int) -> (Int, String!, String!) {
         for (var i=1; i <= self.QuizzStack.count; i++) {
-            if( QuizzStack[(self.stackCounter+i)%self.QuizzStack.count].difficulty == Difficulty ) {
-                self.stackCounter = (self.stackCounter+i)%self.QuizzStack.count;
-                return self.QuizzStack[self.stackCounter].question;
+            if( QuizzStack[(self.stackCounter+i)%self.QuizzStack.count].difficulty == Difficulty
+                || Difficulty == HARD_LEVEL) {
+                    self.stackCounter = (self.stackCounter+i)%self.QuizzStack.count;
+                    return (self.QuizzStack[self.stackCounter].difficulty,
+                        self.QuizzStack[self.stackCounter].question,
+                        (self.QuizzStack[self.stackCounter].shownAnswer) ? self.QuizzStack[self.stackCounter].answer : "");
             }
         }
-        return "Erreur: pile de questions vide pour ce niveau !";
+        return (HARD_LEVEL, "Erreur: pile de questions vide pour ce niveau !", "");
     }
     
-    func getPreviousQuestion(Difficulty: Int) -> String {
+    func getPreviousQuestion(Difficulty: Int) -> (Int, String!, String!) {
         for(var i=1; i <= self.QuizzStack.count; i++) {
-                if( QuizzStack[(self.stackCounter-i+self.QuizzStack.count)%self.QuizzStack.count].difficulty == Difficulty) {
-                    self.stackCounter = (self.stackCounter-i+self.QuizzStack.count)%self.QuizzStack.count;
-                    return self.QuizzStack[self.stackCounter].question;
-                }
+            if( QuizzStack[(self.stackCounter-i+self.QuizzStack.count)%self.QuizzStack.count].difficulty == Difficulty || Difficulty == HARD_LEVEL) {
+                self.stackCounter = (self.stackCounter-i+self.QuizzStack.count)%self.QuizzStack.count;
+                return (self.QuizzStack[self.stackCounter].difficulty,
+                    self.QuizzStack[self.stackCounter].question,
+                    (self.QuizzStack[self.stackCounter].shownAnswer) ? self.QuizzStack[self.stackCounter].answer : "");
+            }
         }
-        return "Erreur: pile de questions vide pour ce niveau !";
+        return (HARD_LEVEL, "Erreur: pile de questions vide pour ce niveau !", "");
     }
     
     func getAnswer() -> String {
-        RspCounter++;
+        if( !self.QuizzStack[self.stackCounter].shownAnswer ) {
+            RspCounter++;
+            self.QuizzStack[self.stackCounter].shownAnswer = true;
+        }
         return self.QuizzStack[self.stackCounter].answer;
     }
     
