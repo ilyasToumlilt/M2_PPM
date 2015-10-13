@@ -9,27 +9,30 @@
 #import <UIKit/UIKit.h>
 
 @interface View : UIView {
-    UIButton *myButtonPrec;
-    UILabel *myLabelPrec;
-    UIButton *myButtonPenu;
-    UILabel *myLabelPenu;
     
-    UILabel* myActualLabel;
-    
-    UIButton* mySaveButton;
-    UIButton* myResetButton;
-    UISwitch* mySwitch;
-    
-    /*
-    UISwitch *mySwitch;
-    UILabel *myBLabel;
-    UISlider *myBSlider;
-    UILabel *myVLabel;
-    UISlider *myVSlider;
-    UILabel *myRLabel;
-    UISlider *myRSlider;
-    UIView *myActualColorView;
-     */
 }
+
+@property (retain, nonatomic) UIButton* myButtonPrec;
+@property (retain, nonatomic) UIButton* myButtonPenu;
+
+@property (retain, nonatomic) UILabel  *myLabelPrec;
+@property (retain, nonatomic) UILabel  *myLabelPenu;
+
+@property (retain, nonatomic) UILabel* myActualLabel;
+@property (retain, nonatomic) UIView*  myActualColorView;
+
+@property (retain, nonatomic) UILabel*  myRLabel;
+@property (retain, nonatomic) UISlider* myRSlider;
+
+@property (retain, nonatomic) UILabel*  myVLabel;
+@property (retain, nonatomic) UISlider* myVSlider;
+
+@property (retain, nonatomic) UILabel*  myBLabel;
+@property (retain, nonatomic) UISlider* myBSlider;
+
+@property (retain, nonatomic) UIButton* mySaveButton;
+@property (retain, nonatomic) UIButton* myResetButton;
+@property (retain, nonatomic) UISwitch* mySwitch;
+@property (retain, nonatomic) UILabel*  myWebLabel;
 
 @end

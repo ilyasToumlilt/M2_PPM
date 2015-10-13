@@ -29,60 +29,99 @@ const int     PADDING      = 10;
         // Initialization code
         
         /* myButtonPrec */
-        myButtonPrec = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-        [myButtonPrec setTitle:@"" forState:UIControlStateNormal];
-        [myButtonPrec setBackgroundColor:[UIColor grayColor]];
-        [self addSubview:myButtonPrec];
+        _myButtonPrec = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+        [_myButtonPrec setTitle:@"" forState:UIControlStateNormal];
         
         /* myLabelPrec */
-        myLabelPrec = [[UILabel alloc] init];
-        myLabelPrec.text = @"Précédent";
-        myLabelPrec.textAlignment = NSTextAlignmentRight;
-        [self addSubview:myLabelPrec];
+        _myLabelPrec = [[UILabel alloc] init];
+        _myLabelPrec.text = @"Précédent";
+        _myLabelPrec.textAlignment = NSTextAlignmentRight;
         
         /* myButtonPenu */
-        myButtonPenu = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-        [myButtonPenu setTitle:@"" forState:UIControlStateNormal];
-        [myButtonPenu setBackgroundColor:[UIColor grayColor]];
-        [self addSubview:myButtonPenu];
+        _myButtonPenu = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+        [_myButtonPenu setTitle:@"" forState:UIControlStateNormal];
         
         /* myLabelPenu */
-        myLabelPenu = [[UILabel alloc] init];
-        myLabelPenu.text = @"Pénultième";
-        myLabelPenu.textAlignment = NSTextAlignmentRight;
-        [self addSubview:myLabelPenu];
+        _myLabelPenu = [[UILabel alloc] init];
+        _myLabelPenu.text = @"Pénultième";
+        _myLabelPenu.textAlignment = NSTextAlignmentRight;
         
         /* myActualLabel */
-        myActualLabel = [[UILabel alloc] init];
-        myActualLabel.text = @"Actuel";
-        myActualLabel.textAlignment = NSTextAlignmentCenter;
-        [self addSubview:myActualLabel];
+        _myActualLabel = [[UILabel alloc] init];
+        _myActualLabel.text = @"Actuel";
+        _myActualLabel.textAlignment = NSTextAlignmentCenter;
+        
+        /* myActualColorView */
+        _myActualColorView = [[UILabel alloc] init];
         
         /* mySaveButton */
-        mySaveButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-        [mySaveButton setTitle:@"Save" forState:UIControlStateNormal];
-        [self addSubview:mySaveButton];
+        _mySaveButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+        [_mySaveButton setTitle:@"Save" forState:UIControlStateNormal];
         
         /* myResetButton */
-        myResetButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-        [myResetButton setTitle:@"Raz" forState:UIControlStateNormal];
-        [self addSubview:myResetButton];
+        _myResetButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+        [_myResetButton setTitle:@"Raz" forState:UIControlStateNormal];
         
         /* mySwitch */
-        mySwitch = [[UISwitch alloc] init];
-        mySwitch.on = false;
-        [self addSubview:mySwitch];
+        _mySwitch = [[UISwitch alloc] init];
+        _mySwitch.on = false;
+        
+        /* myWebLabel */
+        _myWebLabel = [[UILabel alloc] init];
+        _myWebLabel.text = @"Web";
+        _myWebLabel.textAlignment = NSTextAlignmentCenter;
+        
+        /* myRLabel */
+        _myRLabel = [[UILabel alloc] init];
+        _myRLabel.text = @"R: 50%";
+        _myRLabel.textAlignment = NSTextAlignmentLeft;
+        
+        /* myRSlider */
+        _myRSlider = [[UISlider alloc] init];
+        _myRSlider.minimumValue = 0.0;
+        _myRSlider.maximumValue = 100.0;
+        
+        /* myVLabel */
+        _myVLabel = [[UILabel alloc] init];
+        _myVLabel.text = @"V: 50%";
+        _myVLabel.textAlignment = NSTextAlignmentLeft;
+        
+        /* myVSlider */
+        _myVSlider = [[UISlider alloc] init];
+        _myVSlider.minimumValue = 0.0;
+        _myVSlider.maximumValue = 100.0;
+        
+        /* myBLabel */
+        _myBLabel = [[UILabel alloc] init];
+        _myBLabel.text = @"B: 50%";
+        _myBLabel.textAlignment = NSTextAlignmentLeft;
+        
+        /* myBSlider */
+        _myBSlider = [[UISlider alloc] init];
+        _myBSlider.minimumValue = 0.0;
+        _myBSlider.maximumValue = 100.0;
+        
         
         [self drawElements:frame];
         
         /* releasing objects */
-        [myButtonPrec release];
-        [myLabelPrec release];
-        [myButtonPenu release];
-        [myLabelPenu release];
-        [myActualLabel release];
-        [mySaveButton release];
-        [myResetButton release];
+        [self addSubview:_myButtonPrec]; [_myButtonPrec  release];
+        [self addSubview:_myLabelPrec];  [_myLabelPrec   release];
+        [self addSubview:_myButtonPenu]; [_myButtonPenu  release];
+        [self addSubview:_myLabelPenu];  [_myLabelPenu   release];
+        [self addSubview:_myActualLabel];[_myActualLabel release];
+        [self addSubview:_mySaveButton]; [_mySaveButton  release];
+        [self addSubview:_myResetButton];[_myResetButton release];
+        [self addSubview:_myWebLabel];   [_myWebLabel    release];
+        [self addSubview:_mySwitch];     [_mySwitch      release];
+        [self addSubview:_myRLabel];     [_myRLabel      release];
+        [self addSubview:_myRSlider];    [_myRSlider     release];
+        [self addSubview:_myVLabel];     [_myVLabel      release];
+        [self addSubview:_myVSlider];    [_myVSlider     release];
+        [self addSubview:_myBLabel];     [_myBLabel      release];
+        [self addSubview:_myBSlider];    [_myBSlider     release];
+        [self addSubview:_myActualColorView];
+        [_myActualColorView release];
     }
     return self;
 }
@@ -93,25 +132,30 @@ const int     PADDING      = 10;
     CGPoint dp = CGPointMake(V_BORDERLINE, H_BORDERLINE);
 
     /* myLabelPrec */
-    [myLabelPrec setFrame:CGRectMake(frame.size.width - V_BORDERLINE - 90, H_BORDERLINE, 90, 40)];
+    [_myLabelPrec setFrame:CGRectMake(frame.size.width - V_BORDERLINE - 90, H_BORDERLINE, 90, 40)];
     /* myButtonPrec */
-    [myButtonPrec setFrame:CGRectMake(dp.x, dp.y, frame.size.width-(2*V_BORDERLINE)-100, 40)];
+    [_myButtonPrec setFrame:CGRectMake(dp.x, dp.y, frame.size.width-(2*V_BORDERLINE)-100, 40)];
     
     dp.y += (40 + PADDING);
     
     /* myButtonPrec */
-    [myButtonPenu setFrame:CGRectMake(dp.x, dp.y, frame.size.width-(2*V_BORDERLINE)-100, 40)];
+    [_myButtonPenu setFrame:CGRectMake(dp.x, dp.y, frame.size.width-(2*V_BORDERLINE)-100, 40)];
     /* myLabelPrec */
-    [myLabelPenu setFrame:CGRectMake(frame.size.width-V_BORDERLINE-90, dp.y, 90, 40)];
+    [_myLabelPenu setFrame:CGRectMake(frame.size.width-V_BORDERLINE-90, dp.y, 90, 40)];
     
     dp.y += ( 40 + PADDING);
     
     /* myActualLabel */
-    [myActualLabel setFrame:CGRectMake(dp.x, dp.y, frame.size.width-(2*V_BORDERLINE), 20)];
+    [_myActualLabel setFrame:CGRectMake(dp.x, dp.y, frame.size.width-(2*V_BORDERLINE), 20)];
+    
+    dp.y += ( 20 + PADDING );
 
     /* Les elements du bas sont pareils pour toutes les vues
      * cf. doc de la methode */
-    [self drawBottomElements:frame];
+    CGPoint dp2 = [self drawBottomElements:frame];
+    
+    /* myActualColorView */
+    [_myActualColorView setFrame:CGRectMake(dp.x, dp.y, frame.size.width - (2*V_BORDERLINE), dp2.y - dp.y)];
 }
 
 /**
@@ -128,16 +172,52 @@ const int     PADDING      = 10;
  */
 - (CGPoint)drawBottomElements:(CGRect)frame
 {
-    /* draw point */
+    /* draw point, ici on part du bas */
     CGPoint dp = CGPointMake(V_BORDERLINE, frame.origin.y + frame.size.height - 20);
     
     /* mySaveButton */
-    [mySaveButton setFrame:CGRectMake(dp.x, dp.y - 20, 50, 20)];
+    [_mySaveButton setFrame:CGRectMake(dp.x, dp.y - 20, 50, 20)];
     
     /* myResetButton */
-    [myResetButton setFrame:CGRectMake((frame.size.width / 2)-20, dp.y-20, 40, 20)];
+    [_myResetButton setFrame:CGRectMake((frame.size.width / 2)-20, dp.y-20, 40, 20)];
     
     /* mySwitch */
+    [_mySwitch setFrame:CGRectMake(frame.size.width - V_BORDERLINE - 50, dp.y - 25, 50, 25)];
+    
+    /* myWebLabel */
+    [_myWebLabel setFrame:CGRectMake(frame.size.width - V_BORDERLINE - 50 - 50, dp.y - 20, 40, 25)];
+    
+    dp.y -= ( 25 + PADDING );
+    
+    /* myBSlider */
+    [_myBSlider setFrame:CGRectMake(dp.x, dp.y - 20, frame.size.width - (2*V_BORDERLINE), 20)];
+    
+    dp.y -= ( 20 + PADDING);
+    
+    /* myBLabel */
+    [_myBLabel setFrame:CGRectMake(dp.x, dp.y - 20, frame.size.width - (2*V_BORDERLINE), 20)];
+    
+    dp.y -= ( 25 + PADDING );
+    
+    /* myVSlider */
+    [_myVSlider setFrame:CGRectMake(dp.x, dp.y - 20, frame.size.width - (2*V_BORDERLINE), 20)];
+    
+    dp.y -= ( 20 + PADDING);
+    
+    /* myVLabel */
+    [_myVLabel setFrame:CGRectMake(dp.x, dp.y - 20, frame.size.width - (2*V_BORDERLINE), 20)];
+    
+    dp.y -= ( 25 + PADDING );
+    
+    /* myRSlider */
+    [_myRSlider setFrame:CGRectMake(dp.x, dp.y - 20, frame.size.width - (2*V_BORDERLINE), 20)];
+    
+    dp.y -= ( 20 + PADDING);
+    
+    /* myRLabel */
+    [_myRLabel setFrame:CGRectMake(dp.x, dp.y - 20, frame.size.width - (2*V_BORDERLINE), 20)];
+    
+    dp.y -= ( 25 + PADDING);
     
     return dp;
 }
