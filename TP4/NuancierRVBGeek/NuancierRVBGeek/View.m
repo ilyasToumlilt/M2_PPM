@@ -10,14 +10,6 @@
 
 @implementation View
 
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect {
-    // Drawing code
-}
-*/
-
 const CGFloat V_BORDERLINE = 20.0;
 const CGFloat H_BORDERLINE = 30.0;
 const int     PADDING      = 10;
@@ -128,34 +120,51 @@ const int     PADDING      = 10;
 
 - (void)drawElements:(CGRect)frame
 {
+    
     /* draw point */
     CGPoint dp = CGPointMake(V_BORDERLINE, H_BORDERLINE);
 
-    /* myLabelPrec */
-    [_myLabelPrec setFrame:CGRectMake(frame.size.width - V_BORDERLINE - 90, H_BORDERLINE, 90, 40)];
-    /* myButtonPrec */
-    [_myButtonPrec setFrame:CGRectMake(dp.x, dp.y, frame.size.width-(2*V_BORDERLINE)-100, 40)];
+    /****** Iphones en portrait *********/
+    if( frame.size.width < frame.size.height ) {
+        /* myLabelPrec */
+        [_myLabelPrec setFrame:CGRectMake(frame.size.width - V_BORDERLINE - 90, H_BORDERLINE, 90, 40)];
+        /* myButtonPrec */
+        [_myButtonPrec setFrame:CGRectMake(dp.x, dp.y, frame.size.width-(2*V_BORDERLINE)-100, 40)];
     
-    dp.y += (40 + PADDING);
+        dp.y += (40 + PADDING);
     
-    /* myButtonPrec */
-    [_myButtonPenu setFrame:CGRectMake(dp.x, dp.y, frame.size.width-(2*V_BORDERLINE)-100, 40)];
-    /* myLabelPrec */
-    [_myLabelPenu setFrame:CGRectMake(frame.size.width-V_BORDERLINE-90, dp.y, 90, 40)];
+        /* myButtonPrec */
+        [_myButtonPenu setFrame:CGRectMake(dp.x, dp.y, frame.size.width-(2*V_BORDERLINE)-100, 40)];
+        /* myLabelPrec */
+        [_myLabelPenu setFrame:CGRectMake(frame.size.width-V_BORDERLINE-90, dp.y, 90, 40)];
     
-    dp.y += ( 40 + PADDING);
+        dp.y += ( 40 + PADDING);
     
-    /* myActualLabel */
-    [_myActualLabel setFrame:CGRectMake(dp.x, dp.y, frame.size.width-(2*V_BORDERLINE), 20)];
+        /* myActualLabel */
+        [_myActualLabel setFrame:CGRectMake(dp.x, dp.y, frame.size.width-(2*V_BORDERLINE), 20)];
     
-    dp.y += ( 20 + PADDING );
+        dp.y += ( 20 + PADDING );
 
-    /* Les elements du bas sont pareils pour toutes les vues
-     * cf. doc de la methode */
-    CGPoint dp2 = [self drawBottomElements:frame];
+        /* Les elements du bas sont pareils pour toutes les vues
+         * cf. doc de la methode */
+        CGPoint dp2 = [self drawBottomElements:frame];
     
-    /* myActualColorView */
-    [_myActualColorView setFrame:CGRectMake(dp.x, dp.y, frame.size.width - (2*V_BORDERLINE), dp2.y - dp.y)];
+        /* myActualColorView */
+        [_myActualColorView setFrame:CGRectMake(dp.x, dp.y, frame.size.width - (2*V_BORDERLINE), dp2.y - dp.y)];
+    } else {
+        /* myButtonPrec */
+        [_myButtonPrec setFrame:CGRectMake(dp.x, dp.y, 80, 35)];
+        
+        dp.x += ( 80 + PADDING );
+        
+        /* myButtonPenu */
+        [_myButtonPenu setFrame:CGRectMake(dp.x, dp.y, 80, 35)];
+        
+        dp.x += ( 80 + PADDING );
+        
+        /* myActualColorView */
+        [_myActualColorView setFrame:CGRectMake(dp.x, dp.y, frame.size.width - (2*V_BORDERLINE) - (2*(80+PADDING)), 35)];
+    }
 }
 
 /**
@@ -221,5 +230,14 @@ const int     PADDING      = 10;
     
     return dp;
 }
+
+
+ // Only override drawRect: if you perform custom drawing.
+ // An empty implementation adversely affects performance during animation.
+/*
+ - (void)drawRect:(CGRect)rect {
+     [self drawElements:[[UIScreen mainScreen] bounds]];
+ }
+*/
 
 @end
