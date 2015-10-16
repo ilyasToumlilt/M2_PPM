@@ -11,14 +11,12 @@ import UIKit
 
 class PhotoAlbumView: UIView
 {
-    let GUIDELINE_VERT:CGFloat = 20;
-    let GUIDELINE_HORI:CGFloat = 20;
     
     let MIN_CMPT_IMG = 1;
     let MAX_CMPT_IMG = 20;
  
-    let HORIZONTAL_GUIDELINE:CGFloat = 20;
-    let VERTICAL_GUIDELINE :CGFloat = 20;
+    let HORIZONTAL_GUIDELINE:CGFloat = 15;
+    let VERTICAL_GUIDELINE :CGFloat = 15;
     
     let IMAGE_NAME_PREFIX = "photo-";
     let IMAGE_NAME_SUFIX = ".jpg";
@@ -79,6 +77,7 @@ class PhotoAlbumView: UIView
         
         self.btnPrev.setTitle("<<", forState: .Normal);
         self.btnNext.setTitle(">>", forState: .Normal);
+        self.btnPrev.backgroundColor = UIColor.redColor()
         
         self.imgText.textAlignment = .Center;
         self.imgText.textColor = UIColor.whiteColor()
@@ -97,27 +96,43 @@ class PhotoAlbumView: UIView
         
         self.setElementsSize(frame);
         
-        self.addSubview(self.myScrollView);
+        /*self.addSubview(self.myScrollView);
         self.addSubview(self.zoomScaleView);
         self.addSubview(self.imgZoomScaleLabel)
         self.addSubview(self.myToolBar);
         self.addSubview(self.btnNext)
         self.addSubview(self.btnPrev)
         self.addSubview(self.imgText)
-        self.addSubview(self.sliderSize);
+        self.addSubview(self.sliderSize);*/
+        
+        self.addSubview(self.myToolBar);
+        
+        self.addSubview(self.btnPrev)
+        self.addSubview(self.btnNext)
     }
 
     func setElementsSize(frame:CGRect)
     {
-        self.myToolBar.frame = CGRect(x: 0, y: 0, width: frame.width, height: 50);
+        self.myToolBar.frame = CGRect(x: self.VERTICAL_GUIDELINE, y: self.HORIZONTAL_GUIDELINE, width: frame.width-(2*self.VERTICAL_GUIDELINE), height: 50);
         
-        self.btnPrev.frame = CGRect(x: self.GUIDELINE_HORI, y: 5, width: 30, height: self.myToolBar.frame.height)
-        self.btnNext.frame = CGRect(x: self.myToolBar.frame.width - self.btnNext.frame.width - (self.GUIDELINE_HORI), y: 5, width: 30, height: self.myToolBar.frame.height)
+        self.btnPrev.frame = CGRect(
+            x: self.VERTICAL_GUIDELINE,
+            y: self.HORIZONTAL_GUIDELINE,
+            width: 30,
+            height: self.myToolBar.frame.height
+        );
+        
+        self.btnNext.frame = CGRect(
+            x: frame.width - (self.btnNext.frame.width + self.HORIZONTAL_GUIDELINE),
+            y: self.HORIZONTAL_GUIDELINE,
+            width: 30,
+            height: self.myToolBar.frame.height
+        );
         
         self.imgText.frame = CGRect(
-            x: self.GUIDELINE_HORI+self.btnPrev.frame.width,
+            x: self.HORIZONTAL_GUIDELINE+self.btnPrev.frame.width,
             y: 5,
-            width: frame.width-(self.btnPrev.frame.width+self.btnNext.frame.width+(2*self.GUIDELINE_VERT)),
+            width: frame.width-(self.btnPrev.frame.width+self.btnNext.frame.width+(2*self.HORIZONTAL_GUIDELINE)),
             height: self.myToolBar.frame.height
         );
         
