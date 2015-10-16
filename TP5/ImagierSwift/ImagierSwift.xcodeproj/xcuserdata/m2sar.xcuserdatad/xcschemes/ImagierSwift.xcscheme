@@ -14,10 +14,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "D6DA56891BCD6AEB009838F5"
-               BuildableName = "ImagierQuizz.app"
-               BlueprintName = "ImagierQuizz"
-               ReferencedContainer = "container:ImagierQuizz.xcodeproj">
+               BlueprintIdentifier = "D62562861BD10BFB00D75907"
+               BuildableName = "ImagierSwift.app"
+               BlueprintName = "ImagierSwift"
+               ReferencedContainer = "container:ImagierSwift.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
          <BuildActionEntry
@@ -28,10 +28,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "D6DA569E1BCD6AEB009838F5"
-               BuildableName = "ImagierQuizzTests.xctest"
-               BlueprintName = "ImagierQuizzTests"
-               ReferencedContainer = "container:ImagierQuizz.xcodeproj">
+               BlueprintIdentifier = "D625629B1BD10BFB00D75907"
+               BuildableName = "ImagierSwiftTests.xctest"
+               BlueprintName = "ImagierSwiftTests"
+               ReferencedContainer = "container:ImagierSwift.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -46,20 +46,20 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "D6DA569E1BCD6AEB009838F5"
-               BuildableName = "ImagierQuizzTests.xctest"
-               BlueprintName = "ImagierQuizzTests"
-               ReferencedContainer = "container:ImagierQuizz.xcodeproj">
+               BlueprintIdentifier = "D625629B1BD10BFB00D75907"
+               BuildableName = "ImagierSwiftTests.xctest"
+               BlueprintName = "ImagierSwiftTests"
+               ReferencedContainer = "container:ImagierSwift.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "D6DA56891BCD6AEB009838F5"
-            BuildableName = "ImagierQuizz.app"
-            BlueprintName = "ImagierQuizz"
-            ReferencedContainer = "container:ImagierQuizz.xcodeproj">
+            BlueprintIdentifier = "D62562861BD10BFB00D75907"
+            BuildableName = "ImagierSwift.app"
+            BlueprintName = "ImagierSwift"
+            ReferencedContainer = "container:ImagierSwift.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </TestAction>
@@ -76,10 +76,10 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "D6DA56891BCD6AEB009838F5"
-            BuildableName = "ImagierQuizz.app"
-            BlueprintName = "ImagierQuizz"
-            ReferencedContainer = "container:ImagierQuizz.xcodeproj">
+            BlueprintIdentifier = "D62562861BD10BFB00D75907"
+            BuildableName = "ImagierSwift.app"
+            BlueprintName = "ImagierSwift"
+            ReferencedContainer = "container:ImagierSwift.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -95,10 +95,10 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "D6DA56891BCD6AEB009838F5"
-            BuildableName = "ImagierQuizz.app"
-            BlueprintName = "ImagierQuizz"
-            ReferencedContainer = "container:ImagierQuizz.xcodeproj">
+            BlueprintIdentifier = "D62562861BD10BFB00D75907"
+            BuildableName = "ImagierSwift.app"
+            BlueprintName = "ImagierSwift"
+            ReferencedContainer = "container:ImagierSwift.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

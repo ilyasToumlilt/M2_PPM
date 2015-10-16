@@ -1,8 +1,8 @@
 //
 //  AppDelegate.swift
-//  ImagierQuizz
+//  ImagierSwift
 //
-//  Created by m2sar on 13/10/2015.
+//  Created by m2sar on 16/10/2015.
 //  Copyright (c) 2015 m2sar. All rights reserved.
 //
 
