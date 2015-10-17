@@ -15,8 +15,8 @@ class PhotoAlbumView: UIView
     let MIN_CMPT_IMG = 1;
     let MAX_CMPT_IMG = 20;
  
-    let HORIZONTAL_GUIDELINE:CGFloat = 15;
-    let VERTICAL_GUIDELINE :CGFloat = 15;
+    let HORIZONTAL_GUIDELINE:CGFloat = 30;
+    let VERTICAL_GUIDELINE :CGFloat = 5;
     
     let IMAGE_NAME_PREFIX = "photo-";
     let IMAGE_NAME_SUFIX = ".jpg";
@@ -77,10 +77,12 @@ class PhotoAlbumView: UIView
         
         self.btnPrev.setTitle("<<", forState: .Normal);
         self.btnNext.setTitle(">>", forState: .Normal);
-        self.btnPrev.backgroundColor = UIColor.redColor()
+        
+        
         
         self.imgText.textAlignment = .Center;
         self.imgText.textColor = UIColor.whiteColor()
+        
         
         self.myImageView=UIImageView();
         self.myScrollView = UIScrollView();
@@ -96,24 +98,24 @@ class PhotoAlbumView: UIView
         
         self.setElementsSize(frame);
         
-        /*self.addSubview(self.myScrollView);
+        self.addSubview(self.myToolBar);
+        self.addSubview(self.btnPrev)
+        self.addSubview(self.btnNext)
+        self.addSubview(self.imgText)
+        self.addSubview(self.myScrollView);
         self.addSubview(self.zoomScaleView);
         self.addSubview(self.imgZoomScaleLabel)
-        self.addSubview(self.myToolBar);
-        self.addSubview(self.btnNext)
-        self.addSubview(self.btnPrev)
-        self.addSubview(self.imgText)
-        self.addSubview(self.sliderSize);*/
-        
-        self.addSubview(self.myToolBar);
-        
-        self.addSubview(self.btnPrev)
-        self.addSubview(self.btnNext)
+        self.addSubview(self.sliderSize);
     }
 
     func setElementsSize(frame:CGRect)
     {
-        self.myToolBar.frame = CGRect(x: self.VERTICAL_GUIDELINE, y: self.HORIZONTAL_GUIDELINE, width: frame.width-(2*self.VERTICAL_GUIDELINE), height: 50);
+        self.myToolBar.frame = CGRect(
+            x: self.VERTICAL_GUIDELINE,
+            y: self.HORIZONTAL_GUIDELINE,
+            width: frame.width-(2*self.VERTICAL_GUIDELINE),
+            height: 50
+        );
         
         self.btnPrev.frame = CGRect(
             x: self.VERTICAL_GUIDELINE,
@@ -123,27 +125,58 @@ class PhotoAlbumView: UIView
         );
         
         self.btnNext.frame = CGRect(
-            x: frame.width - (self.btnNext.frame.width + self.HORIZONTAL_GUIDELINE),
+            x: frame.width - (30 + self.VERTICAL_GUIDELINE),
             y: self.HORIZONTAL_GUIDELINE,
             width: 30,
             height: self.myToolBar.frame.height
         );
         
         self.imgText.frame = CGRect(
-            x: self.HORIZONTAL_GUIDELINE+self.btnPrev.frame.width,
-            y: 5,
-            width: frame.width-(self.btnPrev.frame.width+self.btnNext.frame.width+(2*self.HORIZONTAL_GUIDELINE)),
+            x: self.VERTICAL_GUIDELINE+self.btnPrev.frame.width,
+            y: self.HORIZONTAL_GUIDELINE,
+            width: self.myToolBar.frame.width-(self.btnPrev.frame.width+self.btnNext.frame.width),
             height: self.myToolBar.frame.height
         );
         
-        self.zoomScaleView.frame = CGRect(x: 0, y: self.myToolBar.frame.height, width: frame.width, height: 20);
-        self.imgZoomScaleLabel.frame = CGRectMake(0, self.myToolBar.frame.height, frame.width, self.zoomScaleView.frame.height)
-        self.sliderSize.frame = CGRectMake(self.VERTICAL_GUIDELINE, frame.height - 40, frame.width-(2*self.VERTICAL_GUIDELINE), 40);
-        self.myScrollView.frame = CGRectMake(0, 0, frame.width, frame.height-self.myToolBar.frame.height-self.zoomScaleView.frame.height);
+        self.zoomScaleView.frame = CGRect(
+            x: self.VERTICAL_GUIDELINE ,
+            y: self.HORIZONTAL_GUIDELINE + self.myToolBar.frame.height,
+            width: self.myToolBar.frame.width,
+            height: 20
+        );
+        
+        self.imgZoomScaleLabel.frame = CGRect(
+            x: self.VERTICAL_GUIDELINE,
+            y: self.myToolBar.frame.height+self.HORIZONTAL_GUIDELINE,
+            width: frame.width,
+            height: self.zoomScaleView.frame.height
+        );
+        
+        self.myScrollView.frame = CGRect(
+            x: self.VERTICAL_GUIDELINE,
+            y: self.HORIZONTAL_GUIDELINE + self.myToolBar.frame.height,
+            width: self.myToolBar.frame.width,
+            height: frame.height-self.myToolBar.frame.height-(2*self.HORIZONTAL_GUIDELINE)
+        );
+        
+        self.sliderSize.frame = CGRect(
+            x: self.VERTICAL_GUIDELINE,
+            y: frame.height - self.HORIZONTAL_GUIDELINE - 40,
+            width: self.myToolBar.frame.width,
+            height: 40
+        );
+        
         self.updateImg()
     }
     
-    func setImgSize(frame:CGRect)
+    func setImgSize(frame:CGRect){
+        /*
+        var dims = self.getImgSize(frame)
+        self.myImageView.frame = CGRectMake(0, 0, dims.0, dims.1);
+        self.myScrollView.contentSize = CGSizeMake(dims.0, dims.1);*/
+    }
+    
+    func getImgSize(frame:CGRect) -> (CGFloat, CGFloat)
     {
         var imgHeight:CGFloat ;
         var imgWidth:CGFloat;
@@ -168,32 +201,67 @@ class PhotoAlbumView: UIView
             }
         }
         
-        self.myImageView.frame = CGRectMake(0, self.myToolBar.frame.height, newWidth, newHeight);
-        self.myScrollView.contentSize = CGSizeMake(newWidth, newHeight);
+        return (newWidth, newHeight);
     }
     
     func getImgName(cmpt : Int)->String{
         return self.IMAGE_NAME_PREFIX + (cmpt < 10 ? "0" : "") + String(cmpt) + self.IMAGE_NAME_SUFIX;
     }
 
-    func nextImg()
+    func onTouchNextImg()
     {
+        println(self.curImageCmpt)
         self.cmptImg = (self.cmptImg + 1 >= self.MAX_CMPT_IMG ? self.MIN_CMPT_IMG : self.cmptImg + 1);
         self.updateImg();
+        self.resetSliderZoomScale()
     }
     
-    func prevImg()
+    func onTouchPrevImg()
     {
         self.cmptImg = (self.cmptImg-1 < self.MIN_CMPT_IMG ? self.MAX_CMPT_IMG: self.cmptImg-1);
         self.updateImg();
+        self.resetSliderZoomScale()
     }
     
     func updateImg(){
-        self.imgZoomScaleLabel.text = "0 % "
+        self.resetSliderZoomScale()
         self.curImage = UIImage(named: self.getImgName(self.cmptImg));
         self.myImageView.image = self.curImage;
         self.imgText.text = self.IMGS_TXTS[self.cmptImg-1];
-        self.setImgSize(self.myScrollView.frame)
+        //self.setImgSize(self.myScrollView.frame)
+    
+        self.myImageView.frame = CGRectMake(0, 0, self.curImage.size.width, self.curImage.size.height);
+        self.myScrollView.contentSize = self.curImage.size;
+    }
+    
+    func onSliderSizeChange()
+    {
+        var dims : (CGFloat,CGFloat) ;
+        var newWidth:CGFloat;
+        var newHeight:CGFloat;
+        
+        dims = self.getImgSize(self.myScrollView.frame);
+        newWidth = dims.0 * CGFloat((1 + (self.sliderSize.value/100)));
+        newHeight = dims.1 * CGFloat((1 + (self.sliderSize.value/100)));
+        
+        self.myImageView.frame.size = CGSize(width: newWidth, height: newHeight)
+        self.updateZoomScaleLabel()
+    }
+    
+    func resetSliderZoomScale(){
+        self.sliderSize.value = 0;
+        self.updateZoomScaleLabel();
+    }
+    
+    func updateZoomScaleLabel(){
+        self.imgZoomScaleLabel.text = String(Int(self.sliderSize.value)) + " %";
+    }
+    
+    func onPinch(){
+        
+        if(self.myImageView.frame.width < self.myScrollView.frame.width){
+            self.resetSliderZoomScale()
+        }
     }
     
     required init(coder aDecoder: NSCoder) {
