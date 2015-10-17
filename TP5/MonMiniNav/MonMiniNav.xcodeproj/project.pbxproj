@@ -1,0 +1,439 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		D685A71C1BD2C58700E0907D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D685A71B1BD2C58700E0907D /* main.m */; };
+		D685A71F1BD2C58700E0907D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D685A71E1BD2C58700E0907D /* AppDelegate.m */; };
+		D685A7221BD2C58700E0907D /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D685A7211BD2C58700E0907D /* ViewController.m */; };
+		D685A7251BD2C58700E0907D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D685A7231BD2C58700E0907D /* Main.storyboard */; };
+		D685A7271BD2C58700E0907D /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D685A7261BD2C58700E0907D /* Images.xcassets */; };
+		D685A72A1BD2C58700E0907D /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = D685A7281BD2C58700E0907D /* LaunchScreen.xib */; };
+		D685A7361BD2C58700E0907D /* MonMiniNavTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D685A7351BD2C58700E0907D /* MonMiniNavTests.m */; };
+		D685A7401BD2C8AA00E0907D /* MiniNavView.m in Sources */ = {isa = PBXBuildFile; fileRef = D685A73F1BD2C8AA00E0907D /* MiniNavView.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		D685A7301BD2C58700E0907D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D685A70E1BD2C58700E0907D /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D685A7151BD2C58700E0907D;
+			remoteInfo = MonMiniNav;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		D685A7161BD2C58700E0907D /* MonMiniNav.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MonMiniNav.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		D685A71A1BD2C58700E0907D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D685A71B1BD2C58700E0907D /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		D685A71D1BD2C58700E0907D /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		D685A71E1BD2C58700E0907D /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		D685A7201BD2C58700E0907D /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		D685A7211BD2C58700E0907D /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		D685A7241BD2C58700E0907D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		D685A7261BD2C58700E0907D /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		D685A7291BD2C58700E0907D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
+		D685A72F1BD2C58700E0907D /* MonMiniNavTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MonMiniNavTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		D685A7341BD2C58700E0907D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D685A7351BD2C58700E0907D /* MonMiniNavTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MonMiniNavTests.m; sourceTree = "<group>"; };
+		D685A73F1BD2C8AA00E0907D /* MiniNavView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MiniNavView.m; path = ../MiniNavView.m; sourceTree = "<group>"; };
+		D685A7411BD2C8D500E0907D /* MiniNavView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MiniNavView.h; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		D685A7131BD2C58700E0907D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D685A72C1BD2C58700E0907D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		D685A70D1BD2C58700E0907D = {
+			isa = PBXGroup;
+			children = (
+				D685A7181BD2C58700E0907D /* MonMiniNav */,
+				D685A7321BD2C58700E0907D /* MonMiniNavTests */,
+				D685A7171BD2C58700E0907D /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		D685A7171BD2C58700E0907D /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				D685A7161BD2C58700E0907D /* MonMiniNav.app */,
+				D685A72F1BD2C58700E0907D /* MonMiniNavTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		D685A7181BD2C58700E0907D /* MonMiniNav */ = {
+			isa = PBXGroup;
+			children = (
+				D685A7411BD2C8D500E0907D /* MiniNavView.h */,
+				D685A73F1BD2C8AA00E0907D /* MiniNavView.m */,
+				D685A71D1BD2C58700E0907D /* AppDelegate.h */,
+				D685A71E1BD2C58700E0907D /* AppDelegate.m */,
+				D685A7201BD2C58700E0907D /* ViewController.h */,
+				D685A7211BD2C58700E0907D /* ViewController.m */,
+				D685A7231BD2C58700E0907D /* Main.storyboard */,
+				D685A7261BD2C58700E0907D /* Images.xcassets */,
+				D685A7281BD2C58700E0907D /* LaunchScreen.xib */,
+				D685A7191BD2C58700E0907D /* Supporting Files */,
+			);
+			path = MonMiniNav;
+			sourceTree = "<group>";
+		};
+		D685A7191BD2C58700E0907D /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				D685A71A1BD2C58700E0907D /* Info.plist */,
+				D685A71B1BD2C58700E0907D /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		D685A7321BD2C58700E0907D /* MonMiniNavTests */ = {
+			isa = PBXGroup;
+			children = (
+				D685A7351BD2C58700E0907D /* MonMiniNavTests.m */,
+				D685A7331BD2C58700E0907D /* Supporting Files */,
+			);
+			path = MonMiniNavTests;
+			sourceTree = "<group>";
+		};
+		D685A7331BD2C58700E0907D /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				D685A7341BD2C58700E0907D /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		D685A7151BD2C58700E0907D /* MonMiniNav */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D685A7391BD2C58700E0907D /* Build configuration list for PBXNativeTarget "MonMiniNav" */;
+			buildPhases = (
+				D685A7121BD2C58700E0907D /* Sources */,
+				D685A7131BD2C58700E0907D /* Frameworks */,
+				D685A7141BD2C58700E0907D /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = MonMiniNav;
+			productName = MonMiniNav;
+			productReference = D685A7161BD2C58700E0907D /* MonMiniNav.app */;
+			productType = "com.apple.product-type.application";
+		};
+		D685A72E1BD2C58700E0907D /* MonMiniNavTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D685A73C1BD2C58700E0907D /* Build configuration list for PBXNativeTarget "MonMiniNavTests" */;
+			buildPhases = (
+				D685A72B1BD2C58700E0907D /* Sources */,
+				D685A72C1BD2C58700E0907D /* Frameworks */,
+				D685A72D1BD2C58700E0907D /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				D685A7311BD2C58700E0907D /* PBXTargetDependency */,
+			);
+			name = MonMiniNavTests;
+			productName = MonMiniNavTests;
+			productReference = D685A72F1BD2C58700E0907D /* MonMiniNavTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		D685A70E1BD2C58700E0907D /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0640;
+				ORGANIZATIONNAME = m2sar;
+				TargetAttributes = {
+					D685A7151BD2C58700E0907D = {
+						CreatedOnToolsVersion = 6.4;
+					};
+					D685A72E1BD2C58700E0907D = {
+						CreatedOnToolsVersion = 6.4;
+						TestTargetID = D685A7151BD2C58700E0907D;
+					};
+				};
+			};
+			buildConfigurationList = D685A7111BD2C58700E0907D /* Build configuration list for PBXProject "MonMiniNav" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = D685A70D1BD2C58700E0907D;
+			productRefGroup = D685A7171BD2C58700E0907D /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				D685A7151BD2C58700E0907D /* MonMiniNav */,
+				D685A72E1BD2C58700E0907D /* MonMiniNavTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		D685A7141BD2C58700E0907D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D685A7251BD2C58700E0907D /* Main.storyboard in Resources */,
+				D685A72A1BD2C58700E0907D /* LaunchScreen.xib in Resources */,
+				D685A7271BD2C58700E0907D /* Images.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D685A72D1BD2C58700E0907D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		D685A7121BD2C58700E0907D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D685A7221BD2C58700E0907D /* ViewController.m in Sources */,
+				D685A7401BD2C8AA00E0907D /* MiniNavView.m in Sources */,
+				D685A71F1BD2C58700E0907D /* AppDelegate.m in Sources */,
+				D685A71C1BD2C58700E0907D /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D685A72B1BD2C58700E0907D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D685A7361BD2C58700E0907D /* MonMiniNavTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		D685A7311BD2C58700E0907D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D685A7151BD2C58700E0907D /* MonMiniNav */;
+			targetProxy = D685A7301BD2C58700E0907D /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		D685A7231BD2C58700E0907D /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D685A7241BD2C58700E0907D /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		D685A7281BD2C58700E0907D /* LaunchScreen.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D685A7291BD2C58700E0907D /* Base */,
+			);
+			name = LaunchScreen.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		D685A7371BD2C58700E0907D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = NO;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		D685A7381BD2C58700E0907D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = NO;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		D685A73A1BD2C58700E0907D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = MonMiniNav/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		D685A73B1BD2C58700E0907D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = MonMiniNav/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		D685A73D1BD2C58700E0907D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = MonMiniNavTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MonMiniNav.app/MonMiniNav";
+			};
+			name = Debug;
+		};
+		D685A73E1BD2C58700E0907D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = MonMiniNavTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MonMiniNav.app/MonMiniNav";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		D685A7111BD2C58700E0907D /* Build configuration list for PBXProject "MonMiniNav" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D685A7371BD2C58700E0907D /* Debug */,
+				D685A7381BD2C58700E0907D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D685A7391BD2C58700E0907D /* Build configuration list for PBXNativeTarget "MonMiniNav" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D685A73A1BD2C58700E0907D /* Debug */,
+				D685A73B1BD2C58700E0907D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		D685A73C1BD2C58700E0907D /* Build configuration list for PBXNativeTarget "MonMiniNavTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D685A73D1BD2C58700E0907D /* Debug */,
+				D685A73E1BD2C58700E0907D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = D685A70E1BD2C58700E0907D /* Project object */;
+}
