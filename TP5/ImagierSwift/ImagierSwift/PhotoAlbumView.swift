@@ -49,7 +49,7 @@ class PhotoAlbumView: UIView
     var curImageCmpt:Int=1;
     var curImage : UIImage!;
     
-    var myToolBar : UIVisualEffectView!;
+    var myToolBar : UIView!;
     var sliderSize: UISlider!;
     var zoomScaleView:UIVisualEffectView!;
     var myImageView:UIImageView!;
@@ -68,8 +68,9 @@ class PhotoAlbumView: UIView
         self.imgZoomScaleLabel = UILabel();
         self.imgZoomScaleLabel.textAlignment = .Center;
         
-        self.myToolBar = UIVisualEffectView(effect: UIBlurEffect(style: .Dark));
+        self.myToolBar = UIView();
         self.zoomScaleView = UIVisualEffectView(effect: UIBlurEffect(style: .ExtraLight));
+        self.myToolBar.backgroundColor = UIColor.lightGrayColor()
         
         self.btnPrev = UIButton();
         self.btnNext = UIButton();
@@ -244,7 +245,8 @@ class PhotoAlbumView: UIView
         newWidth = dims.0 * CGFloat((1 + (self.sliderSize.value/100)));
         newHeight = dims.1 * CGFloat((1 + (self.sliderSize.value/100)));
         
-        self.myImageView.frame.size = CGSize(width: newWidth, height: newHeight)
+        self.myImageView.frame = CGRectMake(0, 0, newWidth, newHeight);
+        self.myScrollView.contentSize = CGSize(width: newWidth, height: newHeight);
         self.updateZoomScaleLabel()
     }
     
@@ -258,9 +260,11 @@ class PhotoAlbumView: UIView
     }
     
     func onPinch(){
-        
         if(self.myImageView.frame.width < self.myScrollView.frame.width){
             self.resetSliderZoomScale()
+        }else{
+            self.sliderSize.value = Float(100 * self.myImageView.frame.width / self.curImage.size.width)
+            self.updateZoomScaleLabel()
         }
     }
     

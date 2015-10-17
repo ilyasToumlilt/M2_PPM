@@ -14,7 +14,6 @@ class ViewController: UIViewController, UIScrollViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        var pinRec = UIPinchGestureRecognizer();
         
         self.pav = PhotoAlbumView(frame: self.view.frame);
         self.pav.myScrollView.delegate = self;
@@ -23,11 +22,8 @@ class ViewController: UIViewController, UIScrollViewDelegate {
         self.pav.btnPrev.addTarget(self, action: "imgPrevAction", forControlEvents: .TouchDown);
         self.pav.btnNext.addTarget(self, action: "imgNextAction", forControlEvents: .TouchDown);
         
-        pinRec.addTarget(self, action: "pinchAction")
+        
         self.pav.sliderSize.addTarget(self, action: "sliderSetSizeAction", forControlEvents: .ValueChanged)
-        //self.pav.myScrollView.addGestureRecognizer(self.);
-        //self.pav.myScrollView.userInteractionEnabled = true
-        //self.pav.myScrollView.multipleTouchEnabled = true
         
     }
     
@@ -53,10 +49,10 @@ class ViewController: UIViewController, UIScrollViewDelegate {
         self.pav.setElementsSize(CGRectMake(0, 0, size.width, size.height));
     }
     
-    func pinchAction(){
-        println("ffg")
+     func scrollViewDidEndZooming(scrollView: UIScrollView, withView view: UIView!, atScale scale: CGFloat) {
         self.pav.onPinch()
     }
+    
     
     
     override func didReceiveMemoryWarning() {
