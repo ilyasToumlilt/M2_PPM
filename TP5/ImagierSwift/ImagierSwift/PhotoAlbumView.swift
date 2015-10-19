@@ -63,6 +63,15 @@ class PhotoAlbumView: UIView
     {
         super.init(frame: frame);
         
+        let effetH = UIInterpolatingMotionEffect(keyPath: "center.x", type: .TiltAlongHorizontalAxis);
+        let effetV = UIInterpolatingMotionEffect(keyPath: "center.y", type: .TiltAlongHorizontalAxis);
+        
+        effetH.minimumRelativeValue = -50;
+        effetH.maximumRelativeValue = 50;
+        
+        effetV.minimumRelativeValue = -50;
+        effetV.maximumRelativeValue = 50;
+        
         self.cmptImg = self.MIN_CMPT_IMG;
         
         self.imgZoomScaleLabel = UILabel();
@@ -82,8 +91,10 @@ class PhotoAlbumView: UIView
         self.imgText.textAlignment = .Center;
         self.imgText.textColor = UIColor.whiteColor()
         
-        
         self.myImageView=UIImageView();
+        self.myImageView.addMotionEffect(effetH)
+        self.myImageView.addMotionEffect(effetV)
+        
         self.myScrollView = UIScrollView();
         self.myScrollView.addSubview(self.myImageView);
 
