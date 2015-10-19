@@ -22,7 +22,7 @@
         self->VERTIC_GUIDELINE = 5;
         self->PADDING = 5;
         self->DEFAULT_URL = @"http://lip6.fr";
-        self->savedHomeURL = NULL;
+        self->savedHomeURL = @"";
         
         self.toolBarNav = [[UIToolbar alloc]init];
         
@@ -30,7 +30,7 @@
         self.btnPrev     = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemRewind target:self action:@selector(doPrevAction)];
         self.btnNext     = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemFastForward target:self action:@selector(doNextAction)];
         self.btnUrl      = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemAction target:self action:@selector(doURLAction)];
-        self.btnChgHome  = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemAction target:self action:@selector(doChgHomeAction)];
+        self.btnChgHome  = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemCompose target:self action:@selector(doChgHomeAction)];
         
         self.btnPrev.enabled = NO;
         self.btnNext.enabled = NO;
@@ -40,11 +40,13 @@
         self.btnNext.style     = UIBarButtonItemStyleDone;
         self.btnUrl.style      = UIBarButtonItemStyleDone;
 
-        navButtons = [[NSMutableArray alloc] initWithCapacity:5];
+        navButtons = [[NSMutableArray alloc] initWithCapacity:7];
         [navButtons addObject:self.btnLoadHome];    [self.btnLoadHome   release];
+        [navButtons addObject:[[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace  target:nil action:nil] autorelease] ];
         [navButtons addObject:self.btnPrev];        [self.btnPrev       release];
-        [navButtons addObject:self.btnNext];        [self.btnNext       release];
         [navButtons addObject:self.btnUrl];         [self.btnUrl        release];
+        [navButtons addObject:self.btnNext];        [self.btnNext       release];
+        [navButtons addObject:[[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace  target:nil action:nil] autorelease] ];
         [navButtons addObject:self.btnChgHome];     [self.btnChgHome    release];
         [self.toolBarNav setItems:navButtons];
 
@@ -52,6 +54,7 @@
         self.webView.delegate=self;
         
         self.indicaView = [[UIActivityIndicatorView alloc]init];
+        self.indicaView.backgroundColor = [UIColor blackColor];
         self.indicaView.hidesWhenStopped = YES;
         
         [self addSubview:self.toolBarNav];  [self.toolBarNav    release];
@@ -92,19 +95,22 @@
 }
 
 -(void)doLoadHomeAction{
-    [self goToUrl:((self->savedHomeURL == NULL)?self->DEFAULT_URL:self->savedHomeURL)];
+    [self goToUrl:(([self->savedHomeURL length])?self->savedHomeURL:self->DEFAULT_URL)];
 }
 
 -(void)doChgHomeAction{
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Votre URL"
-                                                    message:@"Saisissez-la ici"
-                                                   delegate:self
-                                          cancelButtonTitle:@"Aller à"
-                                          otherButtonTitles:nil];
-    alert.alertViewStyle = UIAlertViewStylePlainTextInput;
-    alert.tag = 0;
-    [alert show];
-    [alert release];
+
+    UIActionSheet *popup = [[UIActionSheet alloc]initWithTitle:@"Confirmez le changement"
+                                                      delegate:self
+                                             cancelButtonTitle:@"Annuler"
+                                        destructiveButtonTitle:@"Oui"
+                                             otherButtonTitles:
+                                                nil];
+    
+    popup.tag = 0;
+
+    //[popup showInView:[UIApplication sharedApplication].keyWindow];
+    [popup showFromBarButtonItem:self.btnChgHome animated:YES];
 }
 
 -(void)doURLAction{
@@ -121,27 +127,12 @@
 
 -(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
+    
     if(alertView.tag==0)
-        self->savedHomeURL = [alertView textFieldAtIndex:0].text;
+        self->savedHomeURL = [[alertView textFieldAtIndex:0].text retain];
 
     if(alertView.tag==1)
-            [self goToUrl:[alertView textFieldAtIndex:0].text];
-}
-
--(void)testMethode
-{
-    UIActionSheet *popup = [[UIActionSheet alloc]initWithTitle:@"Select Sharing option:"
-                                                      delegate:self
-                                             cancelButtonTitle:@"Cancel"
-                                        destructiveButtonTitle:nil
-                                             otherButtonTitles:
-                                                @"Ma 1ere action",
-                                                @"Ma 2eme action",
-                                                nil];
-
-    popup.tag = 0;
-    //[popup showInView:[UIApplication sharedApplication].keyWindow];
-    [popup showFromBarButtonItem:self.btnChgHome animated:YES];
+        [self goToUrl:[alertView textFieldAtIndex:0].text];
 }
 
 -(void) goToUrl:(NSString*) strUrl
@@ -151,36 +142,35 @@
     NSURL *url = [NSURL URLWithString:fullURL];
     NSURLRequest *requestObj = [NSURLRequest requestWithURL:url];
     [self.webView loadRequest:requestObj];
+    
+    
 }
 
 -(void)doNextAction
 {
     if ([self.webView canGoForward]){
-        self.btnPrev.enabled = YES;
         [self.webView goForward];
-    
-        if([self.webView canGoForward])
-            self.btnNext.enabled = NO;
     }
 }
 
 -(void)doPrevAction
 {
     if ([self.webView canGoBack]){
-        self.btnNext.enabled = YES;
         [self.webView goBack];
-        
-        
-        if([self.webView canGoBack])
-            self.btnPrev.enabled = NO;
     }
 }
 
 - (void)webViewDidStartLoad:(UIWebView *)webView {
     [self.indicaView startAnimating];
+    
+    
+    
 }
 - (void)webViewDidFinishLoad:(UIWebView *)webView {
     [self.indicaView stopAnimating];
+    
+    self.btnPrev.enabled = [self.webView canGoBack];
+    self.btnNext.enabled = [self.webView canGoForward];
 }
 
 -(void)webView:(UIWebView *)myWebView didFailLoadWithError:(NSError *)error
@@ -193,12 +183,22 @@
     alert.tag = 2;
     [alert show];
     [alert release];
+    
+    [self.indicaView stopAnimating];
 }
 
 -(void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
 {
-    if (actionSheet.tag == 0) {
-        //dochangehomeaction
+    if (actionSheet.tag == 0 && buttonIndex == 0) {
+         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Changer accueil"
+         message:@"Saisissez-la ici"
+         delegate:self
+         cancelButtonTitle:@"Aller à"
+         otherButtonTitles:nil];
+         alert.alertViewStyle = UIAlertViewStylePlainTextInput;
+         alert.tag = 0;
+         [alert show];
+         [alert release];
     }
 }
 
