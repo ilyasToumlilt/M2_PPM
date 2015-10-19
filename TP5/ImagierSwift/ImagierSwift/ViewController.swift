@@ -22,7 +22,6 @@ class ViewController: UIViewController, UIScrollViewDelegate {
         self.pav.btnPrev.addTarget(self, action: "imgPrevAction", forControlEvents: .TouchDown);
         self.pav.btnNext.addTarget(self, action: "imgNextAction", forControlEvents: .TouchDown);
         
-        
         self.pav.sliderSize.addTarget(self, action: "sliderSetSizeAction", forControlEvents: .ValueChanged)
         
     }
@@ -32,7 +31,6 @@ class ViewController: UIViewController, UIScrollViewDelegate {
     }
     
     func imgNextAction(){
-        println("fgfg")
         self.pav.onTouchNextImg();
     }
     
@@ -50,10 +48,8 @@ class ViewController: UIViewController, UIScrollViewDelegate {
     }
     
      func scrollViewDidEndZooming(scrollView: UIScrollView, withView view: UIView!, atScale scale: CGFloat) {
-        self.pav.onPinch()
+        self.pav.onPinch(scale)
     }
-    
-    
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

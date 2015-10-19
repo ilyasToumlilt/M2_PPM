@@ -79,8 +79,6 @@ class PhotoAlbumView: UIView
         self.btnPrev.setTitle("<<", forState: .Normal);
         self.btnNext.setTitle(">>", forState: .Normal);
         
-        
-        
         self.imgText.textAlignment = .Center;
         self.imgText.textColor = UIColor.whiteColor()
         
@@ -89,9 +87,9 @@ class PhotoAlbumView: UIView
         self.myScrollView = UIScrollView();
         self.myScrollView.addSubview(self.myImageView);
 
-        self.myScrollView.minimumZoomScale=0.0;
+        self.myScrollView.minimumZoomScale=0.05;
         self.myScrollView.maximumZoomScale=1;
-        self.myScrollView.zoomScale = 0.0;
+        self.myScrollView.zoomScale = 0.10;
 
         self.sliderSize = UISlider();
         self.sliderSize.maximumValue = 100;
@@ -107,10 +105,13 @@ class PhotoAlbumView: UIView
         self.addSubview(self.zoomScaleView);
         self.addSubview(self.imgZoomScaleLabel)
         self.addSubview(self.sliderSize);
+        self.updateImg()
     }
 
     func setElementsSize(frame:CGRect)
     {
+        self.frame.size = frame.size;
+        
         self.myToolBar.frame = CGRect(
             x: self.VERTICAL_GUIDELINE,
             y: self.HORIZONTAL_GUIDELINE,
@@ -166,43 +167,6 @@ class PhotoAlbumView: UIView
             width: self.myToolBar.frame.width,
             height: 40
         );
-        
-        self.updateImg()
-    }
-    
-    func setImgSize(frame:CGRect){
-        /*
-        var dims = self.getImgSize(frame)
-        self.myImageView.frame = CGRectMake(0, 0, dims.0, dims.1);
-        self.myScrollView.contentSize = CGSizeMake(dims.0, dims.1);*/
-    }
-    
-    func getImgSize(frame:CGRect) -> (CGFloat, CGFloat)
-    {
-        var imgHeight:CGFloat ;
-        var imgWidth:CGFloat;
-        var newHeight:CGFloat;
-        var newWidth : CGFloat;
-        
-        imgWidth = self.curImage.size.width;
-        imgHeight = self.curImage.size.height;
-        newWidth = self.curImage.size.width;
-        newHeight = self.curImage.size.height;
-        
-        if(imgWidth > frame.width)
-        {
-            if(imgWidth > imgHeight)
-            {
-                newWidth = frame.width;
-                newHeight = (newWidth * frame.width) / frame.height;
-            }
-            else{
-                newWidth = frame.width;
-                newHeight = (imgHeight * frame.width) / imgWidth;
-            }
-        }
-        
-        return (newWidth, newHeight);
     }
     
     func getImgName(cmpt : Int)->String{
@@ -211,65 +175,46 @@ class PhotoAlbumView: UIView
 
     func onTouchNextImg()
     {
-        println(self.curImageCmpt)
         self.cmptImg = (self.cmptImg + 1 >= self.MAX_CMPT_IMG ? self.MIN_CMPT_IMG : self.cmptImg + 1);
         self.updateImg();
-        self.resetSliderZoomScale()
     }
     
     func onTouchPrevImg()
     {
         self.cmptImg = (self.cmptImg-1 < self.MIN_CMPT_IMG ? self.MAX_CMPT_IMG: self.cmptImg-1);
         self.updateImg();
-        self.resetSliderZoomScale()
     }
     
-    func updateImg(){
-        self.resetSliderZoomScale()
+    func updateImg()
+    {
         self.curImage = UIImage(named: self.getImgName(self.cmptImg));
         self.myImageView.image = self.curImage;
         self.imgText.text = self.IMGS_TXTS[self.cmptImg-1];
-        //self.setImgSize(self.myScrollView.frame)
     
         self.myImageView.frame = CGRectMake(0, 0, self.curImage.size.width, self.curImage.size.height);
         self.myScrollView.contentSize = self.curImage.size;
+        self.myScrollView.setZoomScale(0.10, animated: false);
+        self.updateAll(self.myScrollView.zoomScale);
+
     }
     
     func onSliderSizeChange()
     {
-        var dims : (CGFloat,CGFloat) ;
-        var newWidth:CGFloat;
-        var newHeight:CGFloat;
-        
-        dims = self.getImgSize(self.myScrollView.frame);
-        newWidth = dims.0 * CGFloat((1 + (self.sliderSize.value/100)));
-        newHeight = dims.1 * CGFloat((1 + (self.sliderSize.value/100)));
-        
-        self.myImageView.frame = CGRectMake(0, 0, newWidth, newHeight);
-        self.myScrollView.contentSize = CGSize(width: newWidth, height: newHeight);
-        self.updateZoomScaleLabel()
+        self.myScrollView.setZoomScale(CGFloat(self.sliderSize.value/100),animated: true);
+        self.updateAll(self.myScrollView.zoomScale)
     }
     
-    func resetSliderZoomScale(){
-        self.sliderSize.value = 0;
-        self.updateZoomScaleLabel();
-    }
-    
-    func updateZoomScaleLabel(){
-        self.imgZoomScaleLabel.text = String(Int(self.sliderSize.value)) + " %";
-    }
-    
-    func onPinch(){
-        if(self.myImageView.frame.width < self.myScrollView.frame.width){
-            self.resetSliderZoomScale()
-        }else{
-            self.sliderSize.value = Float(100 * self.myImageView.frame.width / self.curImage.size.width)
-            self.updateZoomScaleLabel()
-        }
+    func onPinch(scale:CGFloat ){
+        self.updateAll(scale)
     }
     
     required init(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    func updateAll(scale:CGFloat ){
+        self.sliderSize.value = Float(scale*100);
+        self.imgZoomScaleLabel.text = String(Int(self.sliderSize.value)) + " %";
     }
 }
 
