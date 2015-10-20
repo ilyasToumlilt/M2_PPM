@@ -21,6 +21,7 @@
     [super viewDidLoad];
     self->mnv =[[MiniNavView alloc] initWithFrame:self.view.frame];
     [self.view addSubview:self->mnv];
+    /* TODO : release view */
 }
 
 - (void)didReceiveMemoryWarning {
