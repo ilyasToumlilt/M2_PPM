@@ -66,11 +66,11 @@ class PhotoAlbumView: UIView
         let effetH = UIInterpolatingMotionEffect(keyPath: "center.x", type: .TiltAlongHorizontalAxis);
         let effetV = UIInterpolatingMotionEffect(keyPath: "center.y", type: .TiltAlongHorizontalAxis);
         
-        effetH.minimumRelativeValue = -50;
-        effetH.maximumRelativeValue = 50;
+        effetH.minimumRelativeValue = -20;
+        effetH.maximumRelativeValue = 20;
         
-        effetV.minimumRelativeValue = -50;
-        effetV.maximumRelativeValue = 50;
+        effetV.minimumRelativeValue = -20;
+        effetV.maximumRelativeValue = 20;
         
         self.cmptImg = self.MIN_CMPT_IMG;
         
@@ -228,38 +228,8 @@ class PhotoAlbumView: UIView
     }
     
     func updateAll(scale:CGFloat ){
+        print(scale);
         self.sliderSize.value = Float(scale*100);
         self.imgZoomScaleLabel.text = String(Int(self.sliderSize.value)) + " %";
     }
 }
-
-
-
-/*
-
-
-var ubbiPrev : UIBarButtonItem!;
-var ubbiNext :UIBarButtonItem!;
-var ubbiImgText :UIBarButtonItem!;
-
-
-self.myToolBar.setItems([
-self.ubbiPrev ,
-self.ubbiImgText,
-self.ubbiNext
-],
-animated: false
-);
-self.ubbiPrev.style = .Done;
-self.ubbiPrev.title = "<<";
-self.ubbiNext.style = .Done;
-self.ubbiNext.title = ">>";
-
-*/
-
-
-
-
-
-
-
