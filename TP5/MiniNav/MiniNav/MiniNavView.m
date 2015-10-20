@@ -44,10 +44,10 @@
         [navButtons addObject:_loadHomeButton]; [_loadHomeButton release];
         [navButtons addObject:[[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace  target:nil action:nil] autorelease]];
         [navButtons addObject:_prevPageButton]; [_prevPageButton release];
-        [navButtons addObject:_changeHomePageButton]; [_changeHomePageButton release];
+        [navButtons addObject:_changeUrlButton]; [_changeUrlButton release];
         [navButtons addObject:_nextPageButton]; [_nextPageButton release];
         [navButtons addObject:[[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace  target:nil action:nil] autorelease]];
-        [navButtons addObject:_changeUrlButton]; [_changeUrlButton release];
+        [navButtons addObject:_changeHomePageButton]; [_changeHomePageButton release];
         [_toolBarNav setItems:navButtons];
         
         /* myWebView */
@@ -160,6 +160,7 @@
                                           otherButtonTitles:nil];
     alert.alertViewStyle = UIAlertViewStylePlainTextInput;
     alert.tag = 1;
+    [alert textFieldAtIndex:0].text = @"http://";
     [alert show];
     [alert release];
 }
@@ -175,6 +176,7 @@
                                               otherButtonTitles:nil];
         alert.alertViewStyle = UIAlertViewStylePlainTextInput;
         alert.tag = 0;
+        [alert textFieldAtIndex:0].text = @"http://";
         [alert show];
         [alert autorelease];
     }
