@@ -26,6 +26,14 @@ class ViewController: UIViewController, UIScrollViewDelegate {
         
     }
     
+    override func viewDidAppear(animated: Bool) {
+        if(UIDevice.currentDevice().userInterfaceIdiom == .Phone) {
+            self.pav.myScrollView.setZoomScale(0.10, animated: true);
+        } else {
+            self.pav.myScrollView.setZoomScale(0.20, animated: true);
+        }
+    }
+    
     func imgPrevAction(){
         self.pav.onTouchPrevImg();
     }

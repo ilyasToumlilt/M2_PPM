@@ -103,7 +103,6 @@ class PhotoAlbumView: UIView
 
         self.myScrollView.minimumZoomScale=0.05;
         self.myScrollView.maximumZoomScale=1;
-        self.myScrollView.zoomScale = 0.10;
 
         self.sliderSize = UISlider();
         self.sliderSize.maximumValue = 100;
@@ -120,7 +119,12 @@ class PhotoAlbumView: UIView
         self.addSubview(self.imgZoomScaleLabel)
         self.addSubview(self.sliderSize);
         
-        self.updateImg()
+        self.curImage = UIImage(named: self.getImgName(self.cmptImg));
+        self.myImageView.image = self.curImage;
+        self.imgText.text = self.IMGS_TXTS[self.cmptImg-1];
+        
+        self.myImageView.frame = CGRectMake(0, 0, self.curImage.size.width, self.curImage.size.height);
+        self.myScrollView.contentSize = self.curImage.size;
     }
 
     func setElementsSize(frame:CGRect)
@@ -202,21 +206,27 @@ class PhotoAlbumView: UIView
     
     func updateImg()
     {
+        self.myScrollView.setZoomScale(1, animated: false);
+        
         self.curImage = UIImage(named: self.getImgName(self.cmptImg));
         self.myImageView.image = self.curImage;
         self.imgText.text = self.IMGS_TXTS[self.cmptImg-1];
     
         self.myImageView.frame = CGRectMake(0, 0, self.curImage.size.width, self.curImage.size.height);
         self.myScrollView.contentSize = self.curImage.size;
-        self.myScrollView.setZoomScale(0.10, animated: false);
+        
+        if(UIDevice.currentDevice().userInterfaceIdiom == .Phone) {
+            self.myScrollView.setZoomScale(0.10, animated: true);
+        } else {
+            self.myScrollView.setZoomScale(0.20, animated: true);
+        }
+        
         self.updateAll(self.myScrollView.zoomScale);
-
     }
     
     func onSliderSizeChange()
     {
         self.myScrollView.setZoomScale(CGFloat(self.sliderSize.value/100),animated: true);
-        self.updateAll(self.myScrollView.zoomScale)
     }
     
     func onPinch(scale:CGFloat ){
@@ -228,7 +238,6 @@ class PhotoAlbumView: UIView
     }
     
     func updateAll(scale:CGFloat ){
-        print(scale);
         self.sliderSize.value = Float(scale*100);
         self.imgZoomScaleLabel.text = String(Int(self.sliderSize.value)) + " %";
     }
