@@ -22,26 +22,26 @@ class PhotoAlbumView: UIView
     let IMAGE_NAME_SUFIX = ".jpg";
     
     let IMGS_TXTS:[String] = [
-        "Lorem ipsum dolor",
-        "sit amet consectetur",
-        "adipiscing elit sed",
-        "do eiusmod tempor ",
-        "ut labore et dolore ",
-        "Ut enim ad minim ",
-        "exercitation ullamco ",
-        "ex ea commodo consequa",
-        "Duis aute irure dolor ",
-        "in reprehenderit in",
-        "voluptate velit esse",
-        "cillum dolore eu fugiat",
-        "nulla pariatur Excepteur",
-        "sint occaecat cupidatat",
-        "proident sunt in culpa",
-        "officia deserunt mollit",
-        "anim id est laborum",
-        "Sed ut perspiciatis unde",
-        "omnis iste natus error",
-        "voluptatem accusantium",
+        "Machu Pichu",
+        "Oxford",
+        "Dresde",
+        "Chichen Itza",
+        "Kiôtô",
+        "Gizeh",
+        "Près d'Edimbourg",
+        "Cordoue",
+        "Seville",
+        "Grenade",
+        "Venise",
+        "Venise",
+        "Venise",
+        "Paris",
+        "Paris",
+        "Tiddis",
+        "Washington State",
+        "NGC 6302",
+        "New York",
+        "La Terre",
     ];
     
     var cmptImg : Int!;
@@ -116,6 +116,7 @@ class PhotoAlbumView: UIView
         self.addSubview(self.zoomScaleView);
         self.addSubview(self.imgZoomScaleLabel)
         self.addSubview(self.sliderSize);
+        
         self.updateImg()
     }
 
