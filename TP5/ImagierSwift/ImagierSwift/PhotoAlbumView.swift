@@ -76,21 +76,24 @@ class PhotoAlbumView: UIView
         
         self.imgZoomScaleLabel = UILabel();
         self.imgZoomScaleLabel.textAlignment = .Center;
+        self.imgZoomScaleLabel.backgroundColor = UIColor.whiteColor().colorWithAlphaComponent(0);
         
         self.myToolBar = UIView();
         self.zoomScaleView = UIVisualEffectView(effect: UIBlurEffect(style: .ExtraLight));
-        self.myToolBar.backgroundColor = UIColor.lightGrayColor()
+        self.myToolBar.backgroundColor = UIColor(red: 0.96, green: 0.96, blue: 0.96, alpha: 1);
         
         self.btnPrev = UIButton();
         self.btnNext = UIButton();
         self.imgText = UILabel();
         
-        self.btnPrev.setTitle("<<", forState: .Normal);
-        self.btnNext.setTitle(">>", forState: .Normal);
+        self.btnPrev.setTitle("<<<", forState: .Normal);
+        self.btnNext.setTitle(">>>", forState: .Normal);
+        
+        self.btnPrev.setTitleColor(UIColor.blueColor(), forState: .Normal);
+        self.btnNext.setTitleColor(UIColor.blueColor(), forState: .Normal);
         
         self.imgText.textAlignment = .Center;
-        self.imgText.textColor = UIColor.whiteColor()
-        
+        self.imgText.textColor = UIColor.blackColor();
         self.myImageView=UIImageView();
         self.myImageView.addMotionEffect(effetH)
         self.myImageView.addMotionEffect(effetV)
@@ -134,14 +137,14 @@ class PhotoAlbumView: UIView
         self.btnPrev.frame = CGRect(
             x: self.VERTICAL_GUIDELINE,
             y: self.HORIZONTAL_GUIDELINE,
-            width: 30,
+            width: 50,
             height: self.myToolBar.frame.height
         );
         
         self.btnNext.frame = CGRect(
-            x: frame.width - (30 + self.VERTICAL_GUIDELINE),
+            x: frame.width - (50 + self.VERTICAL_GUIDELINE),
             y: self.HORIZONTAL_GUIDELINE,
-            width: 30,
+            width: 50,
             height: self.myToolBar.frame.height
         );
         
