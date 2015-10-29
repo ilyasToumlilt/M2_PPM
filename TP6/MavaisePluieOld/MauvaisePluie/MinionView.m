@@ -82,5 +82,4 @@
         self.frame = _actualPosition;
     }
 }
-
 @end

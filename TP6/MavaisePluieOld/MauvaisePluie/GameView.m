@@ -9,6 +9,7 @@
 #import "GameView.h"
 
 @interface GameView () {
+    UIView* gameContainer;
 }
 
 @end
@@ -48,22 +49,11 @@
         [_rightButton.titleLabel setTextColor:[UIColor whiteColor]];
         
         /* gameContainer */
-        _gameContainer = [[UIView alloc] init];
+        gameContainer = [[UIView alloc] init];
         
         [self drawSubviews:frame.size];
         
-        /* DynamicAnimator */
-        _animator = [[UIDynamicAnimator alloc] initWithReferenceView:_gameContainer];
-        
-        /* myMinionView */
-        _myMinionView = [[MinionView alloc] initWithMovingArea:CGRectMake(0, _gameContainer. frame.size.height - 60, _gameContainer.frame.size.width, 50)];
-        
-        /* j'init mon timer pour les asteroids */
-        [NSTimer scheduledTimerWithTimeInterval:0.7
-                                         target:self
-                                       selector:@selector(addNewAsteroid:)
-                                       userInfo:nil
-                                        repeats:YES];
+        _myMinionView = [[MinionView alloc] initWithMovingArea:CGRectMake(0, gameContainer. frame.size.height - 60, gameContainer.frame.size.width, 50)];
         
         /* adding and releasing subviews */
         [self addSubview:_levelLabel]; [_levelLabel  release];
@@ -73,34 +63,9 @@
         
         //gameContainer.backgroundColor = [UIColor whiteColor];
         
-        [_gameContainer addSubview:_myMinionView];
+        [gameContainer addSubview:_myMinionView];
         [_myMinionView release];
-        
-        /* Collision */
-        _collision = [[UICollisionBehavior alloc] init];
-        [_collision setCollisionMode:UICollisionBehaviorModeBoundaries];
-        
-        /* je veux définir le minion comme limite de collision poru intercepter les chocs */
-        CGPoint rightEdge = CGPointMake(_myMinionView.frame.origin.x + _myMinionView.frame.size.width, _myMinionView.frame.origin.y);
-        [_collision addBoundaryWithIdentifier:@"myMinionView"
-                                    fromPoint:_myMinionView.frame.origin
-                                      toPoint:rightEdge];
-        
-        /* limite pour release les asteroides */
-        CGPoint leftEdge2 = CGPointMake(_gameContainer.frame.origin.x, _gameContainer.frame.origin.y + _gameContainer.frame.size.height + 50);
-        CGPoint rightEdge2 = CGPointMake(_gameContainer.frame.origin.x + _gameContainer.frame.size.width, _gameContainer.frame.origin.y + _gameContainer.frame.size.height + 50);
-        [_collision addBoundaryWithIdentifier:@"gravityLimit"
-                                    fromPoint:leftEdge2
-                                      toPoint:rightEdge2];
-        
-         
-         [_animator addBehavior:_collision];
-         
-        /* gravité */
-        _gravity = [[UIGravityBehavior alloc] init];
-        [_animator addBehavior:_gravity];
-        
-        [self addSubview:_gameContainer];[_gameContainer release];
+        [self addSubview:gameContainer];[gameContainer release];
     }
     
     return self;
@@ -129,35 +94,11 @@
                                     50, 30);
     
     /* setting gameContainer area */
-    _gameContainer.frame = CGRectMake(V_BORDERLINE + _leftButton.frame.size.width,
+    gameContainer.frame = CGRectMake(V_BORDERLINE + _leftButton.frame.size.width,
                                0,
                                frame.width - (2*V_BORDERLINE + _leftButton.frame.size.width +
                                               _rightButton.frame.size.width),
                                frame.height);
-}
-
-- (void)addNewAsteroid:(NSTimer*)timer
-{
-    const CGFloat asterSize = 30;
-    if( _gameContainer ) {
-        AsteroidView* myAster = [[AsteroidView alloc] initWithFrame:CGRectMake((arc4random()%(int)(_gameContainer.frame.size.width - asterSize)), -asterSize, asterSize, asterSize)];
-    
-        [_gameContainer addSubview:myAster];
-    
-        [_gravity addItem:myAster];
-        [_collision addItem:myAster];
-        
-        [myAster release];
-    } else {
-        [timer invalidate];
-    }
-}
-
-- (void)removeAsteroid:(AsteroidView*)aster
-{
-    [_gravity removeItem:aster];
-    [_collision removeItem:aster];
-    [aster killMe];
 }
 
 /*

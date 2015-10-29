@@ -9,7 +9,6 @@
 #import <UIKit/UIKit.h>
 
 #import "MinionView.h"
-#import "AsteroidView.h"
 
 @interface GameView : UIView
 
@@ -20,14 +19,5 @@
 @property (retain, nonatomic) UIButton* rightButton;
 
 @property (assign, nonatomic) MinionView* myMinionView;
-
-
-@property (assign, nonatomic) UIView* gameContainer;
-@property (assign, nonatomic) UIDynamicAnimator* animator;
-@property (assign, nonatomic) UICollisionBehavior* collision;
-@property (assign, nonatomic) UIGravityBehavior* gravity;
-
-
-- (void)removeAsteroid:(AsteroidView*)aster;
 
 @end

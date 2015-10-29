@@ -9,7 +9,7 @@
 #import "GameViewController.h"
 #import "GameView.h"
 
-@interface GameViewController ()<UICollisionBehaviorDelegate> {
+@interface GameViewController () {
     GameView* myView;
 }
 
@@ -42,9 +42,6 @@
                            action:@selector(onClickRightButton:)
                  forControlEvents:UIControlEventTouchDown];
     
-    /* je handle les collisions */
-    myView.collision.collisionDelegate = self;
-    
     [self.view addSubview:myView]; [myView release];
 }
 
@@ -67,43 +64,11 @@
 - (void)onClickLeftButton:(id)sender
 {
     [myView.myMinionView moveLeft];
-    [myView.animator updateItemUsingCurrentState:myView.myMinionView];
-    [self updateMinionsCollisionBoundaries];
 }
 
 - (void)onClickRightButton:(id)sender
 {
     [myView.myMinionView moveRight];
-    [myView.animator updateItemUsingCurrentState:myView.myMinionView];
-    [self updateMinionsCollisionBoundaries];
-}
-
-- (void)collisionBehavior:(UICollisionBehavior *)behavior beganContactForItem:(id<UIDynamicItem>)item
-   withBoundaryIdentifier:(id<NSCopying>)identifier atPoint:(CGPoint)p {
-    NSString* tmp = [NSString stringWithFormat:@"%@", identifier];
-    if( [tmp isEqualToString:@"myMinionView"]) {
-        [self endOfGame];
-    }
-    else if ( [tmp isEqualToString:@"gravityLimit"]) {
-        NSLog(@"gravityLimit !!!");
-        [myView removeAsteroid:(AsteroidView*)item];
-    }
-}
-
-- (void)updateMinionsCollisionBoundaries
-{
-    [myView.collision removeBoundaryWithIdentifier:@"myMinionView"];
-    CGPoint rightEdge = CGPointMake(myView.myMinionView.frame.origin.x + myView.myMinionView.frame.size.width, myView.myMinionView.frame.origin.y);
-    [myView.collision addBoundaryWithIdentifier:@"myMinionView"
-                                fromPoint:myView.myMinionView.frame.origin
-                                  toPoint:rightEdge];
-}
-
-- (void)endOfGame
-{
-    NSLog(@"End of game");
-    [myView.gameContainer removeFromSuperview];
-    myView.gameContainer = nil;
 }
 
 /*

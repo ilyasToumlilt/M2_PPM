@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		740B9C921BE14FA100F2A466 /* AsteroidView.m in Sources */ = {isa = PBXBuildFile; fileRef = 740B9C911BE14FA100F2A466 /* AsteroidView.m */; };
 		74A1F3471BDF918000144765 /* MinionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 74A1F3461BDF918000144765 /* MinionView.m */; };
 		74A5CB291BDE6BAC009ECE3F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 74A5CB281BDE6BAC009ECE3F /* main.m */; };
 		74A5CB2C1BDE6BAC009ECE3F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 74A5CB2B1BDE6BAC009ECE3F /* AppDelegate.m */; };
@@ -36,8 +35,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		740B9C901BE14FA100F2A466 /* AsteroidView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AsteroidView.h; sourceTree = "<group>"; };
-		740B9C911BE14FA100F2A466 /* AsteroidView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AsteroidView.m; sourceTree = "<group>"; };
 		74A1F3451BDF918000144765 /* MinionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MinionView.h; sourceTree = "<group>"; };
 		74A1F3461BDF918000144765 /* MinionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MinionView.m; sourceTree = "<group>"; };
 		74A5CB231BDE6BAC009ECE3F /* MauvaisePluie.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MauvaisePluie.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -118,8 +115,6 @@
 				74A5CB5E1BDE87BC009ECE3F /* PrefViewController.m */,
 				74A1F3451BDF918000144765 /* MinionView.h */,
 				74A1F3461BDF918000144765 /* MinionView.m */,
-				740B9C901BE14FA100F2A466 /* AsteroidView.h */,
-				740B9C911BE14FA100F2A466 /* AsteroidView.m */,
 				74A5CB591BDE87BC009ECE3F /* GameView.h */,
 				74A5CB5A1BDE87BC009ECE3F /* GameView.m */,
 				74A5CB5F1BDE87BC009ECE3F /* GameViewController.h */,
@@ -267,7 +262,6 @@
 				74A5CB661BDE87BC009ECE3F /* GameViewController.m in Sources */,
 				74A5CB651BDE87BC009ECE3F /* PrefViewController.m in Sources */,
 				74A5CB2F1BDE6BAC009ECE3F /* ViewController.m in Sources */,
-				740B9C921BE14FA100F2A466 /* AsteroidView.m in Sources */,
 				74A5CB611BDE87BC009ECE3F /* ScoreView.m in Sources */,
 				74A5CB541BDE6F61009ECE3F /* MainView.m in Sources */,
 				74A5CB641BDE87BC009ECE3F /* ScoreViewController.m in Sources */,
