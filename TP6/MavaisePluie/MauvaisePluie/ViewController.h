@@ -14,7 +14,7 @@
 
 @interface ViewController : UIViewController
 
-@property (retain, nonatomic) ScoreViewController* myScoreView;
+@property (retain, nonatomic) ScoreViewController* myScoreVC;
 @property (retain, nonatomic) GameViewController*  myGameVC;
 @property (retain, nonatomic) PrefViewController*  myPrefView;
 
