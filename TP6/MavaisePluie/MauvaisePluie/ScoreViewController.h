@@ -8,9 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ScoreViewController : UIViewController
+@interface ScoreViewController : UIViewController<UITextFieldDelegate>
 
 - (void)showView;
 - (void)hideView;
+-(void)addNewScore:(NSInteger)newScore;
 
 @end

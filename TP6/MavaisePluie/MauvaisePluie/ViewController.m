@@ -8,6 +8,8 @@
 
 #import "ViewController.h"
 #import "MainView.h"
+#import "ScoreViewController.h"
+
 
 @interface ViewController () {
     MainView* myView;
@@ -19,6 +21,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
+    
     
     /************ MainView setup ****************/
     myView = [[MainView alloc] initWithFrame:self.view.frame];
@@ -49,8 +52,19 @@
 
 - (void)onClickScoreButton:(id)sender
 {
-    NSLog(@"onClickScoreButton !!!");
+    NSLog(@"ViewController.onClickScoreButton");
+    self.myScoreVC = [[ScoreViewController alloc]init];
+    [self.view addSubview:self.myScoreVC.view];
+    [self.myScoreVC.view release];
+    [self.myScoreVC showView];
+
+    [self.myScoreVC addNewScore:2];
+    [self.myScoreVC addNewScore:10];
+    [self.myScoreVC addNewScore:3];
+    [self.myScoreVC addNewScore:55];
 }
+
+
 
 - (void)onClickGameButton:(id)sender
 {
