@@ -18,6 +18,7 @@
 		74C533191BFA12E500EDE69A /* PMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 74C533171BFA12E500EDE69A /* PMapViewController.m */; };
 		74C5331C1BFA131600EDE69A /* PMapView.m in Sources */ = {isa = PBXBuildFile; fileRef = 74C5331B1BFA131600EDE69A /* PMapView.m */; };
 		74CDED2E1BFA629D009893B9 /* PToolbarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 74CDED2D1BFA629D009893B9 /* PToolbarView.m */; };
+		74CDED311BFA6E75009893B9 /* Contact.m in Sources */ = {isa = PBXBuildFile; fileRef = 74CDED301BFA6E75009893B9 /* Contact.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,6 +53,8 @@
 		74C5331B1BFA131600EDE69A /* PMapView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PMapView.m; sourceTree = "<group>"; };
 		74CDED2C1BFA629D009893B9 /* PToolbarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PToolbarView.h; sourceTree = "<group>"; };
 		74CDED2D1BFA629D009893B9 /* PToolbarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PToolbarView.m; sourceTree = "<group>"; };
+		74CDED2F1BFA6E75009893B9 /* Contact.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Contact.h; sourceTree = "<group>"; };
+		74CDED301BFA6E75009893B9 /* Contact.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Contact.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,6 +108,7 @@
 				74C5331B1BFA131600EDE69A /* PMapView.m */,
 				74CDED2C1BFA629D009893B9 /* PToolbarView.h */,
 				74CDED2D1BFA629D009893B9 /* PToolbarView.m */,
+				74CDED321BFA6E7E009893B9 /* Model */,
 				74C532F81BFA0DE000EDE69A /* Main.storyboard */,
 				74C532FB1BFA0DE000EDE69A /* Images.xcassets */,
 				74C532FD1BFA0DE000EDE69A /* LaunchScreen.xib */,
@@ -137,6 +141,15 @@
 				74C533091BFA0DE000EDE69A /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		74CDED321BFA6E7E009893B9 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				74CDED2F1BFA6E75009893B9 /* Contact.h */,
+				74CDED301BFA6E75009893B9 /* Contact.m */,
+			);
+			name = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -239,6 +252,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				74CDED311BFA6E75009893B9 /* Contact.m in Sources */,
 				74C532F71BFA0DE000EDE69A /* ViewController.m in Sources */,
 				74C533191BFA12E500EDE69A /* PMapViewController.m in Sources */,
 				74C5331C1BFA131600EDE69A /* PMapView.m in Sources */,

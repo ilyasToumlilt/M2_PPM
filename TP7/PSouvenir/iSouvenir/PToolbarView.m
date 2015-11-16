@@ -19,7 +19,6 @@ NSMutableArray *items;
     if(self){
         /************* setting up the UIToolbar *****************/
         _myToolbar = [[UIToolbar alloc] init];
-        NSLog(@"XXX");
         _myToolbar.frame = CGRectMake(0, 0, self.frame.size.width, self.frame.size.height);
         //_myToolbar.frame = CGRectMake(0,
         //                              self.frame.size.height - 60,
