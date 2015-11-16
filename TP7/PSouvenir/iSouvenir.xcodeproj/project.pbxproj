@@ -17,7 +17,7 @@
 		74C533161BFA128F00EDE69A /* GlobalView.m in Sources */ = {isa = PBXBuildFile; fileRef = 74C533151BFA128F00EDE69A /* GlobalView.m */; };
 		74C533191BFA12E500EDE69A /* PMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 74C533171BFA12E500EDE69A /* PMapViewController.m */; };
 		74C5331C1BFA131600EDE69A /* PMapView.m in Sources */ = {isa = PBXBuildFile; fileRef = 74C5331B1BFA131600EDE69A /* PMapView.m */; };
-		74C5331F1BFA136C00EDE69A /* PToolBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 74C5331E1BFA136C00EDE69A /* PToolBarViewController.m */; };
+		74CDED2E1BFA629D009893B9 /* PToolbarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 74CDED2D1BFA629D009893B9 /* PToolbarView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,8 +50,8 @@
 		74C533181BFA12E500EDE69A /* PMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PMapViewController.h; sourceTree = "<group>"; };
 		74C5331A1BFA131600EDE69A /* PMapView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PMapView.h; sourceTree = "<group>"; };
 		74C5331B1BFA131600EDE69A /* PMapView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PMapView.m; sourceTree = "<group>"; };
-		74C5331D1BFA136C00EDE69A /* PToolBarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PToolBarViewController.h; sourceTree = "<group>"; };
-		74C5331E1BFA136C00EDE69A /* PToolBarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PToolBarViewController.m; sourceTree = "<group>"; };
+		74CDED2C1BFA629D009893B9 /* PToolbarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PToolbarView.h; sourceTree = "<group>"; };
+		74CDED2D1BFA629D009893B9 /* PToolbarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PToolbarView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,8 +103,8 @@
 				74C533171BFA12E500EDE69A /* PMapViewController.m */,
 				74C5331A1BFA131600EDE69A /* PMapView.h */,
 				74C5331B1BFA131600EDE69A /* PMapView.m */,
-				74C5331D1BFA136C00EDE69A /* PToolBarViewController.h */,
-				74C5331E1BFA136C00EDE69A /* PToolBarViewController.m */,
+				74CDED2C1BFA629D009893B9 /* PToolbarView.h */,
+				74CDED2D1BFA629D009893B9 /* PToolbarView.m */,
 				74C532F81BFA0DE000EDE69A /* Main.storyboard */,
 				74C532FB1BFA0DE000EDE69A /* Images.xcassets */,
 				74C532FD1BFA0DE000EDE69A /* LaunchScreen.xib */,
@@ -240,12 +240,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				74C532F71BFA0DE000EDE69A /* ViewController.m in Sources */,
-				74C5331F1BFA136C00EDE69A /* PToolBarViewController.m in Sources */,
 				74C533191BFA12E500EDE69A /* PMapViewController.m in Sources */,
 				74C5331C1BFA131600EDE69A /* PMapView.m in Sources */,
 				74C532F41BFA0DE000EDE69A /* AppDelegate.m in Sources */,
 				74C532F11BFA0DE000EDE69A /* main.m in Sources */,
 				74C533161BFA128F00EDE69A /* GlobalView.m in Sources */,
+				74CDED2E1BFA629D009893B9 /* PToolbarView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -444,6 +444,7 @@
 				74C533101BFA0DE000EDE69A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		74C533111BFA0DE000EDE69A /* Build configuration list for PBXNativeTarget "iSouvenirTests" */ = {
 			isa = XCConfigurationList;
@@ -452,6 +453,7 @@
 				74C533131BFA0DE000EDE69A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

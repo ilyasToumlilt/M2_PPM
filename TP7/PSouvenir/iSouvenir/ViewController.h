@@ -8,7 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UIViewController
+#import "GlobalView.h"
+#import "PToolbarView.h"
+
+@interface ViewController : UIViewController<PToolbarViewDelegate>
 
 
 @end

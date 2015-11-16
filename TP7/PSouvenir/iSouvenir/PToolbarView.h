@@ -1,5 +1,5 @@
 //
-//  PToolBarViewController.h
+//  PToolbarView.h
 //  
 //
 //  Created by ilyas TOUMLILT on 16/11/2015.
@@ -8,11 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
-@protocol  PToolBarViewControllerDelegate;
+@protocol  PToolbarViewDelegate;
 
-@interface PToolBarViewController : UIViewController
+@interface PToolbarView : UIView
 
-@property (assign, nonatomic) id<PToolBarViewControllerDelegate> delegate;
+@property (assign, nonatomic) id<PToolbarViewDelegate> delegate;
 
 @property (assign, nonatomic) UIToolbar *myToolbar;
 
@@ -29,11 +29,11 @@
 
 @end
 
-@protocol PToolBarViewControllerDelegate <NSObject>
+@protocol PToolbarViewDelegate <NSObject>
 
 /**
  * Called when addButtonItem is touched down
- * to create a new annotation 
+ * to create a new annotation
  */
 - (void)newAnnotation;
 
@@ -68,8 +68,9 @@
 - (void)pickNewPicture;
 
 /**
- * must retain YES if camera source is available 
+ * must retain YES if camera source is available
  */
 - (BOOL)hasCamera;
+
 
 @end
