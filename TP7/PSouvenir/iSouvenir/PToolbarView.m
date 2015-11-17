@@ -19,11 +19,7 @@ NSMutableArray *items;
     if(self){
         /************* setting up the UIToolbar *****************/
         _myToolbar = [[UIToolbar alloc] init];
-        _myToolbar.frame = CGRectMake(0, 0, self.frame.size.width, self.frame.size.height);
-        //_myToolbar.frame = CGRectMake(0,
-        //                              self.frame.size.height - 60,
-        //                              self.frame.size.width,
-        //                              60);
+        //_myToolbar.frame = CGRectMake(0, 0, self.frame.size.width, self.frame.size.height);
         
         /* items */
         items = [[NSMutableArray alloc] init];
@@ -59,7 +55,8 @@ NSMutableArray *items;
                                                                         target:self
                                                                         action:@selector(organizeButtonAction)]
                           autorelease]];
-        [_myToolbar setItems:items animated:YES];
+        
+        [self drawSubviews:frame];
         
         [self PTitemsIdleConfiguration];
         
@@ -69,17 +66,20 @@ NSMutableArray *items;
     return self;
 }
 
-- (void)drawSubviews:(CGSize)size
+- (void)drawSubviews:(CGRect)frame
 {
-    self.frame = CGRectMake(self.frame.origin.x,
-                            self.frame.origin.y,
-                            size.width,
-                            size.height);
+    self.frame = CGRectMake(frame.origin.x,
+                            frame.origin.y,
+                            frame.size.width,
+                            frame.size.height);
     
     _myToolbar.frame = CGRectMake(0,
                                   0,
                                   self.frame.size.width,
                                   self.frame.size.height);
+    
+    
+    [_myToolbar setItems:items animated:YES];
 }
 
 /*

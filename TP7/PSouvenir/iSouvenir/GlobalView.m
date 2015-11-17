@@ -32,6 +32,8 @@
         
         [self addSubview:_myPToolbar];
         [self addSubview:_myPMap];
+        
+        [_myPMap hideImage];
     }
     
     return self;
@@ -43,7 +45,9 @@
     
     [_myPMap drawSubviews:CGSizeMake(self.frame.size.width,
                                      self.frame.size.height - TOOLBAR_HEIGHT)];
-    [_myPToolbar drawSubviews:CGSizeMake(self.frame.size.width,
+    [_myPToolbar drawSubviews:CGRectMake(0,
+                                         self.frame.size.height - TOOLBAR_HEIGHT,
+                                         self.frame.size.width,
                                          TOOLBAR_HEIGHT)];
 }
 

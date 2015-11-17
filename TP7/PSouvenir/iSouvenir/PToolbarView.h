@@ -27,7 +27,7 @@
  */
 - (void)PTitemsEditConfiguration;
 
-- (void)drawSubviews:(CGSize)size;
+- (void)drawSubviews:(CGRect)frame;
 
 @end
 

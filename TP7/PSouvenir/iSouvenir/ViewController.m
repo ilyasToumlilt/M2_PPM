@@ -38,6 +38,11 @@
     [myView drawSubviews:size];
 }
 
+- (BOOL)shouldAutorotate
+{
+    return YES;
+}
+
 /************* Handling PToolbar actions ( I'm a delegate ;-) ) ************/
 /**
  * Called when addButtonItem is touched down
