@@ -27,6 +27,6 @@
 
 @protocol PMapViewDelegate <NSObject>
 
-/* TODO add methods */
+/* TODO add delegates methods */;
 
 @end

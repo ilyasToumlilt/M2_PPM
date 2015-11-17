@@ -15,7 +15,6 @@
 		74C532FF1BFA0DE000EDE69A /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 74C532FD1BFA0DE000EDE69A /* LaunchScreen.xib */; };
 		74C5330B1BFA0DE000EDE69A /* iSouvenirTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 74C5330A1BFA0DE000EDE69A /* iSouvenirTests.m */; };
 		74C533161BFA128F00EDE69A /* GlobalView.m in Sources */ = {isa = PBXBuildFile; fileRef = 74C533151BFA128F00EDE69A /* GlobalView.m */; };
-		74C533191BFA12E500EDE69A /* PMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 74C533171BFA12E500EDE69A /* PMapViewController.m */; };
 		74C5331C1BFA131600EDE69A /* PMapView.m in Sources */ = {isa = PBXBuildFile; fileRef = 74C5331B1BFA131600EDE69A /* PMapView.m */; };
 		74CDED2E1BFA629D009893B9 /* PToolbarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 74CDED2D1BFA629D009893B9 /* PToolbarView.m */; };
 		74CDED311BFA6E75009893B9 /* Contact.m in Sources */ = {isa = PBXBuildFile; fileRef = 74CDED301BFA6E75009893B9 /* Contact.m */; };
@@ -47,8 +46,6 @@
 		74C5330A1BFA0DE000EDE69A /* iSouvenirTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = iSouvenirTests.m; sourceTree = "<group>"; };
 		74C533141BFA128F00EDE69A /* GlobalView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GlobalView.h; sourceTree = "<group>"; };
 		74C533151BFA128F00EDE69A /* GlobalView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GlobalView.m; sourceTree = "<group>"; };
-		74C533171BFA12E500EDE69A /* PMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PMapViewController.m; sourceTree = "<group>"; };
-		74C533181BFA12E500EDE69A /* PMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PMapViewController.h; sourceTree = "<group>"; };
 		74C5331A1BFA131600EDE69A /* PMapView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PMapView.h; sourceTree = "<group>"; };
 		74C5331B1BFA131600EDE69A /* PMapView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PMapView.m; sourceTree = "<group>"; };
 		74CDED2C1BFA629D009893B9 /* PToolbarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PToolbarView.h; sourceTree = "<group>"; };
@@ -102,8 +99,6 @@
 				74C532F61BFA0DE000EDE69A /* ViewController.m */,
 				74C533141BFA128F00EDE69A /* GlobalView.h */,
 				74C533151BFA128F00EDE69A /* GlobalView.m */,
-				74C533181BFA12E500EDE69A /* PMapViewController.h */,
-				74C533171BFA12E500EDE69A /* PMapViewController.m */,
 				74C5331A1BFA131600EDE69A /* PMapView.h */,
 				74C5331B1BFA131600EDE69A /* PMapView.m */,
 				74CDED2C1BFA629D009893B9 /* PToolbarView.h */,
@@ -254,7 +249,6 @@
 			files = (
 				74CDED311BFA6E75009893B9 /* Contact.m in Sources */,
 				74C532F71BFA0DE000EDE69A /* ViewController.m in Sources */,
-				74C533191BFA12E500EDE69A /* PMapViewController.m in Sources */,
 				74C5331C1BFA131600EDE69A /* PMapView.m in Sources */,
 				74C532F41BFA0DE000EDE69A /* AppDelegate.m in Sources */,
 				74C532F11BFA0DE000EDE69A /* main.m in Sources */,

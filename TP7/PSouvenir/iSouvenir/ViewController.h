@@ -10,8 +10,9 @@
 
 #import "GlobalView.h"
 #import "PToolbarView.h"
+#import "PMapView.h"
 
-@interface ViewController : UIViewController<PToolbarViewDelegate>
+@interface ViewController : UIViewController<PToolbarViewDelegate, PMapViewDelegate>
 
 
 @end

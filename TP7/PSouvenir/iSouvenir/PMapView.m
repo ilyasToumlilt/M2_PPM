@@ -9,29 +9,26 @@
 #import "PMapView.h"
 
 @interface PMapView(){
-    CGFloat HORIZONTAL_GUIDELINE;
-    CGFloat VERTICAL_GUIDELINE ;
     BOOL isImageVisible;
     CGSize curFrame;
     UIImageView *targetView;
-    CGFloat TARGET_IMG_SIZE;
-    CGFloat SCV_BASE_HEIGHT;
     MKAnnotationView*selectedAnn;
 }
 @end
 
 @implementation PMapView
 
+#define HORIZONTAL_GUIDELINE 30.0
+#define VERTICAL_GUIDELINE   30.0
+#define TARGET_IMG_SIZE      30.0
+#define SCV_BASE_HEIGHT      40.0
+
 - (instancetype)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
     if (self) {
         
-        self->HORIZONTAL_GUIDELINE = 30;
-        self->VERTICAL_GUIDELINE = 30;
         self->isImageVisible = NO;
-        self->TARGET_IMG_SIZE=30;
-        self->SCV_BASE_HEIGHT=40;
         
         [self.mv setShowsUserLocation:YES];
         [self.mv setMapType:MKMapTypeSatellite];
@@ -133,18 +130,18 @@
     
     //le symbole toujours au milieu de la carte
     self->targetView.frame = CGRectMake(
-                                        (self.mv.frame.size.width/2)-(self->TARGET_IMG_SIZE/2),
-                                        (self.mv.frame.size.height/2)-(self->TARGET_IMG_SIZE/2),
-                                        self->TARGET_IMG_SIZE,
-                                        self->TARGET_IMG_SIZE
+                                        (self.mv.frame.size.width/2)-(TARGET_IMG_SIZE/2),
+                                        (self.mv.frame.size.height/2)-(TARGET_IMG_SIZE/2),
+                                        TARGET_IMG_SIZE,
+                                        TARGET_IMG_SIZE
                                         );
     
     //height, width en poucentage ?
     self.scv.frame = CGRectMake(
-                                self->VERTICAL_GUIDELINE,
-                                self->HORIZONTAL_GUIDELINE,
+                                VERTICAL_GUIDELINE,
+                                HORIZONTAL_GUIDELINE,
                                 self.mv.frame.size.width-(2*VERTICAL_GUIDELINE),
-                                self->isImageVisible ? self->SCV_BASE_HEIGHT/2:self->SCV_BASE_HEIGHT
+                                self->isImageVisible ? SCV_BASE_HEIGHT/2:SCV_BASE_HEIGHT
                                 );
 }
 

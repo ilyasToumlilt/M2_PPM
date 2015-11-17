@@ -18,35 +18,29 @@
     
     if(self){
         
+        /* myPMap */
+        _myPMap = [[PMapView alloc] initWithFrame:CGRectMake(0,
+                                                             0,
+                                                             self.frame.size.width,
+                                                             self.frame.size.height - TOOLBAR_HEIGHT)];
+        
         /* myPToolbar */
         _myPToolbar = [[PToolbarView alloc] initWithFrame:CGRectMake(0,
                                                                      self.frame.size.height - TOOLBAR_HEIGHT,
                                                                      self.frame.size.width,
                                                                      TOOLBAR_HEIGHT)];
         
-        [self drawSubviews];
-        
         [self addSubview:_myPToolbar];
-
+        [self addSubview:_myPMap];
     }
     
     return self;
 }
 
-- (void)drawSubviews
-{
-    
-    /* myPToolbar */
-    /*_myPToolbar.view.frame = CGRectMake(0,
-                                        self.frame.size.height - TOOLBAR_HEIGHT,
-                                        self.frame.size.width,
-                                        TOOLBAR_HEIGHT);
-    */
-}
-
 - (void)dealloc
 {
     [_myPToolbar release];
+    [_myPMap     release];
     
     [super dealloc];
 }
