@@ -37,6 +37,16 @@
     return self;
 }
 
+- (void)drawSubviews:(CGSize)size
+{
+    self.frame = CGRectMake(0, 0, size.width, size.height);
+    
+    [_myPMap drawSubviews:CGSizeMake(self.frame.size.width,
+                                     self.frame.size.height - TOOLBAR_HEIGHT)];
+    [_myPToolbar drawSubviews:CGSizeMake(self.frame.size.width,
+                                         TOOLBAR_HEIGHT)];
+}
+
 - (void)dealloc
 {
     [_myPToolbar release];

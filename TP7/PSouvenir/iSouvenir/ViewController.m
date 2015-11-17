@@ -8,8 +8,9 @@
 
 #import "ViewController.h"
 
-@interface ViewController ()
-
+@interface ViewController () {
+    GlobalView *myView;
+}
 @end
 
 @implementation ViewController
@@ -19,7 +20,7 @@
     // Do any additional setup after loading the view, typically from a nib.
     
     /***************** GlobalView setup ********************/
-    GlobalView *myView = [[GlobalView alloc] initWithFrame:self.view.frame];
+    myView = [[GlobalView alloc] initWithFrame:self.view.frame];
     
     [myView.myPToolbar setDelegate:self];
     
@@ -30,6 +31,11 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)viewWillTransitionToSize:(CGSize)size withTransitionCoordinator:(id<UIViewControllerTransitionCoordinator>)coordinator
+{
+    [myView drawSubviews:size];
 }
 
 /************* Handling PToolbar actions ( I'm a delegate ;-) ) ************/

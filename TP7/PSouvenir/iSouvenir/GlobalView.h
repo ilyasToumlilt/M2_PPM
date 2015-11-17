@@ -15,4 +15,6 @@
 @property (retain, nonatomic) PToolbarView *myPToolbar;
 @property (retain, nonatomic) PMapView     *myPMap;
 
+- (void)drawSubviews:(CGSize)size;
+
 @end

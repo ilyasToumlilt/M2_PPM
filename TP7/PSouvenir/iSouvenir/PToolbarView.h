@@ -27,6 +27,8 @@
  */
 - (void)PTitemsEditConfiguration;
 
+- (void)drawSubviews:(CGSize)size;
+
 @end
 
 @protocol PToolbarViewDelegate <NSObject>

@@ -145,6 +145,16 @@
                                 );
 }
 
+- (void)drawSubviews:(CGSize)size
+{
+    self.frame = CGRectMake(self.frame.origin.x,
+                            self.frame.origin.y,
+                            size.width,
+                            size.height);
+    
+    [self setElementsSize:size];
+}
+
 /*
  Quand on appuye sur le selected control,
  on change le type de carte.

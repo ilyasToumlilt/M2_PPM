@@ -69,6 +69,19 @@ NSMutableArray *items;
     return self;
 }
 
+- (void)drawSubviews:(CGSize)size
+{
+    self.frame = CGRectMake(self.frame.origin.x,
+                            self.frame.origin.y,
+                            size.width,
+                            size.height);
+    
+    _myToolbar.frame = CGRectMake(0,
+                                  0,
+                                  self.frame.size.width,
+                                  self.frame.size.height);
+}
+
 /*
 // Only override drawRect: if you perform custom drawing.
 // An empty implementation adversely affects performance during animation.

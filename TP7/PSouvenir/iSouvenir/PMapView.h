@@ -23,6 +23,8 @@
 -(void)showImage:(NSString*)urlImage;
 -(void)putPin:(NSString*)labelPin;
 -(void)setElementsSize:(CGSize)size;
+
+- (void)drawSubviews:(CGSize)size;
 @end
 
 @protocol PMapViewDelegate <NSObject>
