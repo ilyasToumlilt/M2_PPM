@@ -43,18 +43,18 @@ NSMutableArray *items;
                                                                         target:nil
                                                                         action:nil]
                           autorelease]];
-        [items addObject:[[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemBookmarks
-                                                                        target:self
-                                                                        action:@selector(bookmarksButtonAction)]
-                          autorelease]];
-        [items addObject:[[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCamera
-                                                                        target:self
-                                                                        action:@selector(cameraButtonAction)]
-                          autorelease]];
-        [items addObject:[[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemOrganize
-                                                                        target:self
-                                                                        action:@selector(organizeButtonAction)]
-                          autorelease]];
+        _addressBookItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemBookmarks
+                                                                     target:self
+                                                                    action:@selector(bookmarksButtonAction)];
+        [items addObject:_addressBookItem];
+        _cameraItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCamera
+                                                                    target:self
+                                                                    action:@selector(cameraButtonAction)];
+        [items addObject:_cameraItem];
+        _galleryItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemOrganize
+                                                                     target:self
+                                                                     action:@selector(organizeButtonAction)];
+        [items addObject:_galleryItem];
         
         [self drawSubviews:frame];
         
@@ -213,6 +213,9 @@ NSMutableArray *items;
 
 - (void)dealloc
 {
+    [_addressBookItem release];
+    [_cameraItem release];
+    [_galleryItem release];
     [items release];
     [_myToolbar release];
     [super dealloc];

@@ -48,7 +48,7 @@
  * - pas de release
  * - retourne le number du pin selectionné ( prop contact )
  */
-- (int)removeSelectedPin;
+- (void)removeSelectedPin;
 
 @end
 

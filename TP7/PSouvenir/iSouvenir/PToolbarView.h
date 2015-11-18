@@ -16,6 +16,10 @@
 
 @property (assign, nonatomic) UIToolbar *myToolbar;
 
+@property (assign, nonatomic) UIBarButtonItem* addressBookItem;
+@property (assign, nonatomic) UIBarButtonItem* cameraItem;
+@property (assign, nonatomic) UIBarButtonItem* galleryItem;
+
 /**
  * Quand aucune annontation n'est sélectionnée, certains bouttons de la barre
  * doivent être grisés, inutilisables.

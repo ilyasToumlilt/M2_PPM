@@ -10,12 +10,11 @@
 #import <UIKit/UIKit.h>
 #import <MapKit/MapKit.h>
 
-@interface Contact : NSObject<MKAnnotation>
+@interface Contact : NSObject
 
 @property (assign, nonatomic) int number;
 @property (assign, nonatomic) NSString *name;
 @property (retain, nonatomic) UIImage *picture;
-@property(nonatomic, readonly) CLLocationCoordinate2D coordinate;
 
 - (instancetype)initWithNumber:(int)number andName:(NSString*)name;
 
