@@ -180,11 +180,68 @@
     }
 }
 
+
+
+/**
+ * doit remplacer putPin
+ * Contact est déjà un MKAnnotation
+ * il suffit de modifier sa prop coordinates
+ * et de le rajouter à la mapView.
+ * ne pas le release.
+ */
+- (void)addNewPin:(Contact*)c
+{
+    /* TODO */
+}
+
+/**
+ * - le VC est assez intelligent pour n'appeler cette
+ * méthode que si un pin est sélectionné, mais on
+ * testera quand même.
+ * - supprime le pin selectionné.
+ * - pas de release
+ * - retourne le number du pin selectionné ( prop contact )
+ */
+- (int)removeSelectedPin
+{
+    /* TODO */
+    return 0;
+}
+
+/************* Managing Annotation Selection ***************/
+/**
+ * Lorsqu'une Annotation est sélectionnée
+ * - vérifier si elle a une photo, si c'est le cas, l'afficher.
+ * - signaler la sélection au VC délégué.
+ */
+- (void)mapView:(MKMapView *)mapView didSelectAnnotationView:(MKAnnotationView *)view
+{
+    /* TODO */
+    [_delegate retain];
+    if([_delegate respondsToSelector:@selector(didSelectPin:)]){
+        /* TODO */
+    }
+    [_delegate release];
+}
+
+
+/**
+ * Lorsqu'une Annotation n'est plus sélectionnée :
+ * - virer la photo s'il le faut
+ * - signaler l'événement au chef
+ */
 /*
  Dernière annotation sectionnée.
  On stocke la MKAnnotationView et non pas la MKPointAnnotation ajoutée dans self.putPin
  */
 - (void)mapView:(MKMapView *)mapView didDeselectAnnotationView:(MKAnnotationView *)view{
     self->selectedAnn=view;
+    /* TODO */
+    [_delegate retain];
+    if([_delegate respondsToSelector:@selector(didDiselectPin)]){
+        /* TODO */
+    }
+    [_delegate release];
 }
+
 @end

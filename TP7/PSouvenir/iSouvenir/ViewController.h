@@ -11,6 +11,7 @@
 #import "GlobalView.h"
 #import "PToolbarView.h"
 #import "PMapView.h"
+#import "Contact.h"
 
 @interface ViewController : UIViewController<PToolbarViewDelegate, PMapViewDelegate>
 

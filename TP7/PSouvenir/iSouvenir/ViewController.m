@@ -9,7 +9,8 @@
 #import "ViewController.h"
 
 @interface ViewController () {
-    GlobalView *myView;
+    GlobalView *myView;             /* Vue principale de l'application */
+    NSMutableArray *contactsArray;  /* Tableau de contacts */
 }
 @end
 
@@ -21,8 +22,10 @@
     
     /***************** GlobalView setup ********************/
     myView = [[GlobalView alloc] initWithFrame:self.view.frame];
-    
     [myView.myPToolbar setDelegate:self];
+    
+    /***************** Model setup *************************/
+    contactsArray = [[NSMutableArray alloc] init];
     
     /* adding and releasing stuff */
     [self.view addSubview:myView];
@@ -51,6 +54,11 @@
 - (void)newAnnotation
 {
     NSLog(@"TODO newAnnotation called");
+    Contact* c = [[Contact alloc] initWithNumber:(int)contactsArray.count
+                                         andName:[NSString stringWithFormat:@"toto %d", (int)contactsArray.count]];
+    [contactsArray addObject:c];
+    [myView.myPMap putPin:c.name];
+    [c release];
 }
 
 /**
@@ -105,6 +113,26 @@
 {
     NSLog(@"TODO hasCamera is not respected bro");
     return YES;
+}
+
+/************************ Handling Map Actions **********************/
+- (void)didSelectPin:(Contact*)c
+{
+    /* TODO */
+}
+
+- (void)didDiselectPin
+{
+    /* TODO */
+}
+
+/************************ additionnal setup *********************/
+- (void)dealloc
+{
+    [myView         release];
+    [contactsArray  release];
+    
+    [super dealloc];
 }
 
 @end
