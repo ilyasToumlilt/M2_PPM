@@ -129,19 +129,19 @@ NSMutableArray *items;
     tmp.enabled = YES;
     
     /* bookmarks item */
-    tmp = [items objectAtIndex:6];
+    tmp = [items objectAtIndex:5];
     tmp.enabled = YES;
     
     /* camera item */
     [_delegate retain];
     if([_delegate respondsToSelector:@selector(hasCamera)]){
-        tmp = [items objectAtIndex:7];
+        tmp = [items objectAtIndex:6];
         tmp.enabled = [_delegate hasCamera];
     }
     [_delegate release];
     
     /* organize item */
-    tmp = [items objectAtIndex:8];
+    tmp = [items objectAtIndex:7];
     tmp.enabled = YES;
 }
 

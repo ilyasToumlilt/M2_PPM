@@ -12,7 +12,7 @@
 
 @protocol PMapViewDelegate;
 
-@interface PMapView : UIView<MKMapViewDelegate>
+@interface PMapView : UIView<MKMapViewDelegate, CLLocationManagerDelegate>
 
 @property (assign, nonatomic) id<PMapViewDelegate> delegate;
 
@@ -20,16 +20,9 @@
 @property (assign,nonatomic) UIImageView *iv;
 @property (assign,nonatomic) UISegmentedControl *scv;
 
-- (void)hideImage;
-- (void)showImage:(NSString*)urlImage;
 - (void)setElementsSize:(CGSize)size;
 
-
-- (void)putPin:(NSString*)labelPin;
-
 - (void)drawSubviews:(CGSize)size;
-
-/**** TODO ****/
 
 /**
  * doit remplacer putPin
@@ -50,11 +43,20 @@
  */
 - (void)removeSelectedPin;
 
+- (void)updateSelectedPin:(NSString*)newTitle;
+
+
+- (CLLocationCoordinate2D) getCurrentPosition;
+- (void)gotToCurrentPosition;
+
+-(void)hideImage;
+-(void)showImage:(UIImage*)image;
+
 @end
 
 @protocol PMapViewDelegate <NSObject>
 
-- (void)didSelectPin:(Contact*)c;
+- (void)didSelectPin:(NSString*)title;
 - (void)didDiselectPin;
 
 @end

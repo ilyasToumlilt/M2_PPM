@@ -10,7 +10,7 @@
 
 @implementation GlobalView
 
-#define TOOLBAR_HEIGHT 70
+#define TOOLBAR_HEIGHT 60
 
 - (instancetype)initWithFrame:(CGRect)frame
 {
@@ -32,8 +32,6 @@
         
         [self addSubview:_myPToolbar];
         [self addSubview:_myPMap];
-        
-        [_myPMap hideImage];
     }
     
     return self;

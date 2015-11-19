@@ -24,6 +24,7 @@
                                                 UINavigationControllerDelegate>
 
 @property (nonatomic, assign) ABPeoplePickerNavigationController *addressBookController;
+@property (assign,nonatomic) NSMutableArray *contactsArray;  /* Tableau de contacts */
 
 @end
 

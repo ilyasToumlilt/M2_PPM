@@ -10,7 +10,6 @@
 
 @interface ViewController () {
     GlobalView *myView;             /* Vue principale de l'application */
-    NSMutableArray *contactsArray;  /* Tableau de contacts */
     Contact *currentContact;        /* Le contact sélectionné */
 }
 @end
@@ -24,9 +23,10 @@
     /***************** GlobalView setup ********************/
     myView = [[GlobalView alloc] initWithFrame:self.view.frame];
     [myView.myPToolbar setDelegate:self];
+    [myView.myPMap setDelegate:self];
     
     /***************** Model setup *************************/
-    contactsArray = [[NSMutableArray alloc] init];
+    _contactsArray = [[NSMutableArray alloc] init];
     
     /* aucun contect n'est selected au début */
     currentContact = nil;
@@ -56,6 +56,18 @@
     return YES;
 }
 
+- (Contact*)getContactByTitle:(NSString*)title
+{
+    int i;
+    Contact* c;
+    for(i=0; i<_contactsArray.count; i++){
+        c = _contactsArray[i];
+        if([c.title isEqualToString:title])
+            return c;
+    }
+    return nil;
+}
+
 /************* Handling PToolbar actions ( I'm a delegate ;-) ) ************/
 /**
  * Called when addButtonItem is touched down
@@ -64,11 +76,10 @@
 - (void)newAnnotation
 {
     /* on rajoute un new pin vide */
-    Contact* c = [[Contact alloc] initWithNumber:(int)contactsArray.count
+    Contact* c = [[Contact alloc] initWithNumber:(int)_contactsArray.count
                                          andName:[NSString stringWithFormat:@"Pas de contact"]];
-    [contactsArray addObject:c];
-    [myView.myPMap putPin:c.name];
-    [c release];
+    [_contactsArray addObject:c];
+    [myView.myPMap addNewPin:c];
 }
 
 /**
@@ -79,7 +90,7 @@
 {
     if( currentContact ) {
         [myView.myPMap removeSelectedPin];
-        [contactsArray removeObject:currentContact];
+        [_contactsArray removeObject:currentContact];
         currentContact = nil;
     }
 }
@@ -90,7 +101,7 @@
  */
 - (void)moveToCurrentLocation
 {
-    /* TODO */
+    [myView.myPMap gotToCurrentPosition];
 }
 
 /**
@@ -156,10 +167,15 @@
 /**
  * appelé par la map quand un pin c est selected
  */
-- (void)didSelectPin:(Contact*)c
+- (void)didSelectPin:(NSString*)title
 {
-    currentContact = c;
-    [myView.myPToolbar PTitemsEditConfiguration];
+    currentContact = [self getContactByTitle:title];
+    if(currentContact) {
+        [myView.myPToolbar PTitemsEditConfiguration];
+        if( currentContact.picture){
+            [myView.myPMap showImage:currentContact.picture];
+        }
+    }
 }
 
 /**
@@ -167,6 +183,9 @@
  */
 - (void)didDiselectPin
 {
+    if (currentContact && currentContact.picture) {
+        [myView.myPMap hideImage];
+    }
     currentContact = nil;
     [myView.myPToolbar PTitemsIdleConfiguration];
 }
@@ -204,7 +223,8 @@
     [name appendString:lastName];
     
     if (currentContact) {
-        /* TODO */
+        currentContact.subtitle = name;
+        [myView.myPMap updateSelectedPin:name];
     }
     
 }
@@ -221,7 +241,10 @@
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
     
     UIImage *chosenImage = info[UIImagePickerControllerEditedImage];
-    NSLog(@"SELECTED");
+    if( currentContact ){
+        currentContact.picture = [chosenImage retain];
+        [myView.myPMap showImage:currentContact.picture];
+    }
     
     [picker dismissViewControllerAnimated:YES completion:NULL];
     
@@ -237,7 +260,7 @@
 - (void)dealloc
 {
     [myView         release];
-    [contactsArray  release];
+    [_contactsArray  release];
     
     [super dealloc];
 }

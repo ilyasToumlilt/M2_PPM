@@ -12,7 +12,9 @@
     BOOL isImageVisible;
     CGSize curFrame;
     UIImageView *targetView;
-    MKAnnotationView*selectedAnn;
+    MKPointAnnotation* selectedAnn;
+    CLLocationCoordinate2D currentPos;
+    CLLocationManager* locationManager;
 }
 @end
 
@@ -29,25 +31,40 @@
     if (self) {
         
         self->isImageVisible = NO;
+        self->selectedAnn=nil;
         
-        [self.mv setShowsUserLocation:YES];
-        [self.mv setMapType:MKMapTypeSatellite];
-        self.mv.showsBuildings = YES;//todo pour 3d
-        
-        CLLocationManager* locationManager = [ [ CLLocationManager alloc] init];
-        [locationManager requestWhenInUseAuthorization];
-        [locationManager startUpdatingLocation];
+        self->locationManager = [ [ CLLocationManager alloc] init];
+        self->locationManager.distanceFilter = kCLDistanceFilterNone;
+        self->locationManager.desiredAccuracy = kCLLocationAccuracyBest;
+        self->locationManager.delegate=self;
+        [self->locationManager requestAlwaysAuthorization];
+        [self->locationManager startUpdatingLocation];
         
         self.mv = [[MKMapView alloc]initWithFrame:frame];
+        [self.mv setScrollEnabled:YES];
+        [self.mv setZoomEnabled:YES];
+        [self.mv setShowsUserLocation:YES];
+        [self.mv setPitchEnabled:YES];
+        [self.mv setMapType:MKMapTypeStandard];
+        self.mv.delegate=self;
+        self.mv.showsBuildings = YES;//todo pour 3d
+        
+        MKMapCamera *newCamera = [[self.mv camera] copy];
+        [newCamera setPitch:45.0];
+        [newCamera setHeading:50.0];
+        [newCamera setAltitude:500.0];
+        [self.mv setCamera:newCamera animated:YES];
+        
         [self addSubview:self.mv];
-        [self.mv release];
+        //[self.mv release];
         
         //sélection du type de carte
         self.scv=[[UISegmentedControl alloc]initWithItems:[NSArray arrayWithObjects:@"3D",@"Carte",@"Satélite",@"Hybride",nil]];
         [self.scv addTarget:self action:@selector(mapTypeChanges) forControlEvents:UIControlEventValueChanged];
         [self.scv setSelectedSegmentIndex:0];
+        [self.scv setBackgroundColor:[UIColor whiteColor]];
         [self addSubview:self.scv];
-        [self.scv release];
+        //[self.scv release];
         
         self->targetView =[[UIImageView alloc]initWithImage:[UIImage imageNamed:@"target"]];
         [self addSubview:self->targetView];
@@ -55,11 +72,10 @@
         
         self.iv = [[UIImageView alloc]init];
         [self addSubview:self.iv];
-        [self.iv release];
+        //[self.iv release];
         
         self->curFrame = frame.size;
         [self setElementsSize:self->curFrame];
-        [self showImage:@"target"];
     }
     return self;
 }
@@ -69,24 +85,10 @@
     [self setElementsSize:self->curFrame];
 }
 
--(void)showImage:(NSString*)urlImage{
+-(void)showImage:(UIImage*)image{
     self->isImageVisible = YES;
-    self.iv.image = [UIImage imageNamed:urlImage];
+    self.iv.image = image;
     [self setElementsSize:self->curFrame];
-}
-
--(void)putPin:(NSString*)labelPin{
-    //transformation du centre de la MapView en coordonnés grâce convertPoint
-    CGPoint point = CGPointMake(self.mv.frame.size.width/2,self.mv.frame.size.height/2);
-    CLLocationCoordinate2D pinPoint = [self.mv convertPoint:point toCoordinateFromView:self.mv];
-    MKPointAnnotation *newPin = [[MKPointAnnotation alloc] init];
-    [newPin setTitle:labelPin];
-    newPin.coordinate = pinPoint;
-    [self.mv addAnnotation:newPin];//release ?
-}
-
--(void)deletePin{
-    [self->selectedAnn removeFromSuperview];
 }
 
 -(void)setElementsSize:(CGSize)size
@@ -166,8 +168,10 @@
     switch (self.scv.selectedSegmentIndex) {
         case 0:
             [self.mv setMapType:MKMapTypeStandard];
+            [self.mv setPitchEnabled:YES];
             break;
         case 1:
+            [self.mv setPitchEnabled:NO];
             [self.mv setMapType:MKMapTypeStandard];
             break;
         case 2:
@@ -191,8 +195,20 @@
  */
 - (void)addNewPin:(Contact*)c
 {
-    /* TODO */
+    //transformation du centre de la MapView en coordonnés grâce convertPoint
+    CGPoint point = CGPointMake(self.mv.frame.size.width/2,self.mv.frame.size.height/2);
+    CLLocationCoordinate2D pinPoint = [self.mv convertPoint:point toCoordinateFromView:self.mv];
+    
+    c.coordinate = pinPoint;
+    
+    MKPointAnnotation *newPin = [[MKPointAnnotation alloc] init];
+    [newPin setTitle:c.title];
+    [newPin setSubtitle:c.subtitle];
+    newPin.coordinate = pinPoint;
+    
+    [self.mv addAnnotation:newPin];
 }
+
 
 /**
  * - le VC est assez intelligent pour n'appeler cette
@@ -202,12 +218,23 @@
  * - pas de release
  * - retourne le number du pin selectionné ( prop contact )
  */
-- (int)removeSelectedPin
+- (void)removeSelectedPin
 {
-    /* TODO */
-    return 0;
+    [self.mv removeAnnotation:self->selectedAnn];
+    self->selectedAnn=nil;
 }
 
+- (void)updateSelectedPin:(NSString*)newTitle
+{
+    
+    MKPointAnnotation *newPin = [[MKPointAnnotation alloc] init];
+    [newPin setTitle:selectedAnn.title];
+    [newPin setSubtitle:newTitle];
+    newPin.coordinate = selectedAnn.coordinate;
+    
+    [self.mv removeAnnotation:self->selectedAnn];
+    [self.mv addAnnotation:newPin];
+}
 /************* Managing Annotation Selection ***************/
 /**
  * Lorsqu'une Annotation est sélectionnée
@@ -216,12 +243,15 @@
  */
 - (void)mapView:(MKMapView *)mapView didSelectAnnotationView:(MKAnnotationView *)view
 {
-    /* TODO */
+    self->selectedAnn = [view.annotation retain] ;
+    
+    
     [_delegate retain];
     if([_delegate respondsToSelector:@selector(didSelectPin:)]){
-        /* TODO */
+        [_delegate didSelectPin:selectedAnn.title];
     }
     [_delegate release];
+    
 }
 
 
@@ -235,13 +265,37 @@
  On stocke la MKAnnotationView et non pas la MKPointAnnotation ajoutée dans self.putPin
  */
 - (void)mapView:(MKMapView *)mapView didDeselectAnnotationView:(MKAnnotationView *)view{
-    self->selectedAnn=view;
-    /* TODO */
+    
+    self->selectedAnn=nil;
+    
     [_delegate retain];
     if([_delegate respondsToSelector:@selector(didDiselectPin)]){
-        /* TODO */
+        [_delegate didDiselectPin];
     }
     [_delegate release];
 }
+
+
+- (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations{
+    CLLocation *newLocation = [locations lastObject];
+    self->currentPos = newLocation.coordinate;
+}
+
+-(CLLocationCoordinate2D) getCurrentPosition{
+    return self->currentPos;
+}
+
+-(void)gotToCurrentPosition{
+    [self.mv setCenterCoordinate:self->currentPos];
+}
+
+- (void)dealloc
+{
+    [_mv release];
+    [_iv release];
+    [_scv release];
+    [super dealloc];
+}
+
 
 @end

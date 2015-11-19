@@ -14,15 +14,18 @@
 {
     self = [self init];
     if(self){
-        _number  = number;
-        _name    = name;
-        _picture = nil;
+        _nunu = number;
+        _title      = [NSString stringWithFormat:@"Contact %d", number];
+        _subtitle   = name;
+        _picture    = nil;
     }
     return self;
 }
 
 - (void)dealloc
 {
+    [_title release];
+    [_subtitle release];
     [_picture release];
     [super dealloc];
 }

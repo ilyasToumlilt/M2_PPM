@@ -35,7 +35,7 @@
         <key>UILaunchStoryboardName</key>
         <string>LaunchScreen</string>
         
-        <key>NSLocationWhenInUseUsageDescription</key>
+        <key>NSLocationAlwaysUsageDescription</key>
         <string>Par confort pour positionner les pins.</string>
         
         <key>UIMainStoryboardFile</key>
