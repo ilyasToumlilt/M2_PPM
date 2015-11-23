@@ -7,11 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "MaTask.h"
 
 #ifndef __MA_MASTER_VC_H__
 #define __MA_MASTER_VC_H__
 
 @class MASplitViewController;
+@class MaTask;
 
 @interface MAMasterViewController : UIViewController<UITableViewDataSource, UITableViewDelegate,UISplitViewControllerDelegate>
 

@@ -9,13 +9,20 @@
 #import "MAMasterViewController.h"
 #import "MASplitViewController.h"
 
+#define DEF_T_IND_SECT 3
+#define DEF_T_SECT_NAMES @[@"Vacances",@"Personnel",@"Urgent",@"Aujourd'hui"]
+
+
 @interface MAMasterViewController ()
+@property (nonatomic,retain)NSArray*sectsName;
+@property (nonatomic,retain)UIBarButtonItem*addTask;
 
 @end
 
 @implementation MAMasterViewController
 
 BOOL fermerDVC;
+
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -25,12 +32,20 @@ BOOL fermerDVC;
     
     self.view.backgroundColor = [UIColor yellowColor];
     
-    _tasksTableView = [[UITableView alloc] initWithFrame:self.view.frame style:UITableViewStyleGrouped];
+    _tasksTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, 300,self.view.frame.size.height)];
     [_tasksTableView setDelegate:self];
     [_tasksTableView setDataSource:self];
+    [_tasksTableView setEditing:YES animated:YES];
     [self.view addSubview:_tasksTableView];
     
-    _tasksData = [[NSMutableArray alloc] initWithObjects:@"Bleu", @"Blanc", @"Rouge", nil];
+    self.addTask = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(addNewTask)];
+    [[self navigationItem]setRightBarButtonItem:self.addTask];
+    
+    self.sectsName=DEF_T_SECT_NAMES;
+    self.tasksData =[[NSMutableArray alloc]initWithCapacity:[self.sectsName count]];
+    
+    for(int i=0; i<[self.sectsName count]; i++)
+        [self.tasksData setObject:[[NSMutableArray alloc]init] atIndexedSubscript:i];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -54,6 +69,7 @@ BOOL fermerDVC;
 - (void)splitViewController:(UISplitViewController *)svc
     willChangeToDisplayMode:(UISplitViewControllerDisplayMode)displayMode
 {
+    
     if(displayMode == UISplitViewControllerDisplayModePrimaryHidden) {
         // On va vers un affichage de la vue de détail seulement
         [[[[[_splitVC detailsVC] navigationController] topViewController] navigationItem] setLeftBarButtonItem:[svc displayModeButtonItem]];
@@ -82,30 +98,40 @@ BOOL fermerDVC;
  * TableViewDelegate Methods
  ***********************************************************************************************/
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-
 {
-    
-    return [_tasksData count];
+    NSMutableArray*arrayCurSect;
+    arrayCurSect = [self.tasksData objectAtIndex:section];
+    return [arrayCurSect count];
     
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
+    // Return the number of sections.
+    return [self.sectsName count];
+}
+
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
+{
+    return self.sectsName[section];
+}
+
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    NSMutableArray*arrayCurSect;
+    arrayCurSect = [self.tasksData objectAtIndex:indexPath.section];
     
     static NSString *simpleTableIdentifier = @"SimpleTableItem";
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:simpleTableIdentifier];
     
     if (cell == nil) {
-        
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:simpleTableIdentifier];
-        
     }
     
-    cell.textLabel.text = [_tasksData objectAtIndex:indexPath.row];
-    
-    cell.imageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"prio-%d", (int)indexPath.row]];
+    cell.textLabel.text = [[arrayCurSect objectAtIndex:indexPath.row] title];
+    cell.imageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"prio-%d", [[arrayCurSect objectAtIndex:indexPath.row] prio]]];
     
     return cell;
     
@@ -113,17 +139,47 @@ BOOL fermerDVC;
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if( indexPath.row == 0 )
-        _detailsVC.view.backgroundColor = [UIColor blueColor];
-    if( indexPath.row == 1 )
-        _detailsVC.view.backgroundColor = [UIColor whiteColor];
-    if( indexPath.row == 2 )
-        _detailsVC.view.backgroundColor = [UIColor redColor];
+    NSMutableArray*arrayCurSect;
+    arrayCurSect = [self.tasksData objectAtIndex:indexPath.section];
+    
+    [self.splitVC.detailsVC updateDetailsViewWithTask:[arrayCurSect objectAtIndex:indexPath.row]];
     
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone &&
         [[UIScreen mainScreen] scale] != 3.0) {
         [[self navigationController] pushViewController:_detailsVC animated:YES];
     }
+}
+
+- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
+    NSLog(@"canMoveRowAtIndexPath");
+    return YES;
+}
+
+- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)sourceIndexPath toIndexPath:(NSIndexPath *)destinationIndexPath
+{
+    NSMutableArray*arraySourceCat;
+    NSMutableArray*arrayDestinationCat;
+    MaTask* taskSource;
+    
+    arraySourceCat = [self.tasksData objectAtIndex:sourceIndexPath.section];
+    arrayDestinationCat = [self.tasksData objectAtIndex:destinationIndexPath.section];
+    
+    taskSource = [arraySourceCat objectAtIndex:sourceIndexPath.row];
+
+    [arrayDestinationCat insertObject:taskSource atIndex:destinationIndexPath.row];
+    [arraySourceCat removeObjectAtIndex:sourceIndexPath.row];
+}
+
+/*
+- (NSIndexPath *)tableView:(UITableView *)tableView targetIndexPathForMoveFromRowAtIndexPath:(NSIndexPath *)sourceIndexPath toProposedIndexPath:(NSIndexPath *)proposedDestinationIndexPath {
+    return nil;
+}*/
+
+-(void)addNewTask{
+    NSMutableArray*arrayDefCat;
+    arrayDefCat = [self.tasksData objectAtIndex:DEF_T_IND_SECT];
+    [arrayDefCat addObject:[[MaTask alloc]init]];
+    [self.tasksTableView performSelectorOnMainThread:@selector(reloadData) withObject:nil waitUntilDone:NO];
 }
 
 /**

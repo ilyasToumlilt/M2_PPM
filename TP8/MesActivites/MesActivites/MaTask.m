@@ -7,6 +7,10 @@
 //
 
 #import "MaTask.h"
+#define DEF_T_TITLE @"Nouvelle tâche"
+#define DEF_T_SUBT @"..."
+#define DEF_T_PRIO 0
+
 
 @implementation MaTask
 
@@ -15,11 +19,10 @@
     self = [super init];
     
     if(self){
-        _title = [[NSMutableString alloc] initWithString:@"Nouvelle tache"];
-        _subtitle = [[NSMutableString alloc] initWithString:@"..."];
-        _priority = 0;
+        _title = [[NSMutableString alloc] initWithString:DEF_T_TITLE];
+        _subtitle = [[NSMutableString alloc] initWithString:DEF_T_SUBT];
+        _prio = DEF_T_PRIO;
         _picture = nil;
-        _idSection = 0;
     }
     
     return self;
