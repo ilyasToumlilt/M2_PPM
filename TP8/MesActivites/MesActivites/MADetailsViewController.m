@@ -51,6 +51,14 @@
     [[[[self navigationController] topViewController] navigationItem] setRightBarButtonItem:_pictureBarButtonItem];
     _pictureBarButtonItem.enabled = [UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera];
     
+    /* view's Background */
+    UIGraphicsBeginImageContext(self.view.frame.size);
+    [[UIImage imageNamed:@"fond-alu"] drawInRect:self.view.bounds];
+    UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    
+    self.view.backgroundColor = [UIColor colorWithPatternImage:image];
+    
     _currentTask = nil;
     
     [self drawSubviews:self.view.frame.size];
@@ -125,7 +133,7 @@
     
     /* puis on met à jour la vue */
     _titleTextField.text = _currentTask.title;
-    _prioritySC.selectedSegmentIndex = _currentTask.priority;
+    _prioritySC.selectedSegmentIndex = _currentTask.prio;
     if (_currentTask.picture) {
         _pictureImageView.image = _currentTask.picture;
     }
@@ -135,7 +143,7 @@
 - (void)prioritySCValueDidChanged:(UISegmentedControl*)sender
 {
     /* On met à jour la priorité de la tache */
-    [_currentTask setPriority:(int)sender.selectedSegmentIndex];
+    [_currentTask setPrio:(int)sender.selectedSegmentIndex];
     /* et on notifie le delegate */
     [_delegate retain];
     if([_delegate respondsToSelector:@selector(didUpdateDetails)]){
@@ -168,7 +176,7 @@
     } else {
         UIPopoverController* popover = [[UIPopoverController alloc] initWithContentViewController:picker];
         [popover presentPopoverFromBarButtonItem:_pictureBarButtonItem
-                        permittedArrowDirections:UIPopoverArrowDirectionDown
+                        permittedArrowDirections:UIPopoverArrowDirectionUp
                                         animated:YES];
     }
 }

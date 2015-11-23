@@ -13,7 +13,7 @@
 
 @property (nonatomic, retain) NSMutableString *title;
 @property (nonatomic, retain) NSMutableString *subtitle;
-@property (nonatomic, assign) int priority;
+@property (nonatomic, assign) int prio;
 @property (nonatomic, retain) UIImage *picture;
 @property (nonatomic, assign) int idSection;
 

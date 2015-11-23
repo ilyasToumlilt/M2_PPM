@@ -17,7 +17,7 @@
     if(self){
         _title = [[NSMutableString alloc] initWithString:@"Nouvelle tache"];
         _subtitle = [[NSMutableString alloc] initWithString:@"..."];
-        _priority = 0;
+        _prio = 0;
         _picture = nil;
         _idSection = 0;
     }
