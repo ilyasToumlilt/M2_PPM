@@ -35,7 +35,7 @@ BOOL editingMode;
     // Do any additional setup after loading the view.
     fermerDVC = YES;
     editingMode = NO;
-    [[self navigationItem] setTitle:@"Master"];
+    [[self navigationItem] setTitle:@"Liste de Tâches"];
         
     _tasksTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, 300,self.view.frame.size.height)];
     [_tasksTableView setDelegate:self];
@@ -173,7 +173,6 @@ BOOL editingMode;
 }
 
 - (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
-    NSLog(@"canMoveRowAtIndexPath");
     return YES;
 }
 
@@ -222,7 +221,6 @@ BOOL editingMode;
     editingMode=!editingMode;
     [self.tasksTableView setEditing:editingMode animated:YES];
     self.editTask.title = editingMode?EDIT_MODE_YES_TEXT:EDIT_MODE_NO_TEXT;
-    NSLog(@"%d",editingMode);
 }
 
 - (void)didUpdateDetails{
