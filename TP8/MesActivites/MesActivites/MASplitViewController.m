@@ -14,14 +14,26 @@
 
 @implementation MASplitViewController
 
+- (instancetype)init
+{
+    self = [super init];
+    
+    if( self ){
+        _masterVC = [[MAMasterViewController alloc] init];
+        _masterVC.splitVC = self;
+        
+        _detailsVC = [[MADetailsViewController alloc] init];
+        _detailsVC.splitVC = self;
+        
+        _masterVC.detailsVC = _detailsVC;
+    }
+    
+    return self;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    _masterVC = [[MAMasterViewController alloc] init];
-    _masterVC.splitVC = self;
-
-    _detailsVC = [[MADetailsViewController alloc] init];
-    _detailsVC.splitVC = self;
 }
 
 - (void)didReceiveMemoryWarning {

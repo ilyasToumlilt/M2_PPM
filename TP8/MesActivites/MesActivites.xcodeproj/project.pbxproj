@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		744AEADD1C035754003E994A /* MaTask.m in Sources */ = {isa = PBXBuildFile; fileRef = 744AEADC1C035754003E994A /* MaTask.m */; };
 		749208191C0255DD002379DE /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 749208181C0255DD002379DE /* main.m */; };
 		7492081C1C0255DD002379DE /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 7492081B1C0255DD002379DE /* AppDelegate.m */; };
 		7492081F1C0255DD002379DE /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7492081E1C0255DD002379DE /* ViewController.m */; };
@@ -30,6 +31,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		744AEADB1C035754003E994A /* MaTask.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MaTask.h; sourceTree = "<group>"; };
+		744AEADC1C035754003E994A /* MaTask.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MaTask.m; sourceTree = "<group>"; };
 		749208131C0255DD002379DE /* MesActivites.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MesActivites.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		749208171C0255DD002379DE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		749208181C0255DD002379DE /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -69,6 +72,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		745BD88F1C0356D2002566A2 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				744AEADB1C035754003E994A /* MaTask.h */,
+				744AEADC1C035754003E994A /* MaTask.m */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
 		7492080A1C0255DD002379DE = {
 			isa = PBXGroup;
 			children = (
@@ -104,6 +116,7 @@
 				D6E2EF431C03294400A82E11 /* MAMasterViewController.m */,
 				D6E2EF451C03295900A82E11 /* MADetailsViewController.h */,
 				D6E2EF461C03295900A82E11 /* MADetailsViewController.m */,
+				745BD88F1C0356D2002566A2 /* Model */,
 			);
 			path = MesActivites;
 			sourceTree = "<group>";
@@ -237,6 +250,7 @@
 				7492081F1C0255DD002379DE /* ViewController.m in Sources */,
 				7492081C1C0255DD002379DE /* AppDelegate.m in Sources */,
 				749208191C0255DD002379DE /* main.m in Sources */,
+				744AEADD1C035754003E994A /* MaTask.m in Sources */,
 				D6E2EF411C0328EE00A82E11 /* MASplitViewController.m in Sources */,
 				D6E2EF441C03294400A82E11 /* MAMasterViewController.m in Sources */,
 				D6E2EF471C03295900A82E11 /* MADetailsViewController.m in Sources */,

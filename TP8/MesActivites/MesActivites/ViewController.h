@@ -8,11 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UIViewController<UITableViewDataSource, UITableViewDelegate, UISplitViewControllerDelegate>
-
-@property (retain, nonatomic) UITableView* tasksTableView;
-@property (retain, nonatomic) UIViewController* detailsVC;
-@property (retain, nonatomic) NSMutableArray *tasksData;
+@interface ViewController : UIViewController
 
 @end
 

@@ -8,8 +8,15 @@
 
 #import <UIKit/UIKit.h>
 
+#ifndef __MA_DETAILS_VC_H__
+#define __MA_DETAILS_VC_H__
+
+@class MASplitViewController;
+
 @interface MADetailsViewController : UIViewController
 
 @property (readwrite, nonatomic, retain) MASplitViewController *splitVC;
 
 @end
+
+#endif

@@ -8,6 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
+#ifndef __MA_SPLIT_VC_H__
+#define __MA_SPLIT_VC_H__
+
 #import "MAMasterViewController.h"
 #import "MADetailsViewController.h"
 
@@ -17,3 +20,5 @@
 @property (readwrite, nonatomic, retain) MADetailsViewController* detailsVC;
 
 @end
+
+#endif
