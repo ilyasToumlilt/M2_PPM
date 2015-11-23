@@ -8,44 +8,61 @@
 
 #import "MAMasterViewController.h"
 #import "MASplitViewController.h"
+#import "MADetailsViewController.h"
 
 #define DEF_T_IND_SECT 3
 #define DEF_T_SECT_NAMES @[@"Vacances",@"Personnel",@"Urgent",@"Aujourd'hui"]
+
+#define EDIT_MODE_YES_TEXT @"Terminer"
+#define EDIT_MODE_NO_TEXT @"Modifier"
 
 
 @interface MAMasterViewController ()
 @property (nonatomic,retain)NSArray*sectsName;
 @property (nonatomic,retain)UIBarButtonItem*addTask;
-
+@property (nonatomic,retain)UIBarButtonItem*editTask;
+@property (nonatomic,retain)MaTask*selectedTask;
 @end
 
 @implementation MAMasterViewController
 
 BOOL fermerDVC;
+BOOL editingMode;
 
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     fermerDVC = YES;
+    editingMode = NO;
     [[self navigationItem] setTitle:@"Master"];
-    
-    self.view.backgroundColor = [UIColor yellowColor];
-    
+        
     _tasksTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, 300,self.view.frame.size.height)];
     [_tasksTableView setDelegate:self];
     [_tasksTableView setDataSource:self];
-    [_tasksTableView setEditing:YES animated:YES];
     [self.view addSubview:_tasksTableView];
     
-    self.addTask = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(addNewTask)];
+    self.detailsVC.delegate = self;
+    
+    self.editTask = [[UIBarButtonItem alloc]initWithTitle:EDIT_MODE_NO_TEXT style:UIBarButtonItemStylePlain target:self action:@selector(editTaskAction)];
+    [[self navigationItem]setLeftBarButtonItem:self.editTask];
+    
+    self.addTask = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(addNewTaskAction)];
     [[self navigationItem]setRightBarButtonItem:self.addTask];
     
     self.sectsName=DEF_T_SECT_NAMES;
     self.tasksData =[[NSMutableArray alloc]initWithCapacity:[self.sectsName count]];
     
+    
     for(int i=0; i<[self.sectsName count]; i++)
         [self.tasksData setObject:[[NSMutableArray alloc]init] atIndexedSubscript:i];
+    
+    [self.tasksTableView setBackgroundView:[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"fond-alu"]] ];
+    
+    /*TODO pourquoi pas updated ???
+    self.selectedTask = [self addNewTaskAction];
+    [self.splitVC.detailsVC updateDetailsViewWithTask:self.selectedTask];
+     */
 }
 
 - (void)didReceiveMemoryWarning {
@@ -127,10 +144,13 @@ BOOL fermerDVC;
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:simpleTableIdentifier];
     
     if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:simpleTableIdentifier];
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:simpleTableIdentifier];
     }
     
+    cell.backgroundView = [[UIImageView alloc] initWithImage:[ [UIImage imageNamed:@"bg-tableview-cell"] stretchableImageWithLeftCapWidth:0.0 topCapHeight:5.0] ];
+    cell.selectedBackgroundView = [[UIImageView alloc] initWithImage:[ [UIImage imageNamed:@"bg-tableview-cell-sel"] stretchableImageWithLeftCapWidth:0.0 topCapHeight:5.0] ];
     cell.textLabel.text = [[arrayCurSect objectAtIndex:indexPath.row] title];
+    cell.detailTextLabel.text = [NSString stringWithFormat:@"Priorité actuelle : %d", [[arrayCurSect objectAtIndex:indexPath.row] prio]];
     cell.imageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"prio-%d", [[arrayCurSect objectAtIndex:indexPath.row] prio]]];
     
     return cell;
@@ -141,8 +161,9 @@ BOOL fermerDVC;
 {
     NSMutableArray*arrayCurSect;
     arrayCurSect = [self.tasksData objectAtIndex:indexPath.section];
+    self.selectedTask = [arrayCurSect objectAtIndex:indexPath.row];
     
-    [self.splitVC.detailsVC updateDetailsViewWithTask:[arrayCurSect objectAtIndex:indexPath.row]];
+    [self.splitVC.detailsVC updateDetailsViewWithTask:self.selectedTask];
     
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone &&
         [[UIScreen mainScreen] scale] != 3.0) {
@@ -170,15 +191,40 @@ BOOL fermerDVC;
     [arraySourceCat removeObjectAtIndex:sourceIndexPath.row];
 }
 
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    NSMutableArray*arrayCurSect;
+    if (editingStyle == UITableViewCellEditingStyleDelete) {
+        arrayCurSect = [self.tasksData objectAtIndex:indexPath.section];
+        [arrayCurSect removeObjectAtIndex:indexPath.row];
+        [self didUpdateDetails];
+    }
+}
+
 /*
 - (NSIndexPath *)tableView:(UITableView *)tableView targetIndexPathForMoveFromRowAtIndexPath:(NSIndexPath *)sourceIndexPath toProposedIndexPath:(NSIndexPath *)proposedDestinationIndexPath {
     return nil;
 }*/
 
--(void)addNewTask{
+-(MaTask*)addNewTaskAction{
     NSMutableArray*arrayDefCat;
+    MaTask *newTask;
+
+    newTask = [[MaTask alloc]init];
     arrayDefCat = [self.tasksData objectAtIndex:DEF_T_IND_SECT];
-    [arrayDefCat addObject:[[MaTask alloc]init]];
+    [arrayDefCat addObject:newTask];
+    [self didUpdateDetails];
+    return newTask;
+}
+
+-(void)editTaskAction{
+    editingMode=!editingMode;
+    [self.tasksTableView setEditing:editingMode animated:YES];
+    self.editTask.title = editingMode?EDIT_MODE_YES_TEXT:EDIT_MODE_NO_TEXT;
+    NSLog(@"%d",editingMode);
+}
+
+- (void)didUpdateDetails{
     [self.tasksTableView performSelectorOnMainThread:@selector(reloadData) withObject:nil waitUntilDone:NO];
 }
 
