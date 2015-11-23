@@ -16,7 +16,7 @@
 
 @protocol MADetailsViewControllerDelegate;
 
-@interface MADetailsViewController : UIViewController<UIImagePickerControllerDelegate, UINavigationControllerDelegate>
+@interface MADetailsViewController : UIViewController<UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate>
 
 @property (nonatomic, assign) id<MADetailsViewControllerDelegate> delegate;
 

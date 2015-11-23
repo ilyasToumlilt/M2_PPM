@@ -40,6 +40,7 @@ BOOL editingMode;
     _tasksTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, 300,self.view.frame.size.height)];
     [_tasksTableView setDelegate:self];
     [_tasksTableView setDataSource:self];
+    [_tasksTableView setEditing:NO animated:YES];
     [self.view addSubview:_tasksTableView];
     
     self.detailsVC.delegate = self;
