@@ -8,6 +8,8 @@
 
 #import "MADetailsViewController.h"
 
+#import "MaTask.h"
+
 @interface MADetailsViewController ()
 
 @end
@@ -23,6 +25,11 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)updateDetailsViewWithTask:(MaTask *)task
+{
+    
 }
 
 /*
