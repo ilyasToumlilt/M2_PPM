@@ -16,11 +16,20 @@
 
 @protocol MADetailsViewControllerDelegate;
 
-@interface MADetailsViewController : UIViewController
+@interface MADetailsViewController : UIViewController<UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 
 @property (nonatomic, assign) id<MADetailsViewControllerDelegate> delegate;
 
 @property (readwrite, nonatomic, retain) MASplitViewController *splitVC;
+
+@property (nonatomic, retain) UILabel* titleLabel;
+@property (nonatomic, retain) UITextField* titleTextField;
+@property (nonatomic, retain) UILabel* priorityLabel;
+@property (nonatomic, retain) UISegmentedControl* prioritySC;
+@property (nonatomic, retain) UIImageView* pictureImageView;
+@property (nonatomic, retain) UIBarButtonItem* pictureBarButtonItem;
+
+@property (nonatomic, retain) MaTask* currentTask;
 
 - (void)updateDetailsViewWithTask:(MaTask*)task;
 
