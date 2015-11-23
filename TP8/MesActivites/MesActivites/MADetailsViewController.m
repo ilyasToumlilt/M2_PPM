@@ -26,6 +26,9 @@
     
     /* titleTextField Setup */
     _titleTextField = [[UITextField alloc] init];
+    [_titleTextField addTarget:self
+                        action:@selector(titleTextFieldDidChange:)
+              forControlEvents:UIControlEventEditingChanged];
     
     /* priorityLabel Setup */
     _priorityLabel = [[UILabel alloc] init];
@@ -40,6 +43,13 @@
     
     /* pictureImageview Setup */
     _pictureImageView = [[UIImageView alloc] init];
+    
+    /* pictureBarButtonItem */
+    _pictureBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCamera
+                                                                          target:self
+                                                                          action:@selector(pictureBarButtonClicked)];
+    [[[[self navigationController] topViewController] navigationItem] setRightBarButtonItem:_pictureBarButtonItem];
+    _pictureBarButtonItem.enabled = [UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera];
     
     _currentTask = nil;
     
@@ -108,11 +118,80 @@
 
 - (void)updateDetailsViewWithTask:(MaTask *)task
 {
+    /* on met à jour la référence de la tache currente */
+    if(_currentTask)
+        [_currentTask release];
+    _currentTask = [task retain];
+    
+    /* puis on met à jour la vue */
+    _titleTextField.text = _currentTask.title;
+    _prioritySC.selectedSegmentIndex = _currentTask.priority;
+    if (_currentTask.picture) {
+        _pictureImageView.image = _currentTask.picture;
+    }
     
 }
 
-- (void)prioritySCValueDidChanged:(id)sender
+- (void)prioritySCValueDidChanged:(UISegmentedControl*)sender
 {
+    /* On met à jour la priorité de la tache */
+    [_currentTask setPriority:(int)sender.selectedSegmentIndex];
+    /* et on notifie le delegate */
+    [_delegate retain];
+    if([_delegate respondsToSelector:@selector(didUpdateDetails)]){
+        [_delegate didUpdateDetails];
+    }
+    [_delegate release];
+}
+
+- (void)titleTextFieldDidChange:(UITextField*)sender
+{
+    /* Mise à jour du title de la tache */
+    [_currentTask setTitle:[sender.text copy]];
+    /* et on notifie le chef */
+    [_delegate retain];
+    if([_delegate respondsToSelector:@selector(didUpdateDetails)]){
+        [_delegate didUpdateDetails];
+    }
+    [_delegate release];
+}
+
+- (void)pictureBarButtonClicked
+{
+    UIImagePickerController *picker = [[UIImagePickerController alloc] init];
+    picker.delegate = self;
+    picker.allowsEditing = YES;
+    picker.sourceType = UIImagePickerControllerSourceTypeCamera;
+    
+    if([[UIDevice currentDevice]userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
+        [self presentViewController:picker animated:YES completion:NULL];
+    } else {
+        UIPopoverController* popover = [[UIPopoverController alloc] initWithContentViewController:picker];
+        [popover presentPopoverFromBarButtonItem:_pictureBarButtonItem
+                        permittedArrowDirections:UIPopoverArrowDirectionDown
+                                        animated:YES];
+    }
+}
+
+/************************************************************************************************
+ * UIImagePickerControllerDelegate Methods
+ ***********************************************************************************************/
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
+    
+    UIImage *chosenImage = info[UIImagePickerControllerEditedImage];
+    if( _currentTask ){
+        /* mise à jour de la picture de la tache courante */
+        _currentTask.picture = [chosenImage retain];
+        _pictureImageView.image = _currentTask.picture;
+    }
+    
+    [picker dismissViewControllerAnimated:YES completion:NULL];
+    
+}
+
+- (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker {
+    
+    [picker dismissViewControllerAnimated:YES completion:NULL];
     
 }
 
@@ -132,6 +211,8 @@
 - (void)dealloc
 {
     [_splitVC release];
+    [_currentTask release];
+    [_pictureBarButtonItem release];
     
     [super dealloc];
 }

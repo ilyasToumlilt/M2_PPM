@@ -16,7 +16,7 @@
 
 @protocol MADetailsViewControllerDelegate;
 
-@interface MADetailsViewController : UIViewController
+@interface MADetailsViewController : UIViewController<UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 
 @property (nonatomic, assign) id<MADetailsViewControllerDelegate> delegate;
 
@@ -27,6 +27,7 @@
 @property (nonatomic, retain) UILabel* priorityLabel;
 @property (nonatomic, retain) UISegmentedControl* prioritySC;
 @property (nonatomic, retain) UIImageView* pictureImageView;
+@property (nonatomic, retain) UIBarButtonItem* pictureBarButtonItem;
 
 @property (nonatomic, retain) MaTask* currentTask;
 
