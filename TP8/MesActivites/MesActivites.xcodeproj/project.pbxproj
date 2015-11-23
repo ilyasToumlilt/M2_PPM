@@ -14,6 +14,9 @@
 		749208241C0255DD002379DE /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 749208231C0255DD002379DE /* Images.xcassets */; };
 		749208271C0255DD002379DE /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 749208251C0255DD002379DE /* LaunchScreen.xib */; };
 		749208331C0255DE002379DE /* MesActivitesTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 749208321C0255DE002379DE /* MesActivitesTests.m */; };
+		D6E2EF411C0328EE00A82E11 /* MASplitViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D6E2EF401C0328EE00A82E11 /* MASplitViewController.m */; };
+		D6E2EF441C03294400A82E11 /* MAMasterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D6E2EF431C03294400A82E11 /* MAMasterViewController.m */; };
+		D6E2EF471C03295900A82E11 /* MADetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D6E2EF461C03295900A82E11 /* MADetailsViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,6 +43,12 @@
 		7492082C1C0255DE002379DE /* MesActivitesTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MesActivitesTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		749208311C0255DE002379DE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		749208321C0255DE002379DE /* MesActivitesTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MesActivitesTests.m; sourceTree = "<group>"; };
+		D6E2EF3F1C0328EE00A82E11 /* MASplitViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MASplitViewController.h; sourceTree = "<group>"; };
+		D6E2EF401C0328EE00A82E11 /* MASplitViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MASplitViewController.m; sourceTree = "<group>"; };
+		D6E2EF421C03294400A82E11 /* MAMasterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MAMasterViewController.h; sourceTree = "<group>"; };
+		D6E2EF431C03294400A82E11 /* MAMasterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MAMasterViewController.m; sourceTree = "<group>"; };
+		D6E2EF451C03295900A82E11 /* MADetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MADetailsViewController.h; sourceTree = "<group>"; };
+		D6E2EF461C03295900A82E11 /* MADetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MADetailsViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,6 +98,12 @@
 				749208231C0255DD002379DE /* Images.xcassets */,
 				749208251C0255DD002379DE /* LaunchScreen.xib */,
 				749208161C0255DD002379DE /* Supporting Files */,
+				D6E2EF3F1C0328EE00A82E11 /* MASplitViewController.h */,
+				D6E2EF401C0328EE00A82E11 /* MASplitViewController.m */,
+				D6E2EF421C03294400A82E11 /* MAMasterViewController.h */,
+				D6E2EF431C03294400A82E11 /* MAMasterViewController.m */,
+				D6E2EF451C03295900A82E11 /* MADetailsViewController.h */,
+				D6E2EF461C03295900A82E11 /* MADetailsViewController.m */,
 			);
 			path = MesActivites;
 			sourceTree = "<group>";
@@ -222,6 +237,9 @@
 				7492081F1C0255DD002379DE /* ViewController.m in Sources */,
 				7492081C1C0255DD002379DE /* AppDelegate.m in Sources */,
 				749208191C0255DD002379DE /* main.m in Sources */,
+				D6E2EF411C0328EE00A82E11 /* MASplitViewController.m in Sources */,
+				D6E2EF441C03294400A82E11 /* MAMasterViewController.m in Sources */,
+				D6E2EF471C03295900A82E11 /* MADetailsViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -420,6 +438,7 @@
 				749208381C0255DE002379DE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		749208391C0255DE002379DE /* Build configuration list for PBXNativeTarget "MesActivitesTests" */ = {
 			isa = XCConfigurationList;
@@ -428,6 +447,7 @@
 				7492083B1C0255DE002379DE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
