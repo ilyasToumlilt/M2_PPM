@@ -19,11 +19,21 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     ViewController* myVC = [[ViewController alloc] init];
-    UINavigationController* myNC = [[UINavigationController alloc] initWithRootViewController:myVC];
-    [_window setRootViewController:myNC];
-    [_window makeKeyAndVisible];
-    [myVC release];
-    [myNC release];
+    if ( [[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone ) {
+        UINavigationController* myNC = [[UINavigationController alloc] initWithRootViewController:myVC];
+        [_window setRootViewController:myNC];
+        [_window makeKeyAndVisible];
+        [myVC release];
+        [myNC release];
+    } else {
+        UISplitViewController* mySVC = [[UISplitViewController alloc] init];
+        
+        [[myVC view] setFrame:CGRectMake(0,
+                                        0,
+                                        [[UIScreen mainScreen] bounds].size.width / 3,
+                                         [[UIScreen mainScreen] bounds].size.height)];
+        
+    }
     return YES;
 }
 
