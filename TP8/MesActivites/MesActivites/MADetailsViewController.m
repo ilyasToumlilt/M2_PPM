@@ -12,6 +12,8 @@
 
 @interface MADetailsViewController ()
 
+@property (nonatomic, assign) id currentResponder;
+
 @end
 
 @implementation MADetailsViewController
@@ -29,6 +31,14 @@
     [_titleTextField addTarget:self
                         action:@selector(titleTextFieldDidChange:)
               forControlEvents:UIControlEventEditingChanged];
+    [_titleTextField setBorderStyle:UITextBorderStyleRoundedRect];
+    [_titleTextField setClearButtonMode:UITextFieldViewModeAlways];
+    
+    UITapGestureRecognizer *singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(resignOnTap:)];
+    [singleTap setNumberOfTapsRequired:1];
+    [singleTap setNumberOfTouchesRequired:1];
+    [self.view addGestureRecognizer:singleTap];
+    [singleTap release];
     
     /* priorityLabel Setup */
     _priorityLabel = [[UILabel alloc] init];
@@ -97,13 +107,13 @@
     _titleLabel.frame = CGRectMake(V_BORDERLINE,
                                    H_BORDERLINE,
                                    48,
-                                   20);
+                                   30);
     
     /* titleTextField */
     _titleTextField.frame = CGRectMake(V_BORDERLINE + 50,
                                        H_BORDERLINE,
                                        frame.width - (2*V_BORDERLINE) - 50,
-                                       20);
+                                       30);
     
     /* priorityLabel */
     _priorityLabel.frame = CGRectMake(V_BORDERLINE,
@@ -162,6 +172,15 @@
         [_delegate didUpdateDetails];
     }
     [_delegate release];
+}
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+    [textField resignFirstResponder];
+    return YES;
+}
+
+- (void)resignOnTap:(id)iSender {
+    [_titleTextField resignFirstResponder];
 }
 
 - (void)pictureBarButtonClicked

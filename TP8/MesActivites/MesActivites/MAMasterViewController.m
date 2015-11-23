@@ -35,7 +35,7 @@ BOOL fermerDVC;
     _tasksTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, 300,self.view.frame.size.height)];
     [_tasksTableView setDelegate:self];
     [_tasksTableView setDataSource:self];
-    [_tasksTableView setEditing:YES animated:YES];
+    [_tasksTableView setEditing:NO animated:YES];
     [self.view addSubview:_tasksTableView];
     
     self.addTask = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(addNewTask)];
