@@ -183,6 +183,8 @@
     _prioritySC.selectedSegmentIndex = _currentTask.prio;
     if (_currentTask.picture) {
         _pictureImageView.image = _currentTask.picture;
+    } else {
+        _pictureImageView.image = nil;
     }
     
 }
