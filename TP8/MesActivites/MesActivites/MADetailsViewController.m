@@ -104,19 +104,18 @@
                                  frame.width,
                                  frame.height);
     
-    /* titleLabel */
-    _titleLabel.frame = CGRectMake(V_BORDERLINE,
-                                   H_BORDERLINE,
-                                   48,
-                                   30);
-    
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone &&
         [[UIScreen mainScreen] scale] != 3.0 &&
         frame.height < frame.width) {
         /* iPhones, non 6+, en paysage */
+        /* titleLabel */
+        _titleLabel.frame = CGRectMake(V_BORDERLINE,
+                                       50,
+                                       48,
+                                       30);
         /* titleTextField */
         _titleTextField.frame = CGRectMake(V_BORDERLINE,
-                                           H_BORDERLINE + _titleLabel.frame.size.height + DFLT_PADDING,
+                                           50 + _titleLabel.frame.size.height + DFLT_PADDING,
                                            (frame.width/2) - V_BORDERLINE - 2,
                                            30);
         /* priorityLabel */
@@ -125,17 +124,22 @@
                                           70,
                                           20);
         /* prioritySC */
-        _priorityLabel.frame = CGRectMake(V_BORDERLINE,
+        _prioritySC.frame = CGRectMake(V_BORDERLINE,
                                           _priorityLabel.frame.origin.y + _priorityLabel.frame.size.height + DFLT_PADDING,
                                           (frame.width/2)-V_BORDERLINE-2,
                                           30);
         /* pictureImageView */
-        _pictureImageView.frame = CGRectMake((frame.width/2)+V_BORDERLINE+2,
+        _pictureImageView.frame = CGRectMake((frame.width/2)+2,
                                              H_BORDERLINE,
                                              (frame.width/2)-V_BORDERLINE,
-                                             frame.height - H_BORDERLINE - DFLT_PADDING);
+                                             frame.height - 50 - DFLT_PADDING);
         
     } else {
+        /* titleLabel */
+        _titleLabel.frame = CGRectMake(V_BORDERLINE,
+                                       H_BORDERLINE,
+                                       48,
+                                       30);
         /* titleTextField */
         _titleTextField.frame = CGRectMake(V_BORDERLINE + 50,
                                            H_BORDERLINE,
@@ -155,7 +159,7 @@
                                        30);
         
         /* pictureImageView */
-        _pictureImageView.frame = CGRectMake(V_BORDERLINE,
+        _pictureImageView.frame = CGRectMake(V_BORDERLINE ,
                                              _prioritySC.frame.origin.y + _prioritySC.frame.size.height + DFLT_PADDING,
                                              frame.width - (2*V_BORDERLINE),
                                              frame.height - (_priorityLabel.frame.origin.y + _priorityLabel.frame.size.height + DFLT_PADDING) - 60);
