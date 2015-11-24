@@ -66,7 +66,6 @@
     [[UIImage imageNamed:@"fond-alu"] drawInRect:self.view.bounds];
     UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
-    
     self.view.backgroundColor = [UIColor colorWithPatternImage:image];
     
     _currentTask = nil;

@@ -37,10 +37,11 @@ BOOL editingMode;
     editingMode = NO;
     [[self navigationItem] setTitle:@"Liste de Tâches"];
         
-    _tasksTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, 300,self.view.frame.size.height)];
+    _tasksTableView = [[UITableView alloc] init];
     [_tasksTableView setDelegate:self];
     [_tasksTableView setDataSource:self];
     [_tasksTableView setEditing:NO animated:YES];
+    [self drawTasksTableView];
     [self.view addSubview:_tasksTableView];
     
     self.detailsVC.delegate = self;
@@ -64,6 +65,20 @@ BOOL editingMode;
     self.selectedTask = [self addNewTaskAction];
     [self.splitVC.detailsVC updateDetailsViewWithTask:self.selectedTask];
      */
+}
+
+- (void)drawTasksTableView
+{
+    CGSize size = [[[[self navigationController] topViewController] view] frame].size;
+    _tasksTableView.frame = CGRectMake(0,
+                                 0,
+                                 size.width,
+                                 size.height);
+}
+
+- (void)viewDidLayoutSubviews
+{
+    [self drawTasksTableView];
 }
 
 - (void)didReceiveMemoryWarning {
