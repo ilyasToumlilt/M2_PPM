@@ -145,19 +145,16 @@
                                            H_BORDERLINE,
                                            frame.width - (2*V_BORDERLINE) - 50,
                                            30);
-        
         /* priorityLabel */
         _priorityLabel.frame = CGRectMake(V_BORDERLINE,
                                           H_BORDERLINE + _titleLabel.frame.size.height + DFLT_PADDING,
                                           70,
                                           20);
-        
         /* prioritySC */
         _prioritySC.frame = CGRectMake(V_BORDERLINE,
                                        _priorityLabel.frame.origin.y + _priorityLabel.frame.size.height + DFLT_PADDING,
                                        frame.width - (2*V_BORDERLINE),
                                        30);
-        
         /* pictureImageView */
         _pictureImageView.frame = CGRectMake(V_BORDERLINE ,
                                              _prioritySC.frame.origin.y + _prioritySC.frame.size.height + DFLT_PADDING,
