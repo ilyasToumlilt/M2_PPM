@@ -98,6 +98,7 @@
 #define DFLT_PADDING 20
 - (void)drawSubviews:(CGSize)frame
 {
+    
     self.view.frame = CGRectMake(0,
                                  0,
                                  frame.width,
@@ -109,29 +110,61 @@
                                    48,
                                    30);
     
-    /* titleTextField */
-    _titleTextField.frame = CGRectMake(V_BORDERLINE + 50,
-                                       H_BORDERLINE,
-                                       frame.width - (2*V_BORDERLINE) - 50,
+    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone &&
+        [[UIScreen mainScreen] scale] != 3.0 &&
+        frame.height < frame.width) {
+        /* iPhones, non 6+, en paysage */
+        /* titleTextField */
+        _titleTextField.frame = CGRectMake(V_BORDERLINE,
+                                           H_BORDERLINE + _titleLabel.frame.size.height + DFLT_PADDING,
+                                           (frame.width/2) - V_BORDERLINE - 2,
+                                           30);
+        /* priorityLabel */
+        _priorityLabel.frame = CGRectMake(V_BORDERLINE,
+                                          _titleTextField.frame.origin.y + _titleTextField.frame.size.height + DFLT_PADDING,
+                                          70,
+                                          20);
+        /* prioritySC */
+        _priorityLabel.frame = CGRectMake(V_BORDERLINE,
+                                          _priorityLabel.frame.origin.y + _priorityLabel.frame.size.height + DFLT_PADDING,
+                                          (frame.width/2)-V_BORDERLINE-2,
+                                          30);
+        /* pictureImageView */
+        _pictureImageView.frame = CGRectMake((frame.width/2)+V_BORDERLINE+2,
+                                             H_BORDERLINE,
+                                             (frame.width/2)-V_BORDERLINE,
+                                             frame.height - H_BORDERLINE - DFLT_PADDING);
+        
+    } else {
+        /* titleTextField */
+        _titleTextField.frame = CGRectMake(V_BORDERLINE + 50,
+                                           H_BORDERLINE,
+                                           frame.width - (2*V_BORDERLINE) - 50,
+                                           30);
+        
+        /* priorityLabel */
+        _priorityLabel.frame = CGRectMake(V_BORDERLINE,
+                                          H_BORDERLINE + _titleLabel.frame.size.height + DFLT_PADDING,
+                                          70,
+                                          20);
+        
+        /* prioritySC */
+        _prioritySC.frame = CGRectMake(V_BORDERLINE,
+                                       _priorityLabel.frame.origin.y + _priorityLabel.frame.size.height + DFLT_PADDING,
+                                       frame.width - (2*V_BORDERLINE),
                                        30);
-    
-    /* priorityLabel */
-    _priorityLabel.frame = CGRectMake(V_BORDERLINE,
-                                      H_BORDERLINE + _titleLabel.frame.size.height + DFLT_PADDING,
-                                      70,
-                                      20);
-    
-    /* prioritySC */
-    _prioritySC.frame = CGRectMake(V_BORDERLINE,
-                                   _priorityLabel.frame.origin.y + _priorityLabel.frame.size.height + DFLT_PADDING,
-                                   frame.width - (2*V_BORDERLINE),
-                                   30);
-    
-    /* pictureImageView */
-    _pictureImageView.frame = CGRectMake(V_BORDERLINE,
-                                         _prioritySC.frame.origin.y + _prioritySC.frame.size.height + DFLT_PADDING,
-                                         frame.width - (2*V_BORDERLINE),
-                                         frame.height - (_priorityLabel.frame.origin.y + _priorityLabel.frame.size.height + DFLT_PADDING) - 60);
+        
+        /* pictureImageView */
+        _pictureImageView.frame = CGRectMake(V_BORDERLINE,
+                                             _prioritySC.frame.origin.y + _prioritySC.frame.size.height + DFLT_PADDING,
+                                             frame.width - (2*V_BORDERLINE),
+                                             frame.height - (_priorityLabel.frame.origin.y + _priorityLabel.frame.size.height + DFLT_PADDING) - 60);
+    }
+}
+
+- (void)viewDidLayoutSubviews
+{
+    [self drawSubviews:[[[[self navigationController] topViewController] view] frame].size];
 }
 
 - (void)updateDetailsViewWithTask:(MaTask *)task

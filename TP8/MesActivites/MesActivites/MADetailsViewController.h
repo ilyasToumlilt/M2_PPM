@@ -32,6 +32,7 @@
 @property (nonatomic, retain) MaTask* currentTask;
 
 - (void)updateDetailsViewWithTask:(MaTask*)task;
+- (void)drawSubviews:(CGSize)frame;
 
 @end
 
