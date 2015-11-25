@@ -54,11 +54,15 @@
     /* pictureImageview Setup */
     _pictureImageView = [[UIImageView alloc] init];
     
-    /* pictureBarButtonItem */
+    /* On crée les Items Button pour la barre du navigation controller */
     _pictureBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCamera
                                                                           target:self
                                                                           action:@selector(pictureBarButtonClicked)];
-    [[[[self navigationController] topViewController] navigationItem] setRightBarButtonItem:_pictureBarButtonItem];
+    _galleryBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemOrganize
+                                                                          target:self
+                                                                          action:@selector(galleryBarButtonClicked)];
+    [[[[self navigationController] topViewController] navigationItem] setRightBarButtonItems:[NSArray arrayWithObjects:_pictureBarButtonItem, _galleryBarButtonItem, nil]];
+    
     _pictureBarButtonItem.enabled = [UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera];
     
     /* view's Background */
@@ -238,6 +242,23 @@
     } else {
         UIPopoverController* popover = [[UIPopoverController alloc] initWithContentViewController:picker];
         [popover presentPopoverFromBarButtonItem:_pictureBarButtonItem
+                        permittedArrowDirections:UIPopoverArrowDirectionUp
+                                        animated:YES];
+    }
+}
+
+- (void)galleryBarButtonClicked
+{
+    UIImagePickerController *picker = [[UIImagePickerController alloc] init];
+    picker.delegate = self;
+    picker.allowsEditing = YES;
+    picker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+    
+    if([[UIDevice currentDevice]userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
+        [self presentViewController:picker animated:YES completion:NULL];
+    } else {
+        UIPopoverController* popover = [[UIPopoverController alloc] initWithContentViewController:picker];
+        [popover presentPopoverFromBarButtonItem:_galleryBarButtonItem
                         permittedArrowDirections:UIPopoverArrowDirectionUp
                                         animated:YES];
     }

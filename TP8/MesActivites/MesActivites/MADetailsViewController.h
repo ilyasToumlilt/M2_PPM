@@ -28,6 +28,7 @@
 @property (nonatomic, retain) UISegmentedControl* prioritySC;
 @property (nonatomic, retain) UIImageView* pictureImageView;
 @property (nonatomic, retain) UIBarButtonItem* pictureBarButtonItem;
+@property (nonatomic, retain) UIBarButtonItem* galleryBarButtonItem;
 
 @property (nonatomic, retain) MaTask* currentTask;
 
