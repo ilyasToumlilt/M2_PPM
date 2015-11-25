@@ -59,6 +59,8 @@ BOOL editingMode;
     for(int i=0; i<[self.sectsName count]; i++)
         [self.tasksData setObject:[[NSMutableArray alloc]init] atIndexedSubscript:i];
     
+    [self initTasksData];
+    
     [self.tasksTableView setBackgroundView:[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"fond-alu"]] ];
     
     /*TODO pourquoi pas updated ???
@@ -74,6 +76,51 @@ BOOL editingMode;
                                  0,
                                  size.width,
                                  size.height);
+}
+
+/**
+ * On va mettre des taches de base
+ * pour ne pas avoir une appli vide au lancement
+ */
+- (void)initTasksData
+{
+    MaTask *newTask;
+    
+    /* Section 0 */
+    newTask = [[MaTask alloc] init];
+    newTask.title = [NSMutableString stringWithFormat:@"Dîner de famille"];
+    newTask.prio  = 2;
+    [[self.tasksData objectAtIndex:0] addObject:newTask];
+    
+    newTask = [[MaTask alloc] init];
+    newTask.title = [NSMutableString stringWithFormat:@"Anniversaire Camille"];
+    newTask.prio  = 0;
+    [[self.tasksData objectAtIndex:0] addObject:newTask];
+    
+    /* Section 1 */
+    newTask = [[MaTask alloc] init];
+    newTask.title = [NSMutableString stringWithFormat:@"Visite dentiste"];
+    newTask.prio  = 3;
+    [[self.tasksData objectAtIndex:1] addObject:newTask];
+    
+    /* Section 2 */
+    newTask = [[MaTask alloc] init];
+    newTask.title = [NSMutableString stringWithFormat:@"Soumettre PPM"];
+    newTask.prio  = 3;
+    [[self.tasksData objectAtIndex:2] addObject:newTask];
+    
+    /* Section 3 */
+    newTask = [[MaTask alloc] init];
+    newTask.title = [NSMutableString stringWithFormat:@"Faire les courses"];
+    newTask.prio  = 1;
+    [[self.tasksData objectAtIndex:3] addObject:newTask];
+    
+    newTask = [[MaTask alloc] init];
+    newTask.title = [NSMutableString stringWithFormat:@"Livre bibliothèque"];
+    newTask.prio  = 4;
+    [[self.tasksData objectAtIndex:3] addObject:newTask];
+    
+    [self didUpdateDetails];
 }
 
 - (void)viewDidLayoutSubviews
@@ -248,7 +295,7 @@ BOOL editingMode;
 - (void)dealloc
 {
     [_tasksTableView release];
-    [_tasksData release];
+    [_tasksData release]; /* TODO il faut aussi release les tableaux et les taches à chaque cell */
     [_detailsVC release];
     [_splitVC release];
     
