@@ -145,6 +145,16 @@ BOOL editingMode;
 }
 */
 
+- (void)tableView:(UITableView *)tableView willDisplayHeaderView:(UIView *)view forSection:(NSInteger)section
+{
+    if([view isKindOfClass:[UITableViewHeaderFooterView class]]){
+        
+        UITableViewHeaderFooterView *tableViewHeaderFooterView = (UITableViewHeaderFooterView *) view;
+        tableViewHeaderFooterView.textLabel.textColor = [UIColor whiteColor];
+        tableViewHeaderFooterView.backgroundView = [[UIImageView alloc] initWithImage:[ [UIImage imageNamed:@"bg-header"] stretchableImageWithLeftCapWidth:0.0 topCapHeight:5.0] ];
+    }
+}
+
 /************************************************************************************************
  * UISplitViewControllerDelegate Methods
  ***********************************************************************************************/
