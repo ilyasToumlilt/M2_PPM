@@ -69,6 +69,10 @@
     self.view.backgroundColor = [UIColor colorWithPatternImage:image];
     
     _currentTask = nil;
+    [_delegate retain];
+    if( [_delegate respondsToSelector:@selector(getInitialTask)] )
+        _currentTask = [_delegate getInitialTask];
+    [_delegate release];
     
     [self drawSubviews:self.view.frame.size];
     
@@ -78,6 +82,9 @@
     [self.view addSubview:_priorityLabel];
     [self.view addSubview:_prioritySC];
     [self.view addSubview:_pictureImageView];
+    
+    /* maj des views */
+    [self updateDetailsViewWithTask:_currentTask];
 
     /* releasing stuff */
     [_titleLabel release];
@@ -85,6 +92,7 @@
     [_priorityLabel release];
     [_prioritySC release];
     [_pictureImageView release];
+
 }
 
 - (void)didReceiveMemoryWarning {

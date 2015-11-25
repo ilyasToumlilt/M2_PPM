@@ -39,6 +39,7 @@
 @protocol MADetailsViewControllerDelegate <NSObject>
 
 - (void)didUpdateDetails;
+- (MaTask*)getInitialTask;
 
 @end
 

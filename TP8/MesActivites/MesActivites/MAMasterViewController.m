@@ -92,6 +92,8 @@ BOOL editingMode;
     newTask.prio  = 2;
     [[self.tasksData objectAtIndex:0] addObject:newTask];
     
+    self.selectedTask = newTask;
+    
     newTask = [[MaTask alloc] init];
     newTask.title = [NSMutableString stringWithFormat:@"Anniversaire Camille"];
     newTask.prio  = 0;
@@ -285,8 +287,16 @@ BOOL editingMode;
     self.editTask.title = editingMode?EDIT_MODE_YES_TEXT:EDIT_MODE_NO_TEXT;
 }
 
+/************************************************************************************************
+ * MADetailsViewControllerDelegate Methods
+ ***********************************************************************************************/
 - (void)didUpdateDetails{
     [self.tasksTableView performSelectorOnMainThread:@selector(reloadData) withObject:nil waitUntilDone:NO];
+}
+
+- (MaTask*)getInitialTask
+{
+    return [[self.tasksData objectAtIndex:0] objectAtIndex:0];
 }
 
 /**
