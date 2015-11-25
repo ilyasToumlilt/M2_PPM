@@ -121,12 +121,12 @@
         /* iPhones, non 6+, en paysage */
         /* titleLabel */
         _titleLabel.frame = CGRectMake(V_BORDERLINE,
-                                       50,
+                                       H_BORDERLINE,
                                        48,
                                        30);
         /* titleTextField */
         _titleTextField.frame = CGRectMake(V_BORDERLINE,
-                                           50 + _titleLabel.frame.size.height + DFLT_PADDING,
+                                           H_BORDERLINE + _titleLabel.frame.size.height + 5,
                                            (frame.width/2) - V_BORDERLINE - 2,
                                            30);
         /* priorityLabel */
@@ -136,14 +136,14 @@
                                           20);
         /* prioritySC */
         _prioritySC.frame = CGRectMake(V_BORDERLINE,
-                                          _priorityLabel.frame.origin.y + _priorityLabel.frame.size.height + DFLT_PADDING,
+                                          _priorityLabel.frame.origin.y + _priorityLabel.frame.size.height + 5,
                                           (frame.width/2)-V_BORDERLINE-2,
                                           30);
         /* pictureImageView */
         _pictureImageView.frame = CGRectMake((frame.width/2)+2,
                                              H_BORDERLINE,
-                                             (frame.width/2)-V_BORDERLINE,
-                                             frame.height - 50 - DFLT_PADDING);
+                                             (frame.width/2)-10,
+                                             frame.height - H_BORDERLINE - 10);
         
     } else {
         /* titleLabel */
@@ -238,7 +238,7 @@
     picker.sourceType = UIImagePickerControllerSourceTypeCamera;
     
     if([[UIDevice currentDevice]userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
-        [self presentViewController:picker animated:YES completion:NULL];
+        [self.view.window.rootViewController presentViewController:picker animated:YES completion:NULL];
     } else {
         UIPopoverController* popover = [[UIPopoverController alloc] initWithContentViewController:picker];
         [popover presentPopoverFromBarButtonItem:_pictureBarButtonItem
@@ -255,7 +255,7 @@
     picker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
     
     if([[UIDevice currentDevice]userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
-        [self presentViewController:picker animated:YES completion:NULL];
+        [self.view.window.rootViewController presentViewController:picker animated:YES completion:NULL];
     } else {
         UIPopoverController* popover = [[UIPopoverController alloc] initWithContentViewController:picker];
         [popover presentPopoverFromBarButtonItem:_galleryBarButtonItem
