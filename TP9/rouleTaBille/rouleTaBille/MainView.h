@@ -1,5 +1,5 @@
 //
-//  ViewController.h
+//  MainView.h
 //  rouleTaBille
 //
 //  Created by m2sar on 30/11/2015.
@@ -8,11 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-#import "MainView.h"
+@interface MainView : UIView
 
-@interface ViewController : UIViewController
-
-@property (nonatomic, retain) MainView* myView;
+- (void)displayNextBackgroundImage;
 
 @end
-

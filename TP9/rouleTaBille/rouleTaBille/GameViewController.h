@@ -1,5 +1,5 @@
 //
-//  ViewController.h
+//  GameViewController.h
 //  rouleTaBille
 //
 //  Created by m2sar on 30/11/2015.
@@ -8,11 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-#import "MainView.h"
-
-@interface ViewController : UIViewController
-
-@property (nonatomic, retain) MainView* myView;
+@interface GameViewController : UIViewController
 
 @end
-

@@ -14,6 +14,9 @@
 		D6E1DEEC1C0C811A001AF544 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D6E1DEEB1C0C811A001AF544 /* Images.xcassets */; };
 		D6E1DEEF1C0C811A001AF544 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = D6E1DEED1C0C811A001AF544 /* LaunchScreen.xib */; };
 		D6E1DEFB1C0C811B001AF544 /* rouleTaBilleTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D6E1DEFA1C0C811B001AF544 /* rouleTaBilleTests.m */; };
+		D6E1DF061C0C83F3001AF544 /* GameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D6E1DF051C0C83F3001AF544 /* GameViewController.m */; };
+		D6E1DF091C0C841A001AF544 /* GameView.m in Sources */ = {isa = PBXBuildFile; fileRef = D6E1DF081C0C841A001AF544 /* GameView.m */; };
+		D6E1DF0C1C0C8469001AF544 /* MainView.m in Sources */ = {isa = PBXBuildFile; fileRef = D6E1DF0B1C0C8469001AF544 /* MainView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,6 +43,12 @@
 		D6E1DEF41C0C811B001AF544 /* rouleTaBilleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = rouleTaBilleTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D6E1DEF91C0C811B001AF544 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D6E1DEFA1C0C811B001AF544 /* rouleTaBilleTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = rouleTaBilleTests.m; sourceTree = "<group>"; };
+		D6E1DF041C0C83F3001AF544 /* GameViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameViewController.h; sourceTree = "<group>"; };
+		D6E1DF051C0C83F3001AF544 /* GameViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameViewController.m; sourceTree = "<group>"; };
+		D6E1DF071C0C841A001AF544 /* GameView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameView.h; sourceTree = "<group>"; };
+		D6E1DF081C0C841A001AF544 /* GameView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameView.m; sourceTree = "<group>"; };
+		D6E1DF0A1C0C8469001AF544 /* MainView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainView.h; sourceTree = "<group>"; };
+		D6E1DF0B1C0C8469001AF544 /* MainView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,6 +94,9 @@
 				D6E1DEE31C0C811A001AF544 /* AppDelegate.m */,
 				D6E1DEE51C0C811A001AF544 /* ViewController.h */,
 				D6E1DEE61C0C811A001AF544 /* ViewController.m */,
+				D6E1DF0A1C0C8469001AF544 /* MainView.h */,
+				D6E1DF0B1C0C8469001AF544 /* MainView.m */,
+				D6E1DF0D1C0C8F44001AF544 /* Game */,
 				D6E1DEE81C0C811A001AF544 /* Main.storyboard */,
 				D6E1DEEB1C0C811A001AF544 /* Images.xcassets */,
 				D6E1DEED1C0C811A001AF544 /* LaunchScreen.xib */,
@@ -117,6 +129,17 @@
 				D6E1DEF91C0C811B001AF544 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		D6E1DF0D1C0C8F44001AF544 /* Game */ = {
+			isa = PBXGroup;
+			children = (
+				D6E1DF041C0C83F3001AF544 /* GameViewController.h */,
+				D6E1DF051C0C83F3001AF544 /* GameViewController.m */,
+				D6E1DF071C0C841A001AF544 /* GameView.h */,
+				D6E1DF081C0C841A001AF544 /* GameView.m */,
+			);
+			name = Game;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -219,9 +242,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D6E1DF061C0C83F3001AF544 /* GameViewController.m in Sources */,
+				D6E1DF091C0C841A001AF544 /* GameView.m in Sources */,
 				D6E1DEE71C0C811A001AF544 /* ViewController.m in Sources */,
 				D6E1DEE41C0C811A001AF544 /* AppDelegate.m in Sources */,
 				D6E1DEE11C0C811A001AF544 /* main.m in Sources */,
+				D6E1DF0C1C0C8469001AF544 /* MainView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -349,6 +375,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_OBJC_ARC = NO;
 				INFOPLIST_FILE = rouleTaBille/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -359,6 +386,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_OBJC_ARC = NO;
 				INFOPLIST_FILE = rouleTaBille/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
