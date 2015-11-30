@@ -9,10 +9,12 @@
 #import <UIKit/UIKit.h>
 #import "GameView.h"
 #import "GameTimerView.h"
+#import "GameScoreView.h"
 
 @interface GameViewController : UIViewController<GameTimerViewDelegate>
 
 @property (nonatomic, retain) GameView* myView;
 @property (nonatomic, retain) GameTimerView* myTimerView;
+@property (nonatomic, retain) GameScoreView* myScoreView;
 
 @end

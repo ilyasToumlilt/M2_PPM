@@ -28,6 +28,7 @@
  * View's Setup
  ************************************************************************************/
 #define DEFAULT_TIME 60 /* en secondes */
+#define DEFAULT_SCORE 0
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -44,13 +45,22 @@
                                                 andTime:DEFAULT_TIME];
     _myTimerView.delegate = self;
     
+    /* GameScoreView */
+    _myScoreView = [[GameScoreView alloc] initWithFrame:CGRectMake(self.view.frame.size.width - 70,
+                                                                   20,
+                                                                   60,
+                                                                   30)
+                                               andScore:DEFAULT_SCORE];
+    
     /* adding my cool subviews */
     [self.view addSubview:_myView];
     [self.view addSubview:_myTimerView];
+    [self.view addSubview:_myScoreView];
     
     /* releasing stuff */
     [_myView release];
     [_myTimerView release];
+    [_myScoreView release];
 }
 
 /*************************************************************************************
