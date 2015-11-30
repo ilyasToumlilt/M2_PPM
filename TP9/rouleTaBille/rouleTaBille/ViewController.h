@@ -10,11 +10,13 @@
 
 #import "MainView.h"
 #import "GameViewController.h"
+#import "StartGameAlertView.h"
 
 @interface ViewController : UIViewController
 
 @property (nonatomic, retain) MainView* myView;
 @property (nonatomic, retain) GameViewController* myGameVC;
+@property (nonatomic, retain) StartGameAlertView* startGameAlertV;
 
 @end
 

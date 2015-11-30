@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D64B1BE51C0CE1870090F9D8 /* StartGameAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = D64B1BE41C0CE1870090F9D8 /* StartGameAlertView.m */; };
 		D6E1DEE11C0C811A001AF544 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D6E1DEE01C0C811A001AF544 /* main.m */; };
 		D6E1DEE41C0C811A001AF544 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D6E1DEE31C0C811A001AF544 /* AppDelegate.m */; };
 		D6E1DEE71C0C811A001AF544 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D6E1DEE61C0C811A001AF544 /* ViewController.m */; };
@@ -32,6 +33,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		D64B1BE31C0CE1870090F9D8 /* StartGameAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StartGameAlertView.h; sourceTree = "<group>"; };
+		D64B1BE41C0CE1870090F9D8 /* StartGameAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StartGameAlertView.m; sourceTree = "<group>"; };
 		D6E1DEDB1C0C811A001AF544 /* rouleTaBille.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = rouleTaBille.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D6E1DEDF1C0C811A001AF544 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D6E1DEE01C0C811A001AF544 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -75,6 +78,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		D64B1BE21C0CE11D0090F9D8 /* AlertViews */ = {
+			isa = PBXGroup;
+			children = (
+				D64B1BE31C0CE1870090F9D8 /* StartGameAlertView.h */,
+				D64B1BE41C0CE1870090F9D8 /* StartGameAlertView.m */,
+			);
+			name = AlertViews;
+			sourceTree = "<group>";
+		};
 		D6E1DED21C0C811A001AF544 = {
 			isa = PBXGroup;
 			children = (
@@ -102,6 +114,7 @@
 				D6E1DEE61C0C811A001AF544 /* ViewController.m */,
 				D6E1DF0A1C0C8469001AF544 /* MainView.h */,
 				D6E1DF0B1C0C8469001AF544 /* MainView.m */,
+				D64B1BE21C0CE11D0090F9D8 /* AlertViews */,
 				D6E1DF0D1C0C8F44001AF544 /* Game */,
 				D6E1DEE81C0C811A001AF544 /* Main.storyboard */,
 				D6E1DEEB1C0C811A001AF544 /* Images.xcassets */,
@@ -259,6 +272,7 @@
 				D6E1DEE71C0C811A001AF544 /* ViewController.m in Sources */,
 				D6E1DEE41C0C811A001AF544 /* AppDelegate.m in Sources */,
 				D6E1DEE11C0C811A001AF544 /* main.m in Sources */,
+				D64B1BE51C0CE1870090F9D8 /* StartGameAlertView.m in Sources */,
 				D6E1DF0C1C0C8469001AF544 /* MainView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -458,6 +472,7 @@
 				D6E1DF001C0C811B001AF544 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		D6E1DF011C0C811B001AF544 /* Build configuration list for PBXNativeTarget "rouleTaBilleTests" */ = {
 			isa = XCConfigurationList;
@@ -466,6 +481,7 @@
 				D6E1DF031C0C811B001AF544 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

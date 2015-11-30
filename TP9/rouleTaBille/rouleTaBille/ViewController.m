@@ -27,12 +27,17 @@
     /* GameVC */
     _myGameVC = [[GameViewController alloc] init];
     
+    /* startGameAlertView */
+    _startGameAlertV = [[StartGameAlertView alloc] init];
+    
     /* adding my cool subviews */
     [self.view addSubview:_myView];
     [self.view addSubview:_myGameVC.view];
+    [self.view addSubview:_startGameAlertV];
     
     /* releasing stuff */
     [_myView release];
+    [_startGameAlertV release];
 }
 
 - (void)viewDidAppear:(BOOL)animated
