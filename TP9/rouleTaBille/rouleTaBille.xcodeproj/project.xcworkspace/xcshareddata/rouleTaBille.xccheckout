@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>C0399F32-3714-4664-AE2A-4D2346C2FEAE</string>
+	<key>IDESourceControlProjectName</key>
+	<string>project</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>64DC7D400DC141324DF6FA903FF9D32D61040ABB</key>
+		<string>https://github.com/ilyasToumlilt/M2_PPM.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>TP9/rouleTaBille/rouleTaBille.xcodeproj/project.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>64DC7D400DC141324DF6FA903FF9D32D61040ABB</key>
+		<string>../../../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/ilyasToumlilt/M2_PPM.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>64DC7D400DC141324DF6FA903FF9D32D61040ABB</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>64DC7D400DC141324DF6FA903FF9D32D61040ABB</string>
+			<key>IDESourceControlWCCName</key>
+			<string>M2_PPM</string>
+		</dict>
+	</array>
+</dict>
+</plist>
