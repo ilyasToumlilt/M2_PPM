@@ -15,7 +15,7 @@
 @implementation ViewController
 
 /*************************************************************************************
- * View's methods
+ * View's Setup
  ************************************************************************************/
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -24,12 +24,15 @@
     /* mainView */
     _myView = [[MainView alloc] initWithFrame:self.view.frame];
     
+    /* GameVC */
+    _myGameVC = [[GameViewController alloc] init];
+    
     /* adding my cool subviews */
     [self.view addSubview:_myView];
+    [self.view addSubview:_myGameVC.view];
     
     /* releasing stuff */
     [_myView release];
-    
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -45,11 +48,6 @@
     [super viewDidDisappear:NO];
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
 /*************************************************************************************
  * Responder
  ************************************************************************************/
@@ -59,7 +57,7 @@
     return YES;
 }
 
--(void)motionBegan:(UIEventSubtype)motion withEvent:(UIEvent *)event
+- (void)motionBegan:(UIEventSubtype)motion withEvent:(UIEvent *)event
 {
     if (motion == UIEventSubtypeMotionShake )
     {
@@ -67,9 +65,17 @@
     }
 }
 
+/*************************************************************************************
+ * I love Memory
+ ************************************************************************************/
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
 
 - (void)dealloc
 {
+    [_myGameVC release];
     
     [super dealloc];
 }

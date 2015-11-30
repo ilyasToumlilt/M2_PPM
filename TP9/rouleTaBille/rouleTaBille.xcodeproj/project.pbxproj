@@ -17,6 +17,7 @@
 		D6E1DF061C0C83F3001AF544 /* GameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D6E1DF051C0C83F3001AF544 /* GameViewController.m */; };
 		D6E1DF091C0C841A001AF544 /* GameView.m in Sources */ = {isa = PBXBuildFile; fileRef = D6E1DF081C0C841A001AF544 /* GameView.m */; };
 		D6E1DF0C1C0C8469001AF544 /* MainView.m in Sources */ = {isa = PBXBuildFile; fileRef = D6E1DF0B1C0C8469001AF544 /* MainView.m */; };
+		D6E1DF101C0C93AB001AF544 /* GameTimerView.m in Sources */ = {isa = PBXBuildFile; fileRef = D6E1DF0F1C0C93AB001AF544 /* GameTimerView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +50,8 @@
 		D6E1DF081C0C841A001AF544 /* GameView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameView.m; sourceTree = "<group>"; };
 		D6E1DF0A1C0C8469001AF544 /* MainView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainView.h; sourceTree = "<group>"; };
 		D6E1DF0B1C0C8469001AF544 /* MainView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainView.m; sourceTree = "<group>"; };
+		D6E1DF0E1C0C93AB001AF544 /* GameTimerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameTimerView.h; sourceTree = "<group>"; };
+		D6E1DF0F1C0C93AB001AF544 /* GameTimerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameTimerView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -138,6 +141,8 @@
 				D6E1DF051C0C83F3001AF544 /* GameViewController.m */,
 				D6E1DF071C0C841A001AF544 /* GameView.h */,
 				D6E1DF081C0C841A001AF544 /* GameView.m */,
+				D6E1DF0E1C0C93AB001AF544 /* GameTimerView.h */,
+				D6E1DF0F1C0C93AB001AF544 /* GameTimerView.m */,
 			);
 			name = Game;
 			sourceTree = "<group>";
@@ -243,6 +248,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D6E1DF061C0C83F3001AF544 /* GameViewController.m in Sources */,
+				D6E1DF101C0C93AB001AF544 /* GameTimerView.m in Sources */,
 				D6E1DF091C0C841A001AF544 /* GameView.m in Sources */,
 				D6E1DEE71C0C811A001AF544 /* ViewController.m in Sources */,
 				D6E1DEE41C0C811A001AF544 /* AppDelegate.m in Sources */,

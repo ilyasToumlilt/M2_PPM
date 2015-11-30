@@ -9,10 +9,12 @@
 #import <UIKit/UIKit.h>
 
 #import "MainView.h"
+#import "GameViewController.h"
 
 @interface ViewController : UIViewController
 
 @property (nonatomic, retain) MainView* myView;
+@property (nonatomic, retain) GameViewController* myGameVC;
 
 @end
 
