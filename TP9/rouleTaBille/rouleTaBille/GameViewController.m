@@ -27,7 +27,7 @@
 /*************************************************************************************
  * View's Setup
  ************************************************************************************/
-#define DEFAULT_TIME 10 /* en secondes */
+#define DEFAULT_TIME 180 /* en secondes */
 #define DEFAULT_SCORE 0
 
 - (void)viewDidLoad {
@@ -52,6 +52,16 @@
                                                                    30)
                                                andScore:DEFAULT_SCORE];
     
+    /* motionManager */
+    _motionManager = [[CMMotionManager alloc] init];
+    _motionManager.accelerometerUpdateInterval = .2;
+    [_motionManager startAccelerometerUpdatesToQueue:[NSOperationQueue currentQueue] withHandler:^(CMAccelerometerData  *accelerometerData, NSError *error) {
+        [self gravityUpdated:accelerometerData.acceleration];
+        if(error){
+            NSLog(@"%@", error);
+        }
+    }];
+    
     /* adding my cool subviews */
     [self.view addSubview:_myView];
     [self.view addSubview:_myTimerView];
@@ -63,6 +73,11 @@
     [_myScoreView release];
 }
 
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [_motionManager stopAccelerometerUpdates];
+}
+
 /*************************************************************************************
  * Game Setup
  ************************************************************************************/
@@ -71,6 +86,8 @@
     _myScoreView.score = DEFAULT_SCORE;
     _myTimerView.remainingTime = DEFAULT_TIME;
     [_myTimerView startTimer];
+    [_myView newGame];
+    _myView.collision.collisionDelegate = self;
 }
 
 /*************************************************************************************
@@ -85,11 +102,34 @@
     [_delegate release];
 }
 
+/********************************************************************************************
+ * UICollisionBehaviorDelegate
+ *******************************************************************************************/
+- (void)collisionBehavior:(UICollisionBehavior *)behavior beganContactForItem:(id<UIDynamicItem>)item
+   withBoundaryIdentifier:(id<NSCopying>)identifier atPoint:(CGPoint)p {
+    NSString* tmp = [NSString stringWithFormat:@"%@", identifier];
+    NSLog(@"--->%@", tmp);
+}
+
+/********************************************************************************************
+ * MotionManager
+ *******************************************************************************************/
+- (void)gravityUpdated:(CMAcceleration)acceleration
+{
+    CGFloat x = (CGFloat)acceleration.x;
+    CGFloat y = (CGFloat)acceleration.y * -1.0;
+    
+    CGVector v = CGVectorMake(x, y);
+
+    _myView.gravity.gravityDirection = v;
+}
+
 /*************************************************************************************
  * Memory Setup
  ************************************************************************************/
 - (void)dealloc
 {
+    [_motionManager release];
     
     [super dealloc];
 }

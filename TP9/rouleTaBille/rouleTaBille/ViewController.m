@@ -60,6 +60,15 @@
     [super viewDidDisappear:NO];
 }
 
+- (BOOL)shouldAutorotate
+{
+    return NO;
+}
+
+- (BOOL)prefersStatusBarHidden{
+    return YES;
+}
+
 /*************************************************************************************
  * Responder
  ************************************************************************************/
