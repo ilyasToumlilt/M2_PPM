@@ -18,6 +18,7 @@
 @property (nonatomic, assign) int remainingTime;
 
 - (instancetype)initWithFrame:(CGRect)frame andTime:(int)seconds;
+- (void)startTimer;
 
 @end
 

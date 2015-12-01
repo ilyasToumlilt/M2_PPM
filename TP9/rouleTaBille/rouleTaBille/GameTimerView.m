@@ -36,13 +36,6 @@
         _timeLabel.textColor = [UIColor whiteColor];
         _timeLabel.font = [_timeLabel.font fontWithSize:35.0];
         
-        /* NSTimer */
-        _myTimer = [NSTimer scheduledTimerWithTimeInterval:1.0
-                                                    target:self
-                                                  selector:@selector(timerHandler:)
-                                                  userInfo:nil
-                                                   repeats:YES];
-        
         [self addSubview:_timeLabel];
         
         [_timeLabel release];
@@ -54,6 +47,16 @@
 /*************************************************************************************
  * Timer Handling
  ************************************************************************************/
+- (void)startTimer
+{
+    [self updateTimeLabel];
+    _myTimer = [NSTimer scheduledTimerWithTimeInterval:1.0
+                                                target:self
+                                              selector:@selector(timerHandler:)
+                                              userInfo:nil
+                                               repeats:YES];
+}
+
 /**
  * Methode appelée par le NSTimer, toutes les secondes
  */

@@ -77,6 +77,7 @@
 - (void)startGameTimerEnded
 {
     [_startGameAlertV hideView];
+    [_myGameVC startGame];
 }
 
 /*************************************************************************************

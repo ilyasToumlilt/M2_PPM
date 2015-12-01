@@ -17,4 +17,6 @@
 @property (nonatomic, retain) GameTimerView* myTimerView;
 @property (nonatomic, retain) GameScoreView* myScoreView;
 
+- (void)startGame;
+
 @end

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		743919E01C0DBB8000A63E72 /* EndGameAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 743919DF1C0DBB8000A63E72 /* EndGameAlertView.m */; };
 		D64B1BE51C0CE1870090F9D8 /* StartGameAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = D64B1BE41C0CE1870090F9D8 /* StartGameAlertView.m */; };
 		D6E1DEE11C0C811A001AF544 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D6E1DEE01C0C811A001AF544 /* main.m */; };
 		D6E1DEE41C0C811A001AF544 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D6E1DEE31C0C811A001AF544 /* AppDelegate.m */; };
@@ -33,6 +34,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		743919DE1C0DBB8000A63E72 /* EndGameAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EndGameAlertView.h; sourceTree = "<group>"; };
+		743919DF1C0DBB8000A63E72 /* EndGameAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EndGameAlertView.m; sourceTree = "<group>"; };
 		D64B1BE31C0CE1870090F9D8 /* StartGameAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StartGameAlertView.h; sourceTree = "<group>"; };
 		D64B1BE41C0CE1870090F9D8 /* StartGameAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StartGameAlertView.m; sourceTree = "<group>"; };
 		D6E1DEDB1C0C811A001AF544 /* rouleTaBille.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = rouleTaBille.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -83,6 +86,8 @@
 			children = (
 				D64B1BE31C0CE1870090F9D8 /* StartGameAlertView.h */,
 				D64B1BE41C0CE1870090F9D8 /* StartGameAlertView.m */,
+				743919DE1C0DBB8000A63E72 /* EndGameAlertView.h */,
+				743919DF1C0DBB8000A63E72 /* EndGameAlertView.m */,
 			);
 			name = AlertViews;
 			sourceTree = "<group>";
@@ -272,6 +277,7 @@
 				D6E1DEE71C0C811A001AF544 /* ViewController.m in Sources */,
 				D6E1DEE41C0C811A001AF544 /* AppDelegate.m in Sources */,
 				D6E1DEE11C0C811A001AF544 /* main.m in Sources */,
+				743919E01C0DBB8000A63E72 /* EndGameAlertView.m in Sources */,
 				D64B1BE51C0CE1870090F9D8 /* StartGameAlertView.m in Sources */,
 				D6E1DF0C1C0C8469001AF544 /* MainView.m in Sources */,
 			);
