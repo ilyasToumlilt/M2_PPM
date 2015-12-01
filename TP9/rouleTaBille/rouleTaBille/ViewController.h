@@ -12,7 +12,7 @@
 #import "GameViewController.h"
 #import "StartGameAlertView.h"
 
-@interface ViewController : UIViewController
+@interface ViewController : UIViewController<StartGameAlertViewDelegate>
 
 @property (nonatomic, retain) MainView* myView;
 @property (nonatomic, retain) GameViewController* myGameVC;

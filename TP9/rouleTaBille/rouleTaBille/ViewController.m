@@ -29,6 +29,7 @@
     
     /* startGameAlertView */
     _startGameAlertV = [[StartGameAlertView alloc] init];
+    _startGameAlertV.delegate = self;
     
     /* adding my cool subviews */
     [self.view addSubview:_myView];
@@ -68,6 +69,14 @@
     {
         [_myView displayNextBackgroundImage];
     }
+}
+
+/*************************************************************************************
+ * I am a GameTimerViewDelegate :-)
+ ************************************************************************************/
+- (void)startGameTimerEnded
+{
+    [_startGameAlertV hideView];
 }
 
 /*************************************************************************************

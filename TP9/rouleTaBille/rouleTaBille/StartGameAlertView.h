@@ -8,6 +8,19 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol StartGameAlertViewDelegate;
+
 @interface StartGameAlertView : UIView
+
+@property (nonatomic, assign) id<StartGameAlertViewDelegate> delegate;
+
+- (void)showView;
+- (void)hideView;
+
+@end
+
+@protocol StartGameAlertViewDelegate <NSObject>
+
+- (void)startGameTimerEnded;
 
 @end

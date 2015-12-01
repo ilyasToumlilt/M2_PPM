@@ -61,6 +61,13 @@
         _counterLabel.font = [_counterLabel.font fontWithSize:30];
         [self updateCounterLabel];
         
+        /* NSTimer */
+        _myTimer = [NSTimer scheduledTimerWithTimeInterval:1.0
+                                                    target:self
+                                                  selector:@selector(timerHandler:)
+                                                  userInfo:nil
+                                                   repeats:YES];
+        
         /* Adding my amazing subviews */
         [self addSubview:_instructionsLabel];
         [self addSubview:_counterLabel];
@@ -78,4 +85,34 @@
     _counterLabel.text = [NSString stringWithFormat:@"%d", _counter];
 }
 
+- (void)showView
+{
+    self.hidden = NO;
+}
+
+- (void)hideView
+{
+    self.hidden = YES;
+}
+
+/*************************************************************************************
+ * Timer Handling
+ ************************************************************************************/
+/**
+ * Methode appelée par le NSTimer, toutes les secondes
+ */
+- (void)timerHandler:(NSTimer*)timer
+{
+    _counter--;
+    [self updateCounterLabel];
+    if(!_counter){
+        [_myTimer invalidate];
+        _myTimer = nil;
+        [_delegate retain];
+        if([_delegate respondsToSelector:@selector(startGameTimerEnded)]){
+            [_delegate startGameTimerEnded];
+        }
+        [_delegate release];
+    }
+}
 @end
