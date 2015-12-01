@@ -115,4 +115,5 @@
         [_delegate release];
     }
 }
+
 @end

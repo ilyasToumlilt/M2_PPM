@@ -11,12 +11,22 @@
 #import "GameTimerView.h"
 #import "GameScoreView.h"
 
+@protocol GameViewControllerDelegate;
+
 @interface GameViewController : UIViewController<GameTimerViewDelegate>
+
+@property (nonatomic, assign) id<GameViewControllerDelegate> delegate;
 
 @property (nonatomic, retain) GameView* myView;
 @property (nonatomic, retain) GameTimerView* myTimerView;
 @property (nonatomic, retain) GameScoreView* myScoreView;
 
 - (void)startGame;
+
+@end
+
+@protocol GameViewControllerDelegate <NSObject>
+
+- (void)gameEndedWithScore:(int)score;
 
 @end

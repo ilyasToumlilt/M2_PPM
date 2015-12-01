@@ -26,19 +26,25 @@
     
     /* GameVC */
     _myGameVC = [[GameViewController alloc] init];
+    _myGameVC.delegate = self;
     
     /* startGameAlertView */
     _startGameAlertV = [[StartGameAlertView alloc] init];
     _startGameAlertV.delegate = self;
     
+    /* endGameAlertView */
+    _endGameAlertV = [[EndGameAlertView alloc] init];
+    
     /* adding my cool subviews */
     [self.view addSubview:_myView];
     [self.view addSubview:_myGameVC.view];
     [self.view addSubview:_startGameAlertV];
+    [self.view addSubview:_endGameAlertV];
     
     /* releasing stuff */
     [_myView release];
     [_startGameAlertV release];
+    [_endGameAlertV release];
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -78,6 +84,14 @@
 {
     [_startGameAlertV hideView];
     [_myGameVC startGame];
+}
+
+/*************************************************************************************
+ * I am a GameViewControllerDelegate :-)
+ ************************************************************************************/
+- (void)gameEndedWithScore:(int)score
+{
+    [_endGameAlertV showViewWithScore:score];
 }
 
 /*************************************************************************************

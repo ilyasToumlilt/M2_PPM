@@ -27,7 +27,7 @@
 /*************************************************************************************
  * View's Setup
  ************************************************************************************/
-#define DEFAULT_TIME 60 /* en secondes */
+#define DEFAULT_TIME 10 /* en secondes */
 #define DEFAULT_SCORE 0
 
 - (void)viewDidLoad {
@@ -78,7 +78,11 @@
  ************************************************************************************/
 - (void)gameTimerEndNotification
 {
-    NSLog(@"Game Ended");
+    [_delegate retain];
+    if([_delegate respondsToSelector:@selector(gameEndedWithScore:)]){
+        [_delegate gameEndedWithScore:_myScoreView.score];
+    }
+    [_delegate release];
 }
 
 /*************************************************************************************
