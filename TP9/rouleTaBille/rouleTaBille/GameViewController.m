@@ -8,6 +8,15 @@
 
 #import "GameViewController.h"
 
+@interface GameViewController ()<NSLocking> {
+    NSLock* myLock;
+}
+
+@property (atomic, assign) BOOL upLock;
+
+
+@end
+
 @implementation GameViewController
 
 /*************************************************************************************
@@ -18,7 +27,8 @@
     self = [super init];
     
     if(self){
-        /* Nothing To Do pour le moment */
+        _upLock = NO;
+        myLock = [[NSLock alloc] init];
     }
     
     return self;
@@ -27,7 +37,7 @@
 /*************************************************************************************
  * View's Setup
  ************************************************************************************/
-#define DEFAULT_TIME 180 /* en secondes */
+#define DEFAULT_TIME 60 /* en secondes */
 #define DEFAULT_SCORE 0
 
 - (void)viewDidLoad {
@@ -54,7 +64,7 @@
     
     /* motionManager */
     _motionManager = [[CMMotionManager alloc] init];
-    _motionManager.accelerometerUpdateInterval = .2;
+    _motionManager.accelerometerUpdateInterval = .05;
     [_motionManager startAccelerometerUpdatesToQueue:[NSOperationQueue currentQueue] withHandler:^(CMAccelerometerData  *accelerometerData, NSError *error) {
         [self gravityUpdated:accelerometerData.acceleration];
         if(error){
@@ -84,10 +94,23 @@
 - (void)startGame
 {
     _myScoreView.score = DEFAULT_SCORE;
+    [_myScoreView updateScoreLabel];
     _myTimerView.remainingTime = DEFAULT_TIME;
     [_myTimerView startTimer];
     [_myView newGame];
     _myView.collision.collisionDelegate = self;
+    [_myView drawNewEtoileWithId:0];
+}
+
+- (void)restartGame
+{
+    _myScoreView.score = DEFAULT_SCORE;
+    [_myScoreView updateScoreLabel];
+    _myTimerView.remainingTime = DEFAULT_TIME;
+    [_myTimerView startTimer];
+    [_myView restartGame];
+    _myView.collision.collisionDelegate = self;
+    [_myView drawNewEtoileWithId:0];
 }
 
 /*************************************************************************************
@@ -97,6 +120,7 @@
 {
     [_delegate retain];
     if([_delegate respondsToSelector:@selector(gameEndedWithScore:)]){
+        [_myView stopGame];
         [_delegate gameEndedWithScore:_myScoreView.score];
     }
     [_delegate release];
@@ -107,8 +131,19 @@
  *******************************************************************************************/
 - (void)collisionBehavior:(UICollisionBehavior *)behavior beganContactForItem:(id<UIDynamicItem>)item
    withBoundaryIdentifier:(id<NSCopying>)identifier atPoint:(CGPoint)p {
-    NSString* tmp = [NSString stringWithFormat:@"%@", identifier];
-    NSLog(@"--->%@", tmp);
+    @synchronized(myLock){
+        NSString* tmp = [NSString stringWithFormat:@"%@", identifier];
+        if(item == _myView.billeView ){
+            if([tmp isEqualToString:@"etoileView"]){
+                /* collision avec l'étoile */
+                [_myScoreView incrementScore];
+                [_myView drawNewEtoileWithId:_myScoreView.score];
+            } else {
+                /* collision avec les bordures */
+                [_myView sonMur];
+            }
+        }
+    }
 }
 
 /********************************************************************************************
@@ -116,12 +151,26 @@
  *******************************************************************************************/
 - (void)gravityUpdated:(CMAcceleration)acceleration
 {
-    CGFloat x = (CGFloat)acceleration.x;
+    CGFloat x = (CGFloat)acceleration.x * 1.0;
     CGFloat y = (CGFloat)acceleration.y * -1.0;
+    
     
     CGVector v = CGVectorMake(x, y);
 
     _myView.gravity.gravityDirection = v;
+}
+
+/********************************************************************************************
+ * NSLock
+ *******************************************************************************************/
+- (void)lock
+{
+    [myLock lock];
+}
+
+- (void)unlock
+{
+    [myLock unlock];
 }
 
 /*************************************************************************************
@@ -130,6 +179,7 @@
 - (void)dealloc
 {
     [_motionManager release];
+    [myLock release];
     
     [super dealloc];
 }

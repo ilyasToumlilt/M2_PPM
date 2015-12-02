@@ -87,6 +87,7 @@
  */
 - (void)showViewWithScore:(int)score
 {
+    _scoreLabel.text = [NSString stringWithFormat:@"Score : %d", score];
     self.hidden = NO;
 }
 

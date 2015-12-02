@@ -17,5 +17,6 @@
 - (instancetype)initWithFrame:(CGRect)frame andScore:(int)score;
 
 - (void)incrementScore;
+- (void)updateScoreLabel;
 
 @end

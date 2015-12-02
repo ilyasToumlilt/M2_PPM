@@ -26,6 +26,7 @@
 @property (nonatomic, retain) CMMotionManager *motionManager;
 
 - (void)startGame;
+- (void)restartGame;
 
 @end
 

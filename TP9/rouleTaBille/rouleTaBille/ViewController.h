@@ -13,7 +13,7 @@
 #import "StartGameAlertView.h"
 #import "EndGameAlertView.h"
 
-@interface ViewController : UIViewController<StartGameAlertViewDelegate, GameViewControllerDelegate>
+@interface ViewController : UIViewController<StartGameAlertViewDelegate, GameViewControllerDelegate, EndGameAlertViewDelegate>
 
 @property (nonatomic, retain) MainView* myView;
 @property (nonatomic, retain) GameViewController* myGameVC;

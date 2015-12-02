@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		743919E01C0DBB8000A63E72 /* EndGameAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 743919DF1C0DBB8000A63E72 /* EndGameAlertView.m */; };
+		D6266A6E1C0F8C99004809D8 /* midnight-ride-01a.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D6266A6A1C0F8C99004809D8 /* midnight-ride-01a.mp3 */; };
+		D6266A6F1C0F8C99004809D8 /* son-etoile.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D6266A6B1C0F8C99004809D8 /* son-etoile.mp3 */; };
+		D6266A701C0F8C99004809D8 /* son.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D6266A6C1C0F8C99004809D8 /* son.mp3 */; };
+		D6266A711C0F8C99004809D8 /* squeeze-toy-1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D6266A6D1C0F8C99004809D8 /* squeeze-toy-1.mp3 */; };
 		D64B1BE51C0CE1870090F9D8 /* StartGameAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = D64B1BE41C0CE1870090F9D8 /* StartGameAlertView.m */; };
 		D6E1DEE11C0C811A001AF544 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D6E1DEE01C0C811A001AF544 /* main.m */; };
 		D6E1DEE41C0C811A001AF544 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D6E1DEE31C0C811A001AF544 /* AppDelegate.m */; };
@@ -36,6 +40,10 @@
 /* Begin PBXFileReference section */
 		743919DE1C0DBB8000A63E72 /* EndGameAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EndGameAlertView.h; sourceTree = "<group>"; };
 		743919DF1C0DBB8000A63E72 /* EndGameAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EndGameAlertView.m; sourceTree = "<group>"; };
+		D6266A6A1C0F8C99004809D8 /* midnight-ride-01a.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "midnight-ride-01a.mp3"; sourceTree = "<group>"; };
+		D6266A6B1C0F8C99004809D8 /* son-etoile.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "son-etoile.mp3"; sourceTree = "<group>"; };
+		D6266A6C1C0F8C99004809D8 /* son.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = son.mp3; sourceTree = "<group>"; };
+		D6266A6D1C0F8C99004809D8 /* squeeze-toy-1.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "squeeze-toy-1.mp3"; sourceTree = "<group>"; };
 		D64B1BE31C0CE1870090F9D8 /* StartGameAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StartGameAlertView.h; sourceTree = "<group>"; };
 		D64B1BE41C0CE1870090F9D8 /* StartGameAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StartGameAlertView.m; sourceTree = "<group>"; };
 		D6E1DEDB1C0C811A001AF544 /* rouleTaBille.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = rouleTaBille.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -125,6 +133,10 @@
 				D6E1DEEB1C0C811A001AF544 /* Images.xcassets */,
 				D6E1DEED1C0C811A001AF544 /* LaunchScreen.xib */,
 				D6E1DEDE1C0C811A001AF544 /* Supporting Files */,
+				D6266A6A1C0F8C99004809D8 /* midnight-ride-01a.mp3 */,
+				D6266A6B1C0F8C99004809D8 /* son-etoile.mp3 */,
+				D6266A6C1C0F8C99004809D8 /* son.mp3 */,
+				D6266A6D1C0F8C99004809D8 /* squeeze-toy-1.mp3 */,
 			);
 			path = rouleTaBille;
 			sourceTree = "<group>";
@@ -251,8 +263,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				D6E1DEEA1C0C811A001AF544 /* Main.storyboard in Resources */,
+				D6266A6F1C0F8C99004809D8 /* son-etoile.mp3 in Resources */,
 				D6E1DEEF1C0C811A001AF544 /* LaunchScreen.xib in Resources */,
+				D6266A711C0F8C99004809D8 /* squeeze-toy-1.mp3 in Resources */,
+				D6266A701C0F8C99004809D8 /* son.mp3 in Resources */,
 				D6E1DEEC1C0C811A001AF544 /* Images.xcassets in Resources */,
+				D6266A6E1C0F8C99004809D8 /* midnight-ride-01a.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

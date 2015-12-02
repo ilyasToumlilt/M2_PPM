@@ -34,6 +34,7 @@
     
     /* endGameAlertView */
     _endGameAlertV = [[EndGameAlertView alloc] init];
+    _endGameAlertV.delegate = self;
     
     /* adding my cool subviews */
     [self.view addSubview:_myView];
@@ -69,6 +70,20 @@
     return YES;
 }
 
+- (NSUInteger) supportedInterfaceOrientations {
+    // Return a bitmask of supported orientations. If you need more,
+    // use bitwise or (see the commented return).
+    return UIInterfaceOrientationMaskPortrait;
+    // return UIInterfaceOrientationMaskPortrait | UIInterfaceOrientationMaskPortraitUpsideDown;
+}
+
+- (UIInterfaceOrientation) preferredInterfaceOrientationForPresentation {
+    // Return the orientation you'd prefer - this is what it launches to. The
+    // user can still rotate. You don't have to implement this method, in which
+    // case it launches in the current orientation
+    return UIInterfaceOrientationPortrait;
+}
+
 /*************************************************************************************
  * Responder
  ************************************************************************************/
@@ -101,6 +116,14 @@
 - (void)gameEndedWithScore:(int)score
 {
     [_endGameAlertV showViewWithScore:score];
+}
+
+/*************************************************************************************
+ * I am a EndGameAlertViewDelegate :-)
+ ************************************************************************************/
+- (void)restartNewGameEvent
+{
+    [_myGameVC restartGame];
 }
 
 /*************************************************************************************
