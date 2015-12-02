@@ -37,10 +37,11 @@ BOOL editingMode;
     editingMode = NO;
     [[self navigationItem] setTitle:@"Liste de Tâches"];
         
-    _tasksTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, 300,self.view.frame.size.height)];
+    _tasksTableView = [[UITableView alloc] init];
     [_tasksTableView setDelegate:self];
     [_tasksTableView setDataSource:self];
     [_tasksTableView setEditing:NO animated:YES];
+    [self drawTasksTableView];
     [self.view addSubview:_tasksTableView];
     
     self.detailsVC.delegate = self;
@@ -58,12 +59,75 @@ BOOL editingMode;
     for(int i=0; i<[self.sectsName count]; i++)
         [self.tasksData setObject:[[NSMutableArray alloc]init] atIndexedSubscript:i];
     
+    [self initTasksData];
+    
     [self.tasksTableView setBackgroundView:[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"fond-alu"]] ];
     
     /*TODO pourquoi pas updated ???
     self.selectedTask = [self addNewTaskAction];
     [self.splitVC.detailsVC updateDetailsViewWithTask:self.selectedTask];
      */
+}
+
+- (void)drawTasksTableView
+{
+    CGSize size = [[[[self navigationController] topViewController] view] frame].size;
+    _tasksTableView.frame = CGRectMake(0,
+                                 0,
+                                 size.width,
+                                 size.height);
+}
+
+/**
+ * On va mettre des taches de base
+ * pour ne pas avoir une appli vide au lancement
+ */
+- (void)initTasksData
+{
+    MaTask *newTask;
+    
+    /* Section 0 */
+    newTask = [[MaTask alloc] init];
+    newTask.title = [NSMutableString stringWithFormat:@"Dîner de famille"];
+    newTask.prio  = 2;
+    [[self.tasksData objectAtIndex:0] addObject:newTask];
+    
+    self.selectedTask = newTask;
+    
+    newTask = [[MaTask alloc] init];
+    newTask.title = [NSMutableString stringWithFormat:@"Anniversaire Camille"];
+    newTask.prio  = 0;
+    [[self.tasksData objectAtIndex:0] addObject:newTask];
+    
+    /* Section 1 */
+    newTask = [[MaTask alloc] init];
+    newTask.title = [NSMutableString stringWithFormat:@"Visite dentiste"];
+    newTask.prio  = 3;
+    [[self.tasksData objectAtIndex:1] addObject:newTask];
+    
+    /* Section 2 */
+    newTask = [[MaTask alloc] init];
+    newTask.title = [NSMutableString stringWithFormat:@"Soumettre PPM"];
+    newTask.prio  = 3;
+    [[self.tasksData objectAtIndex:2] addObject:newTask];
+    
+    /* Section 3 */
+    newTask = [[MaTask alloc] init];
+    newTask.title = [NSMutableString stringWithFormat:@"Faire les courses"];
+    newTask.prio  = 1;
+    [[self.tasksData objectAtIndex:3] addObject:newTask];
+    
+    newTask = [[MaTask alloc] init];
+    newTask.title = [NSMutableString stringWithFormat:@"Livre bibliothèque"];
+    newTask.prio  = 4;
+    [[self.tasksData objectAtIndex:3] addObject:newTask];
+    
+    [self didUpdateDetails];
+}
+
+- (void)viewDidLayoutSubviews
+{
+    [self drawTasksTableView];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -80,6 +144,16 @@ BOOL editingMode;
     // Pass the selected object to the new view controller.
 }
 */
+
+- (void)tableView:(UITableView *)tableView willDisplayHeaderView:(UIView *)view forSection:(NSInteger)section
+{
+    if([view isKindOfClass:[UITableViewHeaderFooterView class]]){
+        
+        UITableViewHeaderFooterView *tableViewHeaderFooterView = (UITableViewHeaderFooterView *) view;
+        tableViewHeaderFooterView.textLabel.textColor = [UIColor whiteColor];
+        tableViewHeaderFooterView.backgroundView = [[UIImageView alloc] initWithImage:[ [UIImage imageNamed:@"bg-header"] stretchableImageWithLeftCapWidth:0.0 topCapHeight:5.0] ];
+    }
+}
 
 /************************************************************************************************
  * UISplitViewControllerDelegate Methods
@@ -223,8 +297,16 @@ BOOL editingMode;
     self.editTask.title = editingMode?EDIT_MODE_YES_TEXT:EDIT_MODE_NO_TEXT;
 }
 
+/************************************************************************************************
+ * MADetailsViewControllerDelegate Methods
+ ***********************************************************************************************/
 - (void)didUpdateDetails{
     [self.tasksTableView performSelectorOnMainThread:@selector(reloadData) withObject:nil waitUntilDone:NO];
+}
+
+- (MaTask*)getInitialTask
+{
+    return [[self.tasksData objectAtIndex:0] objectAtIndex:0];
 }
 
 /**
@@ -233,7 +315,7 @@ BOOL editingMode;
 - (void)dealloc
 {
     [_tasksTableView release];
-    [_tasksData release];
+    [_tasksData release]; /* TODO il faut aussi release les tableaux et les taches à chaque cell */
     [_detailsVC release];
     [_splitVC release];
     

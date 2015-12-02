@@ -54,11 +54,15 @@
     /* pictureImageview Setup */
     _pictureImageView = [[UIImageView alloc] init];
     
-    /* pictureBarButtonItem */
+    /* On crée les Items Button pour la barre du navigation controller */
     _pictureBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCamera
                                                                           target:self
                                                                           action:@selector(pictureBarButtonClicked)];
-    [[[[self navigationController] topViewController] navigationItem] setRightBarButtonItem:_pictureBarButtonItem];
+    _galleryBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemOrganize
+                                                                          target:self
+                                                                          action:@selector(galleryBarButtonClicked)];
+    [[[[self navigationController] topViewController] navigationItem] setRightBarButtonItems:[NSArray arrayWithObjects:_pictureBarButtonItem, _galleryBarButtonItem, nil]];
+    
     _pictureBarButtonItem.enabled = [UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera];
     
     /* view's Background */
@@ -66,10 +70,13 @@
     [[UIImage imageNamed:@"fond-alu"] drawInRect:self.view.bounds];
     UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
-    
     self.view.backgroundColor = [UIColor colorWithPatternImage:image];
     
     _currentTask = nil;
+    [_delegate retain];
+    if( [_delegate respondsToSelector:@selector(getInitialTask)] )
+        _currentTask = [_delegate getInitialTask];
+    [_delegate release];
     
     [self drawSubviews:self.view.frame.size];
     
@@ -79,6 +86,9 @@
     [self.view addSubview:_priorityLabel];
     [self.view addSubview:_prioritySC];
     [self.view addSubview:_pictureImageView];
+    
+    /* maj des views */
+    [self updateDetailsViewWithTask:_currentTask];
 
     /* releasing stuff */
     [_titleLabel release];
@@ -86,6 +96,7 @@
     [_priorityLabel release];
     [_prioritySC release];
     [_pictureImageView release];
+
 }
 
 - (void)didReceiveMemoryWarning {
@@ -98,40 +109,74 @@
 #define DFLT_PADDING 20
 - (void)drawSubviews:(CGSize)frame
 {
+    
     self.view.frame = CGRectMake(0,
                                  0,
                                  frame.width,
                                  frame.height);
     
-    /* titleLabel */
-    _titleLabel.frame = CGRectMake(V_BORDERLINE,
-                                   H_BORDERLINE,
-                                   48,
-                                   30);
-    
-    /* titleTextField */
-    _titleTextField.frame = CGRectMake(V_BORDERLINE + 50,
+    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone &&
+        [[UIScreen mainScreen] scale] != 3.0 &&
+        frame.height < frame.width) {
+        /* iPhones, non 6+, en paysage */
+        /* titleLabel */
+        _titleLabel.frame = CGRectMake(V_BORDERLINE,
                                        H_BORDERLINE,
-                                       frame.width - (2*V_BORDERLINE) - 50,
+                                       48,
                                        30);
-    
-    /* priorityLabel */
-    _priorityLabel.frame = CGRectMake(V_BORDERLINE,
-                                      H_BORDERLINE + _titleLabel.frame.size.height + DFLT_PADDING,
-                                      70,
-                                      20);
-    
-    /* prioritySC */
-    _prioritySC.frame = CGRectMake(V_BORDERLINE,
-                                   _priorityLabel.frame.origin.y + _priorityLabel.frame.size.height + DFLT_PADDING,
-                                   frame.width - (2*V_BORDERLINE),
-                                   30);
-    
-    /* pictureImageView */
-    _pictureImageView.frame = CGRectMake(V_BORDERLINE,
-                                         _prioritySC.frame.origin.y + _prioritySC.frame.size.height + DFLT_PADDING,
-                                         frame.width - (2*V_BORDERLINE),
-                                         frame.height - (_priorityLabel.frame.origin.y + _priorityLabel.frame.size.height + DFLT_PADDING) - 60);
+        /* titleTextField */
+        _titleTextField.frame = CGRectMake(V_BORDERLINE,
+                                           H_BORDERLINE + _titleLabel.frame.size.height + 5,
+                                           (frame.width/2) - V_BORDERLINE - 2,
+                                           30);
+        /* priorityLabel */
+        _priorityLabel.frame = CGRectMake(V_BORDERLINE,
+                                          _titleTextField.frame.origin.y + _titleTextField.frame.size.height + DFLT_PADDING,
+                                          70,
+                                          20);
+        /* prioritySC */
+        _prioritySC.frame = CGRectMake(V_BORDERLINE,
+                                          _priorityLabel.frame.origin.y + _priorityLabel.frame.size.height + 5,
+                                          (frame.width/2)-V_BORDERLINE-2,
+                                          30);
+        /* pictureImageView */
+        _pictureImageView.frame = CGRectMake((frame.width/2)+2,
+                                             H_BORDERLINE,
+                                             (frame.width/2)-10,
+                                             frame.height - H_BORDERLINE - 10);
+        
+    } else {
+        /* titleLabel */
+        _titleLabel.frame = CGRectMake(V_BORDERLINE,
+                                       H_BORDERLINE,
+                                       48,
+                                       30);
+        /* titleTextField */
+        _titleTextField.frame = CGRectMake(V_BORDERLINE + 50,
+                                           H_BORDERLINE,
+                                           frame.width - (2*V_BORDERLINE) - 50,
+                                           30);
+        /* priorityLabel */
+        _priorityLabel.frame = CGRectMake(V_BORDERLINE,
+                                          H_BORDERLINE + _titleLabel.frame.size.height + DFLT_PADDING,
+                                          70,
+                                          20);
+        /* prioritySC */
+        _prioritySC.frame = CGRectMake(V_BORDERLINE,
+                                       _priorityLabel.frame.origin.y + _priorityLabel.frame.size.height + DFLT_PADDING,
+                                       frame.width - (2*V_BORDERLINE),
+                                       30);
+        /* pictureImageView */
+        _pictureImageView.frame = CGRectMake(V_BORDERLINE ,
+                                             _prioritySC.frame.origin.y + _prioritySC.frame.size.height + DFLT_PADDING,
+                                             frame.width - (2*V_BORDERLINE),
+                                             frame.height - (_priorityLabel.frame.origin.y + _priorityLabel.frame.size.height + DFLT_PADDING) - 60);
+    }
+}
+
+- (void)viewDidLayoutSubviews
+{
+    [self drawSubviews:[[[[self navigationController] topViewController] view] frame].size];
 }
 
 - (void)updateDetailsViewWithTask:(MaTask *)task
@@ -146,6 +191,8 @@
     _prioritySC.selectedSegmentIndex = _currentTask.prio;
     if (_currentTask.picture) {
         _pictureImageView.image = _currentTask.picture;
+    } else {
+        _pictureImageView.image = nil;
     }
     
 }
@@ -191,10 +238,27 @@
     picker.sourceType = UIImagePickerControllerSourceTypeCamera;
     
     if([[UIDevice currentDevice]userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
-        [self presentViewController:picker animated:YES completion:NULL];
+        [self.view.window.rootViewController presentViewController:picker animated:YES completion:NULL];
     } else {
         UIPopoverController* popover = [[UIPopoverController alloc] initWithContentViewController:picker];
         [popover presentPopoverFromBarButtonItem:_pictureBarButtonItem
+                        permittedArrowDirections:UIPopoverArrowDirectionUp
+                                        animated:YES];
+    }
+}
+
+- (void)galleryBarButtonClicked
+{
+    UIImagePickerController *picker = [[UIImagePickerController alloc] init];
+    picker.delegate = self;
+    picker.allowsEditing = YES;
+    picker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+    
+    if([[UIDevice currentDevice]userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
+        [self.view.window.rootViewController presentViewController:picker animated:YES completion:NULL];
+    } else {
+        UIPopoverController* popover = [[UIPopoverController alloc] initWithContentViewController:picker];
+        [popover presentPopoverFromBarButtonItem:_galleryBarButtonItem
                         permittedArrowDirections:UIPopoverArrowDirectionUp
                                         animated:YES];
     }
