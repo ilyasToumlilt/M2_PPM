@@ -1,0 +1,443 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		D674F6DA1C133D150086D31E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D674F6D91C133D150086D31E /* main.m */; };
+		D674F6DD1C133D150086D31E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D674F6DC1C133D150086D31E /* AppDelegate.m */; };
+		D674F6E01C133D150086D31E /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D674F6DF1C133D150086D31E /* ViewController.m */; };
+		D674F6E31C133D150086D31E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D674F6E11C133D150086D31E /* Main.storyboard */; };
+		D674F6E51C133D150086D31E /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D674F6E41C133D150086D31E /* Images.xcassets */; };
+		D674F6E81C133D150086D31E /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = D674F6E61C133D150086D31E /* LaunchScreen.xib */; };
+		D674F6F41C133D150086D31E /* HumeurTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D674F6F31C133D150086D31E /* HumeurTests.m */; };
+		D674F6FF1C133DB60086D31E /* PairesTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = D674F6FE1C133DB60086D31E /* PairesTableView.m */; };
+		D674F7011C1377690086D31E /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = D674F7001C1377690086D31E /* Settings.bundle */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		D674F6EE1C133D150086D31E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D674F6CC1C133D150086D31E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D674F6D31C133D150086D31E;
+			remoteInfo = Humeur;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		D674F6D41C133D150086D31E /* Humeur.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Humeur.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		D674F6D81C133D150086D31E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D674F6D91C133D150086D31E /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		D674F6DB1C133D150086D31E /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		D674F6DC1C133D150086D31E /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		D674F6DE1C133D150086D31E /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		D674F6DF1C133D150086D31E /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		D674F6E21C133D150086D31E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		D674F6E41C133D150086D31E /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		D674F6E71C133D150086D31E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
+		D674F6ED1C133D150086D31E /* HumeurTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HumeurTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		D674F6F21C133D150086D31E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D674F6F31C133D150086D31E /* HumeurTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HumeurTests.m; sourceTree = "<group>"; };
+		D674F6FD1C133DB60086D31E /* PairesTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PairesTableView.h; sourceTree = "<group>"; };
+		D674F6FE1C133DB60086D31E /* PairesTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PairesTableView.m; sourceTree = "<group>"; };
+		D674F7001C1377690086D31E /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		D674F6D11C133D150086D31E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D674F6EA1C133D150086D31E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		D674F6CB1C133D150086D31E = {
+			isa = PBXGroup;
+			children = (
+				D674F7001C1377690086D31E /* Settings.bundle */,
+				D674F6D61C133D150086D31E /* Humeur */,
+				D674F6F01C133D150086D31E /* HumeurTests */,
+				D674F6D51C133D150086D31E /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		D674F6D51C133D150086D31E /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				D674F6D41C133D150086D31E /* Humeur.app */,
+				D674F6ED1C133D150086D31E /* HumeurTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		D674F6D61C133D150086D31E /* Humeur */ = {
+			isa = PBXGroup;
+			children = (
+				D674F6DB1C133D150086D31E /* AppDelegate.h */,
+				D674F6DC1C133D150086D31E /* AppDelegate.m */,
+				D674F6DE1C133D150086D31E /* ViewController.h */,
+				D674F6DF1C133D150086D31E /* ViewController.m */,
+				D674F6E11C133D150086D31E /* Main.storyboard */,
+				D674F6E41C133D150086D31E /* Images.xcassets */,
+				D674F6E61C133D150086D31E /* LaunchScreen.xib */,
+				D674F6D71C133D150086D31E /* Supporting Files */,
+				D674F6FD1C133DB60086D31E /* PairesTableView.h */,
+				D674F6FE1C133DB60086D31E /* PairesTableView.m */,
+			);
+			path = Humeur;
+			sourceTree = "<group>";
+		};
+		D674F6D71C133D150086D31E /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				D674F6D81C133D150086D31E /* Info.plist */,
+				D674F6D91C133D150086D31E /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		D674F6F01C133D150086D31E /* HumeurTests */ = {
+			isa = PBXGroup;
+			children = (
+				D674F6F31C133D150086D31E /* HumeurTests.m */,
+				D674F6F11C133D150086D31E /* Supporting Files */,
+			);
+			path = HumeurTests;
+			sourceTree = "<group>";
+		};
+		D674F6F11C133D150086D31E /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				D674F6F21C133D150086D31E /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		D674F6D31C133D150086D31E /* Humeur */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D674F6F71C133D150086D31E /* Build configuration list for PBXNativeTarget "Humeur" */;
+			buildPhases = (
+				D674F6D01C133D150086D31E /* Sources */,
+				D674F6D11C133D150086D31E /* Frameworks */,
+				D674F6D21C133D150086D31E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Humeur;
+			productName = Humeur;
+			productReference = D674F6D41C133D150086D31E /* Humeur.app */;
+			productType = "com.apple.product-type.application";
+		};
+		D674F6EC1C133D150086D31E /* HumeurTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D674F6FA1C133D150086D31E /* Build configuration list for PBXNativeTarget "HumeurTests" */;
+			buildPhases = (
+				D674F6E91C133D150086D31E /* Sources */,
+				D674F6EA1C133D150086D31E /* Frameworks */,
+				D674F6EB1C133D150086D31E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				D674F6EF1C133D150086D31E /* PBXTargetDependency */,
+			);
+			name = HumeurTests;
+			productName = HumeurTests;
+			productReference = D674F6ED1C133D150086D31E /* HumeurTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		D674F6CC1C133D150086D31E /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0640;
+				ORGANIZATIONNAME = m2sar;
+				TargetAttributes = {
+					D674F6D31C133D150086D31E = {
+						CreatedOnToolsVersion = 6.4;
+					};
+					D674F6EC1C133D150086D31E = {
+						CreatedOnToolsVersion = 6.4;
+						TestTargetID = D674F6D31C133D150086D31E;
+					};
+				};
+			};
+			buildConfigurationList = D674F6CF1C133D150086D31E /* Build configuration list for PBXProject "Humeur" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = D674F6CB1C133D150086D31E;
+			productRefGroup = D674F6D51C133D150086D31E /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				D674F6D31C133D150086D31E /* Humeur */,
+				D674F6EC1C133D150086D31E /* HumeurTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		D674F6D21C133D150086D31E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D674F7011C1377690086D31E /* Settings.bundle in Resources */,
+				D674F6E31C133D150086D31E /* Main.storyboard in Resources */,
+				D674F6E81C133D150086D31E /* LaunchScreen.xib in Resources */,
+				D674F6E51C133D150086D31E /* Images.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D674F6EB1C133D150086D31E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		D674F6D01C133D150086D31E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D674F6E01C133D150086D31E /* ViewController.m in Sources */,
+				D674F6DD1C133D150086D31E /* AppDelegate.m in Sources */,
+				D674F6DA1C133D150086D31E /* main.m in Sources */,
+				D674F6FF1C133DB60086D31E /* PairesTableView.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D674F6E91C133D150086D31E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D674F6F41C133D150086D31E /* HumeurTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		D674F6EF1C133D150086D31E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D674F6D31C133D150086D31E /* Humeur */;
+			targetProxy = D674F6EE1C133D150086D31E /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		D674F6E11C133D150086D31E /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D674F6E21C133D150086D31E /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		D674F6E61C133D150086D31E /* LaunchScreen.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D674F6E71C133D150086D31E /* Base */,
+			);
+			name = LaunchScreen.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		D674F6F51C133D150086D31E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = NO;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		D674F6F61C133D150086D31E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = NO;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		D674F6F81C133D150086D31E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = Humeur/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		D674F6F91C133D150086D31E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = Humeur/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		D674F6FB1C133D150086D31E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = HumeurTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Humeur.app/Humeur";
+			};
+			name = Debug;
+		};
+		D674F6FC1C133D150086D31E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = HumeurTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Humeur.app/Humeur";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		D674F6CF1C133D150086D31E /* Build configuration list for PBXProject "Humeur" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D674F6F51C133D150086D31E /* Debug */,
+				D674F6F61C133D150086D31E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D674F6F71C133D150086D31E /* Build configuration list for PBXNativeTarget "Humeur" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D674F6F81C133D150086D31E /* Debug */,
+				D674F6F91C133D150086D31E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		D674F6FA1C133D150086D31E /* Build configuration list for PBXNativeTarget "HumeurTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D674F6FB1C133D150086D31E /* Debug */,
+				D674F6FC1C133D150086D31E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = D674F6CC1C133D150086D31E /* Project object */;
+}
