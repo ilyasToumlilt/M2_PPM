@@ -8,6 +8,8 @@
 
 #import "AppDelegate.h"
 
+#import "LMSplitViewController.h"
+
 @interface AppDelegate ()
 
 @end
@@ -17,6 +19,37 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    
+    LMSplitViewController *mySVC = [[LMSplitViewController alloc] init];
+    
+    UINavigationController *nmvc = [[UINavigationController alloc] initWithRootViewController:mySVC.masterVC];
+    UINavigationController *ndvc = [[UINavigationController alloc] initWithRootViewController:mySVC.detailsVC];
+    
+    [mySVC setViewControllers:[NSArray arrayWithObjects:nmvc, ndvc, nil]];
+    [mySVC setDelegate:mySVC.masterVC];
+    
+    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone &&
+        [[UIScreen mainScreen] scale] != 3.0) {
+        UITabBarController* tabBarController = [[UITabBarController alloc] initWithNibName:nil bundle:nil];
+        tabBarController.viewControllers = [[NSArray alloc] initWithObjects:mySVC.masterVC, mySVC.detailsVC, nil];
+        [_window setRootViewController:tabBarController];
+        [tabBarController release];
+    } else {
+        [_window setRootViewController:mySVC];
+        [mySVC setPreferredDisplayMode:UISplitViewControllerDisplayModeAutomatic];
+        if ([[UIScreen mainScreen] bounds].size.width < [[UIScreen mainScreen] bounds].size.height) {
+            // N'afficher le bouton qu'en mode portrait
+            [[[ndvc topViewController] navigationItem] setLeftBarButtonItem:[mySVC displayModeButtonItem]];
+            [[[ndvc topViewController] navigationItem] setLeftItemsSupplementBackButton:YES];
+        }
+    }
+    [_window makeKeyAndVisible];
+    
+    // releasing stuff
+    [nmvc release];
+    [ndvc release];
+    [mySVC release];
+    
     return YES;
 }
 

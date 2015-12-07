@@ -15,6 +15,9 @@
 		D658A57D1C158327006FB964 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D658A57C1C158327006FB964 /* Images.xcassets */; };
 		D658A5801C158327006FB964 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = D658A57E1C158327006FB964 /* LaunchScreen.xib */; };
 		D658A58C1C158327006FB964 /* Localise_MoiTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D658A58B1C158327006FB964 /* Localise_MoiTests.m */; };
+		D658A5971C15861A006FB964 /* LMSplitViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D658A5961C15861A006FB964 /* LMSplitViewController.m */; };
+		D658A59A1C158677006FB964 /* LMMasterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D658A5991C158677006FB964 /* LMMasterViewController.m */; };
+		D658A59D1C158684006FB964 /* LMDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D658A59C1C158684006FB964 /* LMDetailsViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,6 +45,12 @@
 		D658A5851C158327006FB964 /* Localise-MoiTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Localise-MoiTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D658A58A1C158327006FB964 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D658A58B1C158327006FB964 /* Localise_MoiTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Localise_MoiTests.m; sourceTree = "<group>"; };
+		D658A5951C15861A006FB964 /* LMSplitViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LMSplitViewController.h; sourceTree = "<group>"; };
+		D658A5961C15861A006FB964 /* LMSplitViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LMSplitViewController.m; sourceTree = "<group>"; };
+		D658A5981C158677006FB964 /* LMMasterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LMMasterViewController.h; sourceTree = "<group>"; };
+		D658A5991C158677006FB964 /* LMMasterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LMMasterViewController.m; sourceTree = "<group>"; };
+		D658A59B1C158684006FB964 /* LMDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LMDetailsViewController.h; sourceTree = "<group>"; };
+		D658A59C1C158684006FB964 /* LMDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LMDetailsViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -92,6 +101,12 @@
 				D658A57E1C158327006FB964 /* LaunchScreen.xib */,
 				D658A5731C158327006FB964 /* Localise_Moi.xcdatamodeld */,
 				D658A56C1C158327006FB964 /* Supporting Files */,
+				D658A5951C15861A006FB964 /* LMSplitViewController.h */,
+				D658A5961C15861A006FB964 /* LMSplitViewController.m */,
+				D658A5981C158677006FB964 /* LMMasterViewController.h */,
+				D658A5991C158677006FB964 /* LMMasterViewController.m */,
+				D658A59B1C158684006FB964 /* LMDetailsViewController.h */,
+				D658A59C1C158684006FB964 /* LMDetailsViewController.m */,
 			);
 			path = "Localise-Moi";
 			sourceTree = "<group>";
@@ -222,9 +237,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D658A5971C15861A006FB964 /* LMSplitViewController.m in Sources */,
+				D658A59A1C158677006FB964 /* LMMasterViewController.m in Sources */,
 				D658A5751C158327006FB964 /* Localise_Moi.xcdatamodeld in Sources */,
 				D658A5721C158327006FB964 /* AppDelegate.m in Sources */,
 				D658A5781C158327006FB964 /* ViewController.m in Sources */,
+				D658A59D1C158684006FB964 /* LMDetailsViewController.m in Sources */,
 				D658A56F1C158327006FB964 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -353,6 +371,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_OBJC_ARC = NO;
 				INFOPLIST_FILE = "Localise-Moi/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -363,6 +382,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_OBJC_ARC = NO;
 				INFOPLIST_FILE = "Localise-Moi/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
