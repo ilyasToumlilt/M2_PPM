@@ -15,5 +15,10 @@
 
 @property (nonatomic, retain) CLLocationManager* locationManager;
 @property (nonatomic, retain) MKMapView* mapView;
+@property (nonatomic, retain) UITextField* searchTextField;
+@property (nonatomic, retain) UIButton* setupButton;
+@property (nonatomic, retain) UISegmentedControl* mapTypeSC;
+
+- (void)drawSubviews:(CGRect)size;
 
 @end
