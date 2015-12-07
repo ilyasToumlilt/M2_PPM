@@ -8,10 +8,13 @@
 
 #import <UIKit/UIKit.h>
 
+#import "LMMapView.h"
+
 @class LMSplitViewController;
 
 @interface LMDetailsViewController : UIViewController
 
 @property (readwrite, nonatomic, retain) LMSplitViewController* splitVC;
+@property (nonatomic, retain) LMMapView* myLMMapView;
 
 @end

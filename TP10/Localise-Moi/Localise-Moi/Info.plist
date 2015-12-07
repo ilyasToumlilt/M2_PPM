@@ -43,5 +43,9 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+    <key>NSLocationAlwaysUsageDescription</key>
+    <string>Localise-Moi will always use location</string>
+    <key>NSLocationUsageDescription</key>
+    <string>Localise-Moi works with location to find your cool request target</string>
 </dict>
 </plist>

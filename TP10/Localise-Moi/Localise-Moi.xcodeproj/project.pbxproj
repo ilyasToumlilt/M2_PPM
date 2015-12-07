@@ -18,6 +18,8 @@
 		D658A5971C15861A006FB964 /* LMSplitViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D658A5961C15861A006FB964 /* LMSplitViewController.m */; };
 		D658A59A1C158677006FB964 /* LMMasterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D658A5991C158677006FB964 /* LMMasterViewController.m */; };
 		D658A59D1C158684006FB964 /* LMDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D658A59C1C158684006FB964 /* LMDetailsViewController.m */; };
+		D658A5A01C159FC5006FB964 /* LMMapView.m in Sources */ = {isa = PBXBuildFile; fileRef = D658A59F1C159FC5006FB964 /* LMMapView.m */; };
+		D658A5A21C15A4F0006FB964 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D658A5A11C15A4F0006FB964 /* Default-568h@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +53,9 @@
 		D658A5991C158677006FB964 /* LMMasterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LMMasterViewController.m; sourceTree = "<group>"; };
 		D658A59B1C158684006FB964 /* LMDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LMDetailsViewController.h; sourceTree = "<group>"; };
 		D658A59C1C158684006FB964 /* LMDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LMDetailsViewController.m; sourceTree = "<group>"; };
+		D658A59E1C159FC5006FB964 /* LMMapView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LMMapView.h; sourceTree = "<group>"; };
+		D658A59F1C159FC5006FB964 /* LMMapView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LMMapView.m; sourceTree = "<group>"; };
+		D658A5A11C15A4F0006FB964 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,6 +79,7 @@
 		D658A5601C158326006FB964 = {
 			isa = PBXGroup;
 			children = (
+				D658A5A11C15A4F0006FB964 /* Default-568h@2x.png */,
 				D658A56B1C158327006FB964 /* Localise-Moi */,
 				D658A5881C158327006FB964 /* Localise-MoiTests */,
 				D658A56A1C158327006FB964 /* Products */,
@@ -107,6 +113,8 @@
 				D658A5991C158677006FB964 /* LMMasterViewController.m */,
 				D658A59B1C158684006FB964 /* LMDetailsViewController.h */,
 				D658A59C1C158684006FB964 /* LMDetailsViewController.m */,
+				D658A59E1C159FC5006FB964 /* LMMapView.h */,
+				D658A59F1C159FC5006FB964 /* LMMapView.m */,
 			);
 			path = "Localise-Moi";
 			sourceTree = "<group>";
@@ -218,6 +226,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D658A57B1C158327006FB964 /* Main.storyboard in Resources */,
+				D658A5A21C15A4F0006FB964 /* Default-568h@2x.png in Resources */,
 				D658A5801C158327006FB964 /* LaunchScreen.xib in Resources */,
 				D658A57D1C158327006FB964 /* Images.xcassets in Resources */,
 			);
@@ -237,6 +246,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D658A5A01C159FC5006FB964 /* LMMapView.m in Sources */,
 				D658A5971C15861A006FB964 /* LMSplitViewController.m in Sources */,
 				D658A59A1C158677006FB964 /* LMMasterViewController.m in Sources */,
 				D658A5751C158327006FB964 /* Localise_Moi.xcdatamodeld in Sources */,

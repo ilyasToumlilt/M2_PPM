@@ -31,7 +31,8 @@
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone &&
         [[UIScreen mainScreen] scale] != 3.0) {
         UITabBarController* tabBarController = [[UITabBarController alloc] initWithNibName:nil bundle:nil];
-        tabBarController.viewControllers = [[NSArray alloc] initWithObjects:mySVC.masterVC, mySVC.detailsVC, nil];
+        //tabBarController.viewControllers = [[NSArray alloc] initWithObjects:mySVC.detailsVC, mySVC.masterVC, nil];
+        tabBarController.viewControllers = [[NSArray alloc] initWithObjects:ndvc, nmvc, nil];
         [_window setRootViewController:tabBarController];
         [tabBarController release];
     } else {

@@ -22,8 +22,10 @@
         /* tabBarItem pour les iphones < 6 */
         if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone &&
             [[UIScreen mainScreen] scale] != 3.0) {
-            self.tabBarItem = [[UITabBarItem alloc] initWithTabBarSystemItem:UITabBarSystemItemHistory tag:2];
+            self.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"Localisation" image:[UIImage imageNamed:@"icone-terre"] tag:1];
         }
+        /* titre de la navigationBar */
+        self.navigationController.title = [NSString stringWithFormat:@"Localisation"];
     }
     
     return self;
@@ -33,7 +35,14 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    self.view.backgroundColor = [UIColor yellowColor];
+    /* myLMMapView */
+    _myLMMapView = [[LMMapView alloc] initWithFrame:self.view.frame];
+    
+    /* Adding my cool subviews */
+    [self.view addSubview:_myLMMapView];
+    
+    /* releasing stuff */
+    [_myLMMapView release];
 }
 
 - (void)didReceiveMemoryWarning {

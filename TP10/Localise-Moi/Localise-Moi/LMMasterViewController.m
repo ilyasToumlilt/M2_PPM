@@ -22,8 +22,9 @@
         /* tabBarItem pour les iphones < 6 */
         if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone &&
             [[UIScreen mainScreen] scale] != 3.0) {
-            self.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"Localisation" image:[UIImage imageNamed:@"icone-terre"] tag:1];
+            self.tabBarItem = [[UITabBarItem alloc] initWithTabBarSystemItem:UITabBarSystemItemHistory tag:2];
         }
+        
     }
     
     return self;
