@@ -9,14 +9,48 @@
 #import "AppDelegate.h"
 
 @interface AppDelegate ()
-
+    @property (retain) MoodSplitViewController *mySVC;
 @end
 
 @implementation AppDelegate
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    // Override point for customization after application launch.
+    
+
+    self.mySVC = [[MoodSplitViewController alloc] init];
+    
+    UINavigationController *nmvc = [[UINavigationController alloc] initWithRootViewController:self.mySVC.masterVC];
+    UINavigationController *ndvc = [[UINavigationController alloc] initWithRootViewController:self.mySVC.detailsVC];
+    
+    [self.mySVC setViewControllers:[NSArray arrayWithObjects:nmvc, ndvc, nil]];
+    [self.mySVC setDelegate:self.mySVC.masterVC];
+    
+    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone &&
+        [[UIScreen mainScreen] scale] != 3.0) {
+        UIViewController* containerVC = [[UIViewController alloc] init];
+        [[containerVC view] addSubview:self.mySVC.view];
+        UITraitCollection* myTC = [UITraitCollection traitCollectionWithVerticalSizeClass:UIUserInterfaceSizeClassCompact];
+        [containerVC setOverrideTraitCollection:myTC forChildViewController:self.mySVC];
+        [self.mySVC setPreferredDisplayMode:UISplitViewControllerDisplayModeAutomatic];
+        [_window setRootViewController:containerVC];
+        [containerVC release];
+    } else {
+        [_window setRootViewController:self.mySVC];
+        [self.mySVC setPreferredDisplayMode:UISplitViewControllerDisplayModeAutomatic];
+        if ([[UIScreen mainScreen] bounds].size.width < [[UIScreen mainScreen] bounds].size.height) {
+            // N'afficher le bouton qu'en mode portrait
+            [[[ndvc topViewController] navigationItem] setLeftBarButtonItem:[self.mySVC displayModeButtonItem]];
+            [[[ndvc topViewController] navigationItem] setLeftItemsSupplementBackButton:YES];
+        }
+    }
+    [_window makeKeyAndVisible];
+    
+    // releasing stuff
+    [nmvc release];
+    [ndvc release];
+    [self.self.mySVC release];
+
     return YES;
 }
 
@@ -36,6 +70,11 @@
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {
     // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+    NSLog(@"applicationDidBecomeActive");
+
+    /*if([[NSUserDefaults standardUserDefaults]stringForKey:@"pseudo_preference"] != nil){
+        [self.mySVC setPseudo:[[NSUserDefaults standardUserDefaults]stringForKey:@"pseudo_preference"] ];
+    }*/
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application {

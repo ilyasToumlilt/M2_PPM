@@ -7,6 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "PairesTableViewController.h"
+#import "MoodViewController.h"
+#import "MoodSplitViewController.h"
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 

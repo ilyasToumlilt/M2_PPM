@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D636AAE81C15CC930090CD5C /* MoodViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D636AAE71C15CC930090CD5C /* MoodViewController.m */; };
+		D643171A1C15BE5700A1C208 /* MoodSplitViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D64317191C15BE5700A1C208 /* MoodSplitViewController.m */; };
 		D674F6DA1C133D150086D31E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D674F6D91C133D150086D31E /* main.m */; };
 		D674F6DD1C133D150086D31E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D674F6DC1C133D150086D31E /* AppDelegate.m */; };
 		D674F6E01C133D150086D31E /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D674F6DF1C133D150086D31E /* ViewController.m */; };
@@ -14,7 +16,7 @@
 		D674F6E51C133D150086D31E /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D674F6E41C133D150086D31E /* Images.xcassets */; };
 		D674F6E81C133D150086D31E /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = D674F6E61C133D150086D31E /* LaunchScreen.xib */; };
 		D674F6F41C133D150086D31E /* HumeurTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D674F6F31C133D150086D31E /* HumeurTests.m */; };
-		D674F6FF1C133DB60086D31E /* PairesTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = D674F6FE1C133DB60086D31E /* PairesTableView.m */; };
+		D674F6FF1C133DB60086D31E /* PairesTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D674F6FE1C133DB60086D31E /* PairesTableViewController.m */; };
 		D674F7011C1377690086D31E /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = D674F7001C1377690086D31E /* Settings.bundle */; };
 /* End PBXBuildFile section */
 
@@ -29,6 +31,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		D636AAE61C15CC930090CD5C /* MoodViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MoodViewController.h; sourceTree = "<group>"; };
+		D636AAE71C15CC930090CD5C /* MoodViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MoodViewController.m; sourceTree = "<group>"; };
+		D636AAE91C15CE130090CD5C /* Constants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
+		D64317181C15BE5700A1C208 /* MoodSplitViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MoodSplitViewController.h; sourceTree = "<group>"; };
+		D64317191C15BE5700A1C208 /* MoodSplitViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MoodSplitViewController.m; sourceTree = "<group>"; };
 		D674F6D41C133D150086D31E /* Humeur.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Humeur.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D674F6D81C133D150086D31E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D674F6D91C133D150086D31E /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -42,8 +49,8 @@
 		D674F6ED1C133D150086D31E /* HumeurTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HumeurTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D674F6F21C133D150086D31E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D674F6F31C133D150086D31E /* HumeurTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HumeurTests.m; sourceTree = "<group>"; };
-		D674F6FD1C133DB60086D31E /* PairesTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PairesTableView.h; sourceTree = "<group>"; };
-		D674F6FE1C133DB60086D31E /* PairesTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PairesTableView.m; sourceTree = "<group>"; };
+		D674F6FD1C133DB60086D31E /* PairesTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PairesTableViewController.h; sourceTree = "<group>"; };
+		D674F6FE1C133DB60086D31E /* PairesTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PairesTableViewController.m; sourceTree = "<group>"; };
 		D674F7001C1377690086D31E /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -95,8 +102,13 @@
 				D674F6E41C133D150086D31E /* Images.xcassets */,
 				D674F6E61C133D150086D31E /* LaunchScreen.xib */,
 				D674F6D71C133D150086D31E /* Supporting Files */,
-				D674F6FD1C133DB60086D31E /* PairesTableView.h */,
-				D674F6FE1C133DB60086D31E /* PairesTableView.m */,
+				D674F6FD1C133DB60086D31E /* PairesTableViewController.h */,
+				D674F6FE1C133DB60086D31E /* PairesTableViewController.m */,
+				D64317181C15BE5700A1C208 /* MoodSplitViewController.h */,
+				D64317191C15BE5700A1C208 /* MoodSplitViewController.m */,
+				D636AAE61C15CC930090CD5C /* MoodViewController.h */,
+				D636AAE71C15CC930090CD5C /* MoodViewController.m */,
+				D636AAE91C15CE130090CD5C /* Constants.h */,
 			);
 			path = Humeur;
 			sourceTree = "<group>";
@@ -229,9 +241,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				D674F6E01C133D150086D31E /* ViewController.m in Sources */,
+				D636AAE81C15CC930090CD5C /* MoodViewController.m in Sources */,
+				D643171A1C15BE5700A1C208 /* MoodSplitViewController.m in Sources */,
 				D674F6DD1C133D150086D31E /* AppDelegate.m in Sources */,
 				D674F6DA1C133D150086D31E /* main.m in Sources */,
-				D674F6FF1C133DB60086D31E /* PairesTableView.m in Sources */,
+				D674F6FF1C133DB60086D31E /* PairesTableViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -428,6 +442,7 @@
 				D674F6F91C133D150086D31E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		D674F6FA1C133D150086D31E /* Build configuration list for PBXNativeTarget "HumeurTests" */ = {
 			isa = XCConfigurationList;
@@ -436,6 +451,7 @@
 				D674F6FC1C133D150086D31E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

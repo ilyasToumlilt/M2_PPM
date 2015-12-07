@@ -7,10 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "PairesTableViewController.h"
+#import "MoodViewController.h"
 
-@interface ViewController : UIViewController<NSNetServiceDelegate, NSNetServiceBrowserDelegate, UITableViewDataSource, UITableViewDelegate, UIPickerViewDataSource, UIPickerViewDelegate>
-@property (retain)UITableView*utbv;
-@property (retain)UIPickerView*upv;
+@interface ViewController : UIViewController/*<UIPickerViewDataSource, UIPickerViewDelegate>*/
 
 @end
 
