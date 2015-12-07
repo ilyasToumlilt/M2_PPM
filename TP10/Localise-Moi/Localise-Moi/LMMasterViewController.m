@@ -25,6 +25,8 @@
             self.tabBarItem = [[UITabBarItem alloc] initWithTabBarSystemItem:UITabBarSystemItemHistory tag:2];
         }
         
+        /* titre de la navigationBar */
+        self.navigationItem.title = [NSString stringWithFormat:@"History"];
     }
     
     return self;
@@ -36,6 +38,16 @@
     
     self.view.backgroundColor = [UIColor redColor];
     
+}
+
+- (void)drawSubviews:(CGSize)size
+{
+    self.view.frame = CGRectMake(self.view.frame.origin.x, self.view.frame.origin.y, size.width, size.height);
+}
+
+- (void)viewDidLayoutSubviews
+{
+    [self drawSubviews:[[[[self navigationController] topViewController] view] frame].size];
 }
 
 - (void)didReceiveMemoryWarning {

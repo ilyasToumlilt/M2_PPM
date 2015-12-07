@@ -25,7 +25,7 @@
             self.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"Localisation" image:[UIImage imageNamed:@"icone-terre"] tag:1];
         }
         /* titre de la navigationBar */
-        self.navigationController.title = [NSString stringWithFormat:@"Localisation"];
+        self.navigationItem.title = [NSString stringWithFormat:@"Localisation"];
     }
     
     return self;
@@ -43,6 +43,18 @@
     
     /* releasing stuff */
     [_myLMMapView release];
+}
+
+- (void)drawSubviews:(CGSize)size
+{
+    self.view.frame = CGRectMake(self.view.frame.origin.x, self.view.frame.origin.y, size.width, size.height);
+    
+    [_myLMMapView drawSubviews:CGRectMake(0, self.navigationController.navigationBar.frame.size.height, size.width, size.height)];
+}
+
+- (void)viewDidLayoutSubviews
+{
+    [self drawSubviews:[[[[self navigationController] topViewController] view] frame].size];
 }
 
 - (void)didReceiveMemoryWarning {
