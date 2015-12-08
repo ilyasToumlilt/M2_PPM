@@ -7,6 +7,8 @@
 //
 
 #import "MoodViewController.h"
+#import "PairesTableViewController.h"
+#import "MoodSplitViewController.h"
 
 @implementation MoodViewController
 
@@ -33,6 +35,9 @@
         size.width - (2*VERTICAL_GUIDELINE),
         size.height-(2* HORIZONTAL_GUIDELINE)
     );
+    
+    
+ 
 }
 
 - (void)pickerView:(UIPickerView *)pV didSelectRow:(NSInteger)row inComponent:(NSInteger)component
@@ -61,6 +66,11 @@
     attributes:@{NSForegroundColorAttributeName:[[MOOD_CHOICE_TEXT objectAtIndex:row] objectForKey:@"mood_color"]}];
 
     return attString;
+}
+
+- (void)viewDidLayoutSubviews
+{
+    [self setElementsSize:[[[[self navigationController] topViewController] view] frame].size];
 }
 
 

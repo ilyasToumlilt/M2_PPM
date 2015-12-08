@@ -15,8 +15,6 @@
 
     if( self ){
         
-        NSLog(@"++++++++++++++++++");
-        
         self.masterVC = [[PairesTableViewController alloc] init];
         self.masterVC.splitVC = self;
 
@@ -24,7 +22,8 @@
         self.detailsVC.splitVC = self;
 
         [self.detailsVC setDelegate:self.masterVC];
-        //_masterVC.detailsVC = _detailsVC;
+        
+        [self displayModeButtonItem];
     }
 
     return self;
