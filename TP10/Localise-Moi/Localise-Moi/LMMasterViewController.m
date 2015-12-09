@@ -12,7 +12,7 @@
 @interface LMMasterViewController ()
 
 
-@property (nonatomic,retain)UIBarButtonItem* addCell;
+@property (nonatomic,retain)UIBarButtonItem* saveItem;
 @property (nonatomic,retain)UIBarButtonItem* editCell;
 
 @end
@@ -35,6 +35,7 @@
         
         /* locationDataArray */
         _locationDataArray = [[NSMutableArray alloc] init];
+        [self loadLocationDataArray];
     }
     
     return self;
@@ -59,6 +60,10 @@
     /* adding edit button */
     self.editCell = [[UIBarButtonItem alloc]initWithTitle:@"Edit" style:UIBarButtonItemStylePlain target:self action:@selector(editCellAction)];
     [[self navigationItem]setLeftBarButtonItem:self.editCell];
+    
+    /* adding save button */
+    self.saveItem = [[UIBarButtonItem alloc]initWithTitle:@"Save" style:UIBarButtonItemStylePlain target:self action:@selector(saveItemAction)];
+    [[self navigationItem]setRightBarButtonItem:self.saveItem];
     
     /* releasing memory */
     [_localisationTV release];
@@ -145,6 +150,7 @@
     
     [_localisationTV performSelectorOnMainThread:@selector(reloadData) withObject:nil waitUntilDone:NO];
 }
+
 /************************************************************************************************
  * Buttons actions
  ***********************************************************************************************/
@@ -152,6 +158,47 @@
 {
     [_localisationTV setEditing:!_localisationTV.editing animated:YES];
     _editCell.title = (_localisationTV.editing) ? @"Done" : @"Edit";
+}
+
+- (void)saveItemAction
+{
+    [self saveLocationDataArray];
+}
+
+/************************************************************************************************
+ * Persistant Data Store
+ ***********************************************************************************************/
+- (void)saveLocationDataArray
+{
+    // Get path to documents directory
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,
+                                                         NSUserDomainMask, YES);
+    
+    if ([paths count] > 0)
+    {
+        // Path to save array data
+        NSString  *arrayPath = [[paths objectAtIndex:0] stringByAppendingPathComponent:@"locationDataArray.out"];
+        
+        // Write array
+        [_locationDataArray writeToFile:arrayPath atomically:YES];
+        
+        
+    } else NSLog(@"NO paths");
+}
+
+-(void)loadLocationDataArray
+{
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,NSUserDomainMask, YES);
+    if ([paths count] > 0)
+    {
+        // Path to save array data
+        NSString  *arrayPath = [[paths objectAtIndex:0] stringByAppendingPathComponent:@"locationDataArray.out"];
+        NSLog(@"%@", arrayPath);
+        [_locationDataArray addObjectsFromArray:[NSArray arrayWithContentsOfFile:arrayPath]];
+        NSLog(@"%d", (int)_locationDataArray.count);
+    } else NSLog(@"No file to retrieve");
+    
+    [self updateDataNumbers];
 }
 
 /************************************************************************************************
