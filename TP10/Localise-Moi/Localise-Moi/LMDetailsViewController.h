@@ -9,12 +9,23 @@
 #import <UIKit/UIKit.h>
 
 #import "LMMapView.h"
+#import "LMLocation.h"
 
 @class LMSplitViewController;
 
-@interface LMDetailsViewController : UIViewController
+@protocol LMDetailsViewControllerDelegate;
 
-@property (readwrite, nonatomic, retain) LMSplitViewController* splitVC;
+@interface LMDetailsViewController : UIViewController<NSXMLParserDelegate, NSURLConnectionDelegate, NSURLConnectionDataDelegate, LMMapViewDelegate>
+
+//@property (readwrite, nonatomic, retain) LMSplitViewController* splitVC;
 @property (nonatomic, retain) LMMapView* myLMMapView;
+
+@property (nonatomic, assign) id<LMDetailsViewControllerDelegate> delegate;
+
+@end
+
+@protocol LMDetailsViewControllerDelegate <NSObject>
+
+- (void)addLocation:(CLLocationCoordinate2D)location withRequest:(NSString*)request;
 
 @end

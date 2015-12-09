@@ -12,10 +12,13 @@
 
 @class LMSplitViewController;
 
-@interface LMMasterViewController : UIViewController<UISplitViewControllerDelegate, UITabBarControllerDelegate>
+@interface LMMasterViewController : UIViewController<UISplitViewControllerDelegate, UITabBarControllerDelegate, UITableViewDataSource, UITableViewDelegate, LMDetailsViewControllerDelegate>
 
-@property (readwrite, nonatomic, retain) LMSplitViewController* splitVC;
+//@property (readwrite, nonatomic, retain) LMSplitViewController* splitVC;
 @property (retain, nonatomic) LMDetailsViewController* detailsVC;
+
+@property (nonatomic, retain) UITableView* localisationTV;
+@property (nonatomic, retain) NSMutableArray* locationDataArray;
 
 
 @end

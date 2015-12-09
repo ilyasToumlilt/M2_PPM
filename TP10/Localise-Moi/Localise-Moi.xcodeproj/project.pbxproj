@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		74E1EA141C16EBF30039CE98 /* LMLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = 74E1EA131C16EBF30039CE98 /* LMLocation.m */; };
 		D658A56F1C158327006FB964 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D658A56E1C158327006FB964 /* main.m */; };
 		D658A5721C158327006FB964 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D658A5711C158327006FB964 /* AppDelegate.m */; };
 		D658A5751C158327006FB964 /* Localise_Moi.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D658A5731C158327006FB964 /* Localise_Moi.xcdatamodeld */; };
@@ -33,6 +34,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		74E1EA121C16EBF30039CE98 /* LMLocation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LMLocation.h; sourceTree = "<group>"; };
+		74E1EA131C16EBF30039CE98 /* LMLocation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LMLocation.m; sourceTree = "<group>"; };
 		D658A5691C158327006FB964 /* Localise-Moi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Localise-Moi.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D658A56D1C158327006FB964 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D658A56E1C158327006FB964 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -115,6 +118,8 @@
 				D658A59C1C158684006FB964 /* LMDetailsViewController.m */,
 				D658A59E1C159FC5006FB964 /* LMMapView.h */,
 				D658A59F1C159FC5006FB964 /* LMMapView.m */,
+				74E1EA121C16EBF30039CE98 /* LMLocation.h */,
+				74E1EA131C16EBF30039CE98 /* LMLocation.m */,
 			);
 			path = "Localise-Moi";
 			sourceTree = "<group>";
@@ -252,6 +257,7 @@
 				D658A5751C158327006FB964 /* Localise_Moi.xcdatamodeld in Sources */,
 				D658A5721C158327006FB964 /* AppDelegate.m in Sources */,
 				D658A5781C158327006FB964 /* ViewController.m in Sources */,
+				74E1EA141C16EBF30039CE98 /* LMLocation.m in Sources */,
 				D658A59D1C158684006FB964 /* LMDetailsViewController.m in Sources */,
 				D658A56F1C158327006FB964 /* main.m in Sources */,
 			);
@@ -452,6 +458,7 @@
 				D658A5911C158327006FB964 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		D658A5921C158327006FB964 /* Build configuration list for PBXNativeTarget "Localise-MoiTests" */ = {
 			isa = XCConfigurationList;
@@ -460,6 +467,7 @@
 				D658A5941C158327006FB964 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 

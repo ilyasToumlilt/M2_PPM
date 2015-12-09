@@ -11,6 +11,8 @@
 #import <CoreLocation/CLLocationManagerDelegate.h>
 #import <MapKit/MapKit.h>
 
+@protocol LMMapViewDelegate;
+
 @interface LMMapView : UIView<CLLocationManagerDelegate, CLLocationManagerDelegate, MKMapViewDelegate>
 
 @property (nonatomic, retain) CLLocationManager* locationManager;
@@ -19,6 +21,15 @@
 @property (nonatomic, retain) UIButton* setupButton;
 @property (nonatomic, retain) UISegmentedControl* mapTypeSC;
 
+@property (nonatomic, assign) id<LMMapViewDelegate> delegate;
+
 - (void)drawSubviews:(CGRect)size;
+- (void)goToLocation:(CLLocationCoordinate2D)location;
+
+@end
+
+@protocol LMMapViewDelegate <NSObject>
+
+- (void)searchAddress:(NSString*)adr;
 
 @end

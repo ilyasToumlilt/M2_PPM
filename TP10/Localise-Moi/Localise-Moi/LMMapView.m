@@ -34,7 +34,7 @@
             /* searchTextfield */
             _searchTextField = [[UITextField alloc] init];
             [_searchTextField addTarget:self
-                                action:@selector(searchTextFieldDidChange:)
+                                action:@selector(searchTextFieldDidReturn:)
                       forControlEvents:UIControlEventEditingDidEnd];
             [_searchTextField setBorderStyle:UITextBorderStyleRoundedRect];
             [_searchTextField setClearButtonMode:UITextFieldViewModeAlways];
@@ -92,7 +92,7 @@
 }
 
 /************************************************************************************************
- * Config Button
+ * Managing Subviews
  ***********************************************************************************************/
 - (void)drawSubviews:(CGRect)frame
 {
@@ -122,11 +122,21 @@
 }
 
 /************************************************************************************************
+ * Location services
+ ***********************************************************************************************/
+- (void)goToLocation:(CLLocationCoordinate2D)location
+{
+    [_mapView setRegion:MKCoordinateRegionMakeWithDistance(location, 500, 500) animated:YES];
+}
+
+/************************************************************************************************
  * searchTextField & UITextFieldDelegate Methods
  ***********************************************************************************************/
-- (void)searchTextFieldDidChange:(UITextField*)sender
+- (void)searchTextFieldDidReturn:(UITextField*)sender
 {
-    NSLog(@"%@", sender.text);
+    [_delegate retain];
+    [_delegate searchAddress:[NSString stringWithString:sender.text]];
+    [_delegate release];
 }
 
 - (void)resignOnTap:(id)iSender {

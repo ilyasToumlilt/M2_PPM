@@ -20,11 +20,12 @@
     
     if( self ){
         _masterVC = [[LMMasterViewController alloc] init];
-        _masterVC.splitVC = self;
+        //_masterVC.splitVC = self;
         
         _detailsVC = [[LMDetailsViewController alloc] init];
-        _detailsVC.splitVC = self;
+        //_detailsVC.splitVC = self;
         
+        _detailsVC.delegate = _masterVC;
         _masterVC.detailsVC = _detailsVC;
     }
     

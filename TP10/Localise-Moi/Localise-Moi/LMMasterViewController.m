@@ -7,8 +7,13 @@
 //
 
 #import "LMMasterViewController.h"
+#import "LMLocation.h"
 
 @interface LMMasterViewController ()
+
+
+@property (nonatomic,retain)UIBarButtonItem* addCell;
+@property (nonatomic,retain)UIBarButtonItem* editCell;
 
 @end
 
@@ -27,6 +32,9 @@
         
         /* titre de la navigationBar */
         self.navigationItem.title = [NSString stringWithFormat:@"History"];
+        
+        /* locationDataArray */
+        _locationDataArray = [[NSMutableArray alloc] init];
     }
     
     return self;
@@ -36,13 +44,37 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    self.view.backgroundColor = [UIColor redColor];
+    /* localisationTableView */
+    _localisationTV = [[UITableView alloc] init];
+    _localisationTV.delegate = self;
+    _localisationTV.dataSource = self;
+    [_localisationTV setEditing:NO animated:YES];
     
+    /* drawing my cool views */
+    [self drawSubviews:[[[[self navigationController] topViewController] view] frame].size];
+
+    /* adding my cool subviews */
+    [self.view addSubview:_localisationTV];
+    
+    /* adding edit button */
+    self.editCell = [[UIBarButtonItem alloc]initWithTitle:@"Edit" style:UIBarButtonItemStylePlain target:self action:@selector(editCellAction)];
+    [[self navigationItem]setLeftBarButtonItem:self.editCell];
+    
+    /* releasing memory */
+    [_localisationTV release];
 }
 
+/************************************************************************************************
+ * Managing Views
+ ***********************************************************************************************/
 - (void)drawSubviews:(CGSize)size
 {
     self.view.frame = CGRectMake(self.view.frame.origin.x, self.view.frame.origin.y, size.width, size.height);
+    
+    _localisationTV.frame = CGRectMake(0,
+                                       0,
+                                       size.width,
+                                       size.height);
 }
 
 - (void)viewDidLayoutSubviews
@@ -50,11 +82,93 @@
     [self drawSubviews:[[[[self navigationController] topViewController] view] frame].size];
 }
 
+/************************************************************************************************
+ * LMDetailsViewControllerDelegate
+ ***********************************************************************************************/
+- (void)addLocation:(CLLocationCoordinate2D)location withRequest:(NSString *)request
+{
+    LMLocation* newLocation = [[LMLocation alloc] initWithNumber:(int)_locationDataArray.count
+                                                  andDescription:[NSString stringWithString:request]
+                                                   andCoordinate:location];
+    [_locationDataArray addObject:newLocation];
+    
+    [_localisationTV performSelectorOnMainThread:@selector(reloadData) withObject:nil waitUntilDone:NO];
+}
+
+/************************************************************************************************
+ * LMLocationData
+ ***********************************************************************************************/
+- (void)updateDataNumbers
+{
+    int i;
+    LMLocation* tmp;
+    for(i=0; i<_locationDataArray.count; i++){
+        tmp = _locationDataArray[i];
+        tmp.number = i;
+    }
+}
+
+/************************************************************************************************
+ * UITableViewDelegate & UITableViewDataSource
+ ***********************************************************************************************/
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    static NSString *simpleTableIdentifier = @"SimpleTableItem";
+    
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:simpleTableIdentifier];
+    
+    if (cell == nil) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:simpleTableIdentifier];
+    }
+    LMLocation* tmp = [_locationDataArray objectAtIndex:indexPath.row];
+    cell.textLabel.text = [NSString stringWithFormat:@"Adresse %d", tmp.number+1];
+    cell.detailTextLabel.text = [NSString stringWithString:tmp.desc];
+    
+    return cell;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return _locationDataArray.count;
+}
+
+- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
+    return YES;
+}
+
+- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)sourceIndexPath toIndexPath:(NSIndexPath *)destinationIndexPath {
+    NSString *stringToMove = [_locationDataArray objectAtIndex:sourceIndexPath.row];
+    [_locationDataArray removeObjectAtIndex:sourceIndexPath.row];
+    [_locationDataArray insertObject:stringToMove atIndex:destinationIndexPath.row];
+    
+    [self updateDataNumbers];
+    
+    [_localisationTV performSelectorOnMainThread:@selector(reloadData) withObject:nil waitUntilDone:NO];
+}
+/************************************************************************************************
+ * Buttons actions
+ ***********************************************************************************************/
+- (void)editCellAction
+{
+    [_localisationTV setEditing:!_localisationTV.editing animated:YES];
+    _editCell.title = (_localisationTV.editing) ? @"Done" : @"Edit";
+}
+
+/************************************************************************************************
+ * Memory Care Center
+ ***********************************************************************************************/
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
 
+- (void)dealloc
+{
+    [_locationDataArray release];
+    _detailsVC = nil;
+    
+    [super dealloc];
+}
 /*
 #pragma mark - Navigation
 
