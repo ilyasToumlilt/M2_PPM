@@ -20,6 +20,12 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     
+    /* Autorisation d'envoyer des UINotification */
+    UIUserNotificationSettings* autorisations = [UIUserNotificationSettings settingsForTypes:(UIUserNotificationTypeBadge | UIUserNotificationTypeAlert | UIUserNotificationTypeSound)
+                                                                                  categories:nil];
+    [application registerUserNotificationSettings:autorisations];
+    
+    /* Instancier les VCs */
     LMSplitViewController *mySVC = [[LMSplitViewController alloc] init];
     
     UINavigationController *nmvc = [[UINavigationController alloc] initWithRootViewController:mySVC.masterVC];

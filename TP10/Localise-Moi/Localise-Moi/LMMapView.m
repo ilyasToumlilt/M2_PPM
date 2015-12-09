@@ -122,6 +122,19 @@
 }
 
 /************************************************************************************************
+ * UISegmentedControl setup
+ ***********************************************************************************************/
+- (void)showSatelliteSegment
+{
+    [_mapTypeSC setEnabled:YES forSegmentAtIndex:1];
+}
+
+- (void)hideSatelliteSegment
+{
+    [_mapTypeSC setEnabled:NO forSegmentAtIndex:1];
+}
+
+/************************************************************************************************
  * Location services
  ***********************************************************************************************/
 - (void)goToLocation:(CLLocationCoordinate2D)location

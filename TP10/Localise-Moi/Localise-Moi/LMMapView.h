@@ -26,6 +26,9 @@
 - (void)drawSubviews:(CGRect)size;
 - (void)goToLocation:(CLLocationCoordinate2D)location;
 
+- (void)showSatelliteSegment;
+- (void)hideSatelliteSegment;
+
 @end
 
 @protocol LMMapViewDelegate <NSObject>

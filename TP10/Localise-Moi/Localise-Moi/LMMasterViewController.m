@@ -15,6 +15,8 @@
 @property (nonatomic,retain)UIBarButtonItem* saveItem;
 @property (nonatomic,retain)UIBarButtonItem* editCell;
 
+@property (nonatomic, retain) UIAlertView* notificationAlert;
+
 @end
 
 @implementation LMMasterViewController
@@ -36,11 +38,17 @@
         /* locationDataArray */
         _locationDataArray = [[NSMutableArray alloc] init];
         [self loadLocationDataArray];
+        
+        /* notificationAlert */
+        _notificationAlert = nil;
     }
     
     return self;
 }
 
+/************************************************************************************************
+ * View Setup
+ ***********************************************************************************************/
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
@@ -69,6 +77,20 @@
     [_localisationTV release];
 }
 
+- (void)viewDidAppear:(BOOL)animated
+{
+    UIUserNotificationSettings* autorisation = [[UIApplication sharedApplication] currentUserNotificationSettings];
+    if(autorisation.types == UIUserNotificationTypeNone){
+        UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@"Problème"
+                                                        message:@"Notifications désactivées"
+                                                       delegate:nil
+                                              cancelButtonTitle:@"OK"
+                                              otherButtonTitles: nil];
+        
+        [alert show];
+    }
+}
+
 /************************************************************************************************
  * Managing Views
  ***********************************************************************************************/
@@ -88,6 +110,22 @@
 }
 
 /************************************************************************************************
+ * Notifications
+ ***********************************************************************************************/
+- (void)pushNewNotificationWithDescription:(NSString*)desc
+{
+    UIApplication* app = [UIApplication sharedApplication];
+    UILocalNotification* n = [[UILocalNotification alloc] init];
+    
+    [n setAlertAction:@"Alerte de Localise-Moi"];
+    [n setAlertBody:desc];
+    [n setApplicationIconBadgeNumber:[app applicationIconBadgeNumber]+1];
+    [n setUserInfo:[[NSDictionary alloc] initWithObjectsAndKeys:@"Localise-Moi", @"IDkey", nil]];
+    [n setSoundName:UILocalNotificationDefaultSoundName];
+    [app presentLocalNotificationNow:n];
+}
+
+/************************************************************************************************
  * LMDetailsViewControllerDelegate
  ***********************************************************************************************/
 - (void)addLocation:(CLLocationCoordinate2D)location withRequest:(NSString *)request
@@ -98,6 +136,8 @@
     [_locationDataArray addObject:newLocation];
     
     [_localisationTV performSelectorOnMainThread:@selector(reloadData) withObject:nil waitUntilDone:NO];
+    
+    [self pushNewNotificationWithDescription:request];
 }
 
 /************************************************************************************************
@@ -151,13 +191,26 @@
     [_localisationTV performSelectorOnMainThread:@selector(reloadData) withObject:nil waitUntilDone:NO];
 }
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    LMLocation* tmp = [_locationDataArray objectAtIndex:(int)indexPath.row];
+    [_detailsVC.myLMMapView goToLocation:tmp.coord];
+    [_detailsVC.myLMMapView.searchTextField setText:[tmp.desc copy]];
+    
+    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone &&
+        [[UIScreen mainScreen] scale] != 3.0) {
+        self.tabBarController.selectedIndex = 0;
+    }
+}
+
 /************************************************************************************************
  * Buttons actions
  ***********************************************************************************************/
 - (void)editCellAction
 {
-    [_localisationTV setEditing:!_localisationTV.editing animated:YES];
-    _editCell.title = (_localisationTV.editing) ? @"Done" : @"Edit";
+    //[_localisationTV setEditing:!_localisationTV.editing animated:YES];
+    //_editCell.title = (_localisationTV.editing) ? @"Done" : @"Edit";
+    [self loadLocationDataArray];
 }
 
 - (void)saveItemAction
@@ -182,6 +235,7 @@
         // Write array
         [_locationDataArray writeToFile:arrayPath atomically:YES];
         
+        NSLog(@"Writen");
         
     } else NSLog(@"NO paths");
 }
@@ -194,7 +248,9 @@
         // Path to save array data
         NSString  *arrayPath = [[paths objectAtIndex:0] stringByAppendingPathComponent:@"locationDataArray.out"];
         NSLog(@"%@", arrayPath);
-        [_locationDataArray addObjectsFromArray:[NSArray arrayWithContentsOfFile:arrayPath]];
+        NSArray* tmp = [[NSArray arrayWithContentsOfFile:arrayPath] retain];
+        NSLog(@"%d", (int)tmp.count);
+        [_locationDataArray addObjectsFromArray:tmp];
         NSLog(@"%d", (int)_locationDataArray.count);
     } else NSLog(@"No file to retrieve");
     

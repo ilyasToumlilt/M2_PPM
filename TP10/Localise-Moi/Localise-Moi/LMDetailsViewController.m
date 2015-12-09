@@ -64,8 +64,26 @@
     
     /* releasing stuff */
     [_myLMMapView release];
+    
+    /* pour choper les retours du background */
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(returnsFromBackground)
+                                                 name:UIApplicationDidBecomeActiveNotification object:nil];
+
 }
 
+- (void)returnsFromBackground
+{
+    if( [[[NSUserDefaults standardUserDefaults] stringForKey:@"sat_preference"] isEqualToString:@"0"]){
+        [_myLMMapView hideSatelliteSegment];
+    } else {
+        [_myLMMapView showSatelliteSegment];
+    }
+}
+
+/************************************************************************************************
+ * Managing subviews
+ ***********************************************************************************************/
 - (void)drawSubviews:(CGSize)size
 {
     self.view.frame = CGRectMake(self.view.frame.origin.x, self.view.frame.origin.y, size.width, size.height);
