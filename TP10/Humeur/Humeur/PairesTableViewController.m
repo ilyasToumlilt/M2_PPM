@@ -7,10 +7,15 @@
 //
 
 #import "PairesTableViewController.h"
+#import "MoodSplitViewController.h"
+
+#define GO_TO_MOODS_TXT @"Humeurs"
+
 @interface PairesTableViewController()
 @property NSNetService* moodNS;
 @property NSMutableArray* myPairs;
 @property NSNetServiceBrowser* moodBrowser;
+@property UIBarButtonItem*moodButton;
 
 @end
 
@@ -18,6 +23,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    NSString*propPseudo = [[NSUserDefaults standardUserDefaults]stringForKey:@"pseudo_preference"];
+    NSString*defDevName = [[UIDevice currentDevice] name];
     
     self.utbv = [[UITableView alloc ]init];
 
@@ -31,7 +39,7 @@
     
     self.moodNS = [[NSNetService alloc] initWithDomain:NET_SERVICE_DOMAIN
                                                   type:NET_SERVICE_TYPE
-                                                  name:[[UIDevice currentDevice] name]
+                                                  name:propPseudo?propPseudo:defDevName
                                                   port:9090
                    ];
 
@@ -42,6 +50,10 @@
     [self.moodBrowser setDelegate:self];
     [self.moodBrowser searchForServicesOfType:NET_SERVICE_TYPE inDomain:NET_SERVICE_DOMAIN];
 
+    self.moodButton = [[UIBarButtonItem alloc]initWithTitle:GO_TO_MOODS_TXT style:UIBarButtonItemStylePlain target:self action:@selector(goToMoodsAction)];
+    [[self navigationItem]setRightBarButtonItem:self.moodButton];
+    
+    
     [self sendNewMood:IND_DEFAULT_MOOD];
 
     [self setElementsSize:self.view.frame.size];
@@ -123,9 +135,6 @@
         }
     }
     
-    NSLog(@"cellForRowAtIndexPath");
-    
-    
     return cell;
     
 }
@@ -137,17 +146,28 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    NSLog(@"numberOfRowsInSection");
-    
     return [self.myPairs count];
 }
 
--(void)sendNewMood:(NSUInteger)indMood{
+-(void)sendNewMood:(NSUInteger)indMood
+{
     NSString*m2=[[MOOD_CHOICE_TEXT objectAtIndex:indMood] objectForKey:@"mood_name"];
     NSData*d = [m2 dataUsingEncoding:NSUTF8StringEncoding];
     NSDictionary*dd = [NSDictionary dictionaryWithObjects:@[d] forKeys:@[@"message"]];
     NSData*r=[NSNetService dataFromTXTRecordDictionary:dd];
     [self.moodNS setTXTRecordData:r];
+}
+
+- (void)viewWillTransitionToSize:(CGSize)size  withTransitionCoordinator:(id<UIViewControllerTransitionCoordinator>)coordinator{
+    [self setElementsSize:size];
+}
+
+-(void)goToMoodsAction{
+    
+    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone &&
+        [[UIScreen mainScreen] scale] != 3.0) {
+        [[self navigationController] pushViewController:[self.splitVC detailsVC] animated:YES];
+    }
 }
 
 @end

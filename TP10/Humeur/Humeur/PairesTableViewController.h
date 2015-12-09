@@ -12,9 +12,6 @@
 #import "Constants.h"
 #import "MoodViewController.h"
 
-#ifndef __PAIRES_TABLE_VIEW_CONTROLLER_H__
-#define __PAIRES_TABLE_VIEW_CONTROLLER_H__
-
 
 
 @class MoodSplitViewController;
@@ -31,4 +28,3 @@
 @end
 
 
-#endif
