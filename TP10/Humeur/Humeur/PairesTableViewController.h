@@ -25,6 +25,7 @@
                                                         >
 @property (retain) UITableView*utbv;
 @property (retain) MoodSplitViewController *splitVC;
+-(void)setElementsSize:(CGSize)size;
 @end
 
 

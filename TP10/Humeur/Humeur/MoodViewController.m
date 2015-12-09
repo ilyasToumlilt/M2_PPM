@@ -35,9 +35,6 @@
         size.width - (2*VERTICAL_GUIDELINE),
         size.height-(2* HORIZONTAL_GUIDELINE)
     );
-    
-    
- 
 }
 
 - (void)pickerView:(UIPickerView *)pV didSelectRow:(NSInteger)row inComponent:(NSInteger)component

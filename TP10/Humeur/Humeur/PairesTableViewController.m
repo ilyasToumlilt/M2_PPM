@@ -50,8 +50,10 @@
     [self.moodBrowser setDelegate:self];
     [self.moodBrowser searchForServicesOfType:NET_SERVICE_TYPE inDomain:NET_SERVICE_DOMAIN];
 
-    self.moodButton = [[UIBarButtonItem alloc]initWithTitle:GO_TO_MOODS_TXT style:UIBarButtonItemStylePlain target:self action:@selector(goToMoodsAction)];
-    [[self navigationItem]setRightBarButtonItem:self.moodButton];
+    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone && [[UIScreen mainScreen] scale] != 3.0) {
+        self.moodButton = [[UIBarButtonItem alloc]initWithTitle:GO_TO_MOODS_TXT style:UIBarButtonItemStylePlain target:self action:@selector(goToMoodsAction)];
+        [[self navigationItem]setRightBarButtonItem:self.moodButton];
+    }
     
     
     [self sendNewMood:IND_DEFAULT_MOOD];
@@ -62,6 +64,9 @@
 -(void)setElementsSize:(CGSize)size{
     
     self.view.frame = CGRectMake(0, 0, size.width, size.height);
+    
+    NSLog(@"%f, %f",size.height, size.width);
+    
     
     self.utbv.frame = CGRectMake(
          0,
@@ -83,10 +88,10 @@
     
     if([netService.type compare:NET_SERVICE_TYPE] == NSOrderedSame)
     {
-        for (NSNetService *ns in self.myPairs)
-            if([ns.name compare: netService.name] == NSOrderedSame)
+        for (int i=0; i<[self.myPairs count]; i++) {
+            if([[[self.myPairs objectAtIndex:i] name] compare: netService.name] == NSOrderedSame)
                 alreadyFound=TRUE;
-        
+        }
         if(!alreadyFound)
         {
             NSLog(@"Ajout de %@",netService.name);
@@ -117,7 +122,7 @@
     }
     
     if([[self.moodNS name] compare: [[self.myPairs objectAtIndex:indexPath.row]name]] == NSOrderedSame)
-        [cell setBackgroundColor:[UIColor yellowColor]];
+        [cell setBackgroundColor:[UIColor lightGrayColor]];
     else
         [cell setBackgroundColor: [UIColor whiteColor]];
     
@@ -128,10 +133,14 @@
             cell.textLabel.text = [[self.myPairs objectAtIndex:indexPath.row]name];
             mdata = [[NSString alloc]initWithData:v2 encoding:NSUTF8StringEncoding];
             cell.detailTextLabel.text =mdata;
-        }
-        else{
+
+            for (NSDictionary*c in MOOD_CHOICE_TEXT )
+                if([[c objectForKey:@"mood_name"]compare:mdata] == NSOrderedSame)
+                    [[cell detailTextLabel] setTextColor:[c objectForKey:@"mood_color"]];
+        }else{
             cell.textLabel.text = @"NoName";
             cell.detailTextLabel.text = @"NoMessage";
+            [[cell detailTextLabel] setTextColor:[UIColor blackColor]];
         }
     }
     
@@ -140,9 +149,11 @@
 }
 
 - (void)netServiceBrowser:(NSNetServiceBrowser *)netServiceBrowser didRemoveService:(NSNetService *)netService moreComing:(BOOL)moreServicesComing{
-    for (NSNetService *n in self.myPairs)
-        if([[n name]compare:[netService name] ] == NSOrderedSame)
-            [self.myPairs removeObject:n];
+    
+    for (int i=0; i<[self.myPairs count]; i++) {
+        if([[[self.myPairs objectAtIndex:i ] name]compare:[netService name] ] == NSOrderedSame)
+            [self.myPairs removeObjectAtIndex:i];
+    }
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
@@ -158,15 +169,12 @@
     [self.moodNS setTXTRecordData:r];
 }
 
-- (void)viewWillTransitionToSize:(CGSize)size  withTransitionCoordinator:(id<UIViewControllerTransitionCoordinator>)coordinator{
-    [self setElementsSize:size];
-}
 
 -(void)goToMoodsAction{
     
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone &&
         [[UIScreen mainScreen] scale] != 3.0) {
-        [[self navigationController] pushViewController:[self.splitVC detailsVC] animated:YES];
+        [[self navigationController] pushViewController:[self.splitVC detailsVC] animated:NO];
     }
 }
 

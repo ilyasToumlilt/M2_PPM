@@ -24,9 +24,18 @@
         [self.detailsVC setDelegate:self.masterVC];
         
         [self displayModeButtonItem];
+        
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(deviceOrientationDidChange:) name:UIDeviceOrientationDidChangeNotification object:nil];
+        [[UIDevice currentDevice] beginGeneratingDeviceOrientationNotifications];
     }
 
     return self;
+}
+
+
+-(void)deviceOrientationDidChange:(NSNotification *)notification{
+
+    [self.masterVC setElementsSize:self.view.frame.size];
 }
 
 @end
