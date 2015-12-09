@@ -32,4 +32,25 @@
     [super dealloc];
 }
 
+/************************************************************************************************
+ * NSCoding Protocol
+ ***********************************************************************************************/
+- (void)encodeWithCoder:(NSCoder *)aCoder
+{
+    [aCoder encodeObject:[NSNumber numberWithInt:_number] forKey:@"number"];
+    [aCoder encodeObject:_desc forKey:@"desc"];
+    [aCoder encodeDouble:_coord.latitude forKey:@"latitude"];
+    [aCoder encodeDouble:_coord.longitude forKey:@"longitude"];
+}
+
+- (id)initWithCoder:(NSCoder *)aDecoder
+{
+    _number = [[aDecoder decodeObjectForKey:@"number"] intValue];
+    _desc = [[aDecoder decodeObjectForKey:@"desc"] copy];
+    _coord.latitude = [aDecoder decodeDoubleForKey:@"latitude"];
+    _coord.longitude = [aDecoder decodeDoubleForKey:@"longitude"];
+    
+    return self;
+}
+
 @end

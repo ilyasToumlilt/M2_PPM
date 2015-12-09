@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import <CoreLocation/CoreLocation.h>
 
-@interface LMLocation : NSObject
+@interface LMLocation : NSObject<NSCoding>
 
 @property (nonatomic, assign) int number;
 @property (nonatomic, retain) NSString* desc;

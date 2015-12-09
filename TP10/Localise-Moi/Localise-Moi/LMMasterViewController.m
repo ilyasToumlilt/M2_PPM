@@ -208,9 +208,8 @@
  ***********************************************************************************************/
 - (void)editCellAction
 {
-    //[_localisationTV setEditing:!_localisationTV.editing animated:YES];
-    //_editCell.title = (_localisationTV.editing) ? @"Done" : @"Edit";
-    [self loadLocationDataArray];
+    [_localisationTV setEditing:!_localisationTV.editing animated:YES];
+    _editCell.title = (_localisationTV.editing) ? @"Done" : @"Edit";
 }
 
 - (void)saveItemAction
@@ -230,12 +229,12 @@
     if ([paths count] > 0)
     {
         // Path to save array data
-        NSString  *arrayPath = [[paths objectAtIndex:0] stringByAppendingPathComponent:@"locationDataArray.out"];
+        NSString  *arrayPath = [[paths objectAtIndex:0] stringByAppendingPathComponent:@"array.out"];
         
         // Write array
-        [_locationDataArray writeToFile:arrayPath atomically:YES];
-        
-        NSLog(@"Writen");
+        //[_locationDataArray writeToFile:arrayPath atomically:YES];
+        BOOL result = [NSKeyedArchiver archiveRootObject:_locationDataArray toFile:arrayPath];
+        if (!result) NSLog(@"NOO");
         
     } else NSLog(@"NO paths");
 }
@@ -246,12 +245,14 @@
     if ([paths count] > 0)
     {
         // Path to save array data
-        NSString  *arrayPath = [[paths objectAtIndex:0] stringByAppendingPathComponent:@"locationDataArray.out"];
-        NSLog(@"%@", arrayPath);
-        NSArray* tmp = [[NSArray arrayWithContentsOfFile:arrayPath] retain];
-        NSLog(@"%d", (int)tmp.count);
+        NSString  *arrayPath = [[paths objectAtIndex:0] stringByAppendingPathComponent:@"array.out"];
+        
+        //NSArray* tmp = [NSArray arrayWithContentsOfFile:arrayPath];
+        
+        NSArray* tmp = [[NSKeyedUnarchiver unarchiveObjectWithFile:arrayPath] copy];
+        [_locationDataArray removeAllObjects];
         [_locationDataArray addObjectsFromArray:tmp];
-        NSLog(@"%d", (int)_locationDataArray.count);
+        [_localisationTV performSelectorOnMainThread:@selector(reloadData) withObject:nil waitUntilDone:NO];
     } else NSLog(@"No file to retrieve");
     
     [self updateDataNumbers];
